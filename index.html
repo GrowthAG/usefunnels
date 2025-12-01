@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FUNNELS | Marketing e Vendas Inteligentes</title>
+    <meta name="description" content="O jeito mais inteligente de gerenciar marketing e vendas. Substitua dezenas de ferramentas por uma só.">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://usefunnels.io/">
+    <meta property="og:title" content="FUNNELS | Marketing e Vendas Inteligentes">
+    <meta property="og:description" content="Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.">
+    <meta property="og:image" content="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffea09edac701238582a57.png">
+
+    <link rel="icon" type="image/png" href="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ea81e096a2285e10022c50.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'neon-green': '#1bfc4f',
+                        'deep-black': '#050505',
+                        'off-black': '#0a0a0a',
+                        'pure-white': '#ffffff',
+                        'light-gray': '#F9F9F9',
+                        'border-gray': '#E5E7EB',
+                    },
+                    fontFamily: {
+                        'space': ['"Space Grotesk"', 'sans-serif'],
+                        'mono': ['"JetBrains Mono"', 'monospace'],
+                        'inter': ['"Inter"', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'grid-pattern': 'radial-gradient(#e5e5e5 1px, transparent 1px)',
+                        'grid-pattern-dark': 'radial-gradient(#333 1px, transparent 1px)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'fade-in-up': 'fadeInUp 0.6s ease-out forwards',
+                        'scale-up': 'scaleUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'scroll': 'scroll 30s linear infinite',
+                        'scan': 'scan 3s linear infinite',
+                        'pan-y': 'panY 10s ease-in-out infinite alternate',
+                        'jitter': 'jitter 3s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        scaleUp: {
+                            '0%': { opacity: '0', transform: 'scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'scale(1)' },
+                        },
+                        scroll: {
+                            '0%': { transform: 'translateX(0)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        scan: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '100%': { backgroundPosition: '0% 100%' },
+                        },
+                        panY: {
+                             '0%': { objectPosition: 'top center' },
+                             '100%': { objectPosition: 'bottom center' }
+                        },
+                        jitter: {
+                            '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
+                            '25%': { transform: 'translate(1px, 1px) rotate(2deg)' },
+                            '50%': { transform: 'translate(-1px, -2px) rotate(-1deg)' },
+                            '75%': { transform: 'translate(-2px, 1px) rotate(1deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* CRITICAL RESET FOR GOHIGHLEVEL */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #050505 !important;
+            width: 100% !important;
+            min-height: 100vh !important;
+            overflow-x: hidden !important;
+        }
+
+        #root {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            width: 100%;
+            margin: 0 !important;
+            padding: 0 !important;
+            background-color: #050505;
+        }
+
+        /* Force Header to Top */
+        header {
+            top: 0 !important;
+            margin-top: 0 !important;
+            padding-top: 0 !important;
+            z-index: 9999 !important;
+        }
+
+        /* Prevent white gaps on internal pages */
+        main {
+            background-color: #050505; /* Default safe color */
+            flex-grow: 1;
+        }
+
+        /* Typography & Scrollbar */
+        ::selection { background: #1bfc4f; color: #000000; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #1bfc4f; }
+        
+        .bg-grid-pattern { background-size: 32px 32px; }
+        .bg-grid-pattern-dark { background-size: 32px 32px; }
+        .text-balance { text-wrap: balance; }
+        html { scroll-behavior: smooth; }
+        
+        /* Ensure container clears float */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6"
+  }
+}
+</script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="./index.tsx"></script>
+</body>
+</html>
