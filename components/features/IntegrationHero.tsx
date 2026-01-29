@@ -6,17 +6,18 @@ interface IntegrationHeroProps {
     onBookDemo: () => void;
 }
 
-// Logos das ferramentas integradas
-const INTEGRATIONS_ORBIT_1 = [
-    { name: 'Zapier', logo: 'https://cdn.worldvectorlogo.com/logos/zapier-1.svg', angle: 0 },
+// Ferramentas da Órbita 1 (mais próxima - 6 ferramentas)
+const ORBIT_1_TOOLS = [
+    { name: 'Google Ads', logo: 'https://cdn.worldvectorlogo.com/logos/google-ads-2.svg', angle: 0 },
     { name: 'Mailchimp', logo: 'https://cdn.worldvectorlogo.com/logos/mailchimp-freddie-icon.svg', angle: 60 },
     { name: 'WhatsApp', logo: 'https://cdn.worldvectorlogo.com/logos/whatsapp-business-bg.svg', angle: 120 },
-    { name: 'Stripe', logo: 'https://cdn.worldvectorlogo.com/logos/stripe-4.svg', angle: 180 },
+    { name: 'Zapier', logo: 'https://cdn.worldvectorlogo.com/logos/zapier-1.svg', angle: 180 },
     { name: 'WordPress', logo: 'https://cdn.worldvectorlogo.com/logos/wordpress-icon-1.svg', angle: 240 },
-    { name: 'Google Ads', logo: 'https://cdn.worldvectorlogo.com/logos/google-ads-2.svg', angle: 300 },
+    { name: 'Stripe', logo: 'https://cdn.worldvectorlogo.com/logos/stripe-4.svg', angle: 300 },
 ];
 
-const INTEGRATIONS_ORBIT_2 = [
+// Ferramentas da Órbita 2 (mais distante - 6 ferramentas)
+const ORBIT_2_TOOLS = [
     { name: 'Facebook', logo: 'https://cdn.worldvectorlogo.com/logos/facebook-3-2.svg', angle: 30 },
     { name: 'Instagram', logo: 'https://cdn.worldvectorlogo.com/logos/instagram-2016-5.svg', angle: 90 },
     { name: 'HubSpot', logo: 'https://cdn.worldvectorlogo.com/logos/hubspot-1.svg', angle: 150 },
@@ -25,12 +26,20 @@ const INTEGRATIONS_ORBIT_2 = [
     { name: 'Analytics', logo: 'https://cdn.worldvectorlogo.com/logos/google-analytics-4.svg', angle: 330 },
 ];
 
+// Avatares para social proof
+const AVATARS = [
+    'https://i.pravatar.cc/80?img=11',
+    'https://i.pravatar.cc/80?img=12',
+    'https://i.pravatar.cc/80?img=13',
+];
+
 export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) => {
     const [count, setCount] = useState(0);
     const [isVisible, setIsVisible] = useState(false);
     const sectionRef = useRef<HTMLElement>(null);
     const targetCount = 12;
 
+    // Intersection Observer para animar contador
     useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
@@ -49,194 +58,719 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
         return () => observer.disconnect();
     }, []);
 
+    // Animação do contador
     useEffect(() => {
         if (isVisible && count < targetCount) {
             const timer = setTimeout(() => {
                 setCount((prev) => Math.min(prev + 1, targetCount));
-            }, 100);
+            }, 80);
             return () => clearTimeout(timer);
         }
     }, [isVisible, count]);
 
     return (
-        <section
-            ref={sectionRef}
-            className="bg-gradient-to-br from-white to-gray-50 py-20 md:py-28 relative overflow-hidden"
-        >
-            {/* Background decorativo */}
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[radial-gradient(circle,rgba(27,252,79,0.05)_0%,transparent_70%)] pointer-events-none"></div>
+        <>
+            {/* CSS Animations */}
+            <style>{`
+                @keyframes pulse-glow {
+                    0%, 100% {
+                        transform: translate(-50%, -50%) scale(1);
+                        opacity: 0.6;
+                    }
+                    50% {
+                        transform: translate(-50%, -50%) scale(1.15);
+                        opacity: 1;
+                    }
+                }
+                
+                @keyframes pulse-ring {
+                    0% {
+                        width: 140px;
+                        height: 140px;
+                        opacity: 1;
+                    }
+                    100% {
+                        width: 340px;
+                        height: 340px;
+                        opacity: 0;
+                        border-width: 1px;
+                    }
+                }
+                
+                @keyframes rotate-orbit-1 {
+                    from { transform: translate(-50%, -50%) rotate(0deg); }
+                    to { transform: translate(-50%, -50%) rotate(360deg); }
+                }
+                
+                @keyframes rotate-orbit-2 {
+                    from { transform: translate(-50%, -50%) rotate(0deg); }
+                    to { transform: translate(-50%, -50%) rotate(-360deg); }
+                }
+                
+                .orbit-1-container {
+                    animation: rotate-orbit-1 60s linear infinite;
+                }
+                
+                .orbit-2-container {
+                    animation: rotate-orbit-2 80s linear infinite;
+                }
+                
+                .tool-node-1 {
+                    animation: rotate-orbit-1 60s linear infinite reverse;
+                }
+                
+                .tool-node-2 {
+                    animation: rotate-orbit-2 80s linear infinite reverse;
+                }
+            `}</style>
 
-            <div className="max-w-7xl mx-auto px-6">
-                <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+            <section
+                ref={sectionRef}
+                style={{
+                    background: '#FFFFFF',
+                    padding: '120px 24px',
+                    position: 'relative',
+                    overflow: 'hidden',
+                }}
+            >
+                {/* Grid Container */}
+                <div
+                    style={{
+                        maxWidth: '1400px',
+                        margin: '0 auto',
+                        display: 'grid',
+                        gridTemplateColumns: '45% 55%',
+                        gap: '80px',
+                        alignItems: 'center',
+                    }}
+                    className="hero-grid"
+                >
+                    {/* ============================================ */}
+                    {/* COLUNA ESQUERDA - Conteúdo */}
+                    {/* ============================================ */}
+                    <div className="hero-content">
 
-                    {/* LADO ESQUERDO - Conteúdo */}
-                    <div className="order-2 lg:order-1">
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-ultra-light border border-neon-green/30 rounded-full text-sm font-semibold text-green-darker mb-6">
-                            <span>🔗</span> Integração Total
+                        {/* 1. Badge */}
+                        <div
+                            style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '8px',
+                                padding: '8px 16px',
+                                background: 'rgba(132, 255, 11, 0.1)',
+                                border: '1px solid rgba(132, 255, 11, 0.3)',
+                                borderRadius: '100px',
+                                fontSize: '14px',
+                                fontWeight: 600,
+                                color: '#5AB906',
+                                marginBottom: '24px',
+                            }}
+                        >
+                            <span>🔗</span>
+                            <span>Integração Total</span>
                         </div>
 
-                        {/* Título */}
-                        <h2 className="text-4xl md:text-5xl lg:text-[56px] font-bold font-space leading-[1.1] mb-6">
-                            <span className="text-deep-black block">Todas as suas ferramentas.</span>
-                            <span className="bg-gradient-to-r from-neon-green to-green-dark bg-clip-text text-transparent">
+                        {/* 2. Título Principal */}
+                        <h2
+                            style={{
+                                fontSize: '56px',
+                                fontWeight: 700,
+                                lineHeight: 1.1,
+                                marginBottom: '24px',
+                                fontFamily: '"Plus Jakarta Sans", sans-serif',
+                            }}
+                        >
+                            <span style={{ display: 'block', color: '#000000' }}>
+                                Todas as suas ferramentas.
+                            </span>
+                            <span style={{ display: 'block', color: '#84FF0B' }}>
                                 Um único sistema.
                             </span>
                         </h2>
 
-                        {/* Descrição */}
-                        <p className="text-lg text-gray-600 leading-relaxed mb-10 max-w-lg">
-                            Conecte CRM, automação, WhatsApp, e-mail e IA em uma plataforma centralizada.
-                            Elimine custos de múltiplas ferramentas e ganhe produtividade real.
+                        {/* 3. Descrição */}
+                        <p
+                            style={{
+                                fontSize: '18px',
+                                lineHeight: 1.6,
+                                color: '#525252',
+                                marginBottom: '48px',
+                                maxWidth: '540px',
+                            }}
+                        >
+                            Conecte CRM, automação, WhatsApp, e-mail e IA em uma plataforma
+                            centralizada. Elimine custos de múltiplas ferramentas e ganhe
+                            produtividade real.
                         </p>
 
-                        {/* Benefits Cards */}
-                        <div className="flex flex-col gap-4 mb-10">
-                            <div className="flex items-start gap-4 p-5 bg-white border border-gray-200 rounded-xl hover:border-neon-green/50 hover:shadow-lg hover:translate-x-1 transition-all duration-300">
-                                <span className="text-3xl flex-shrink-0">💰</span>
+                        {/* 4. Cards de Benefícios (EMPILHADOS VERTICALMENTE) */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                gap: '16px',
+                                marginBottom: '48px',
+                                width: '100%',
+                            }}
+                        >
+                            {/* Card 1 */}
+                            <div
+                                className="benefit-card"
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    gap: '16px',
+                                    padding: '20px',
+                                    background: '#FFFFFF',
+                                    border: '1px solid #E5E5E5',
+                                    borderRadius: '12px',
+                                    transition: 'all 300ms ease',
+                                    cursor: 'default',
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.borderColor = '#84FF0B';
+                                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(132, 255, 11, 0.15)';
+                                    e.currentTarget.style.transform = 'translateX(4px)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.borderColor = '#E5E5E5';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                    e.currentTarget.style.transform = 'translateX(0)';
+                                }}
+                            >
+                                <span style={{ fontSize: '32px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>💰</span>
                                 <div>
-                                    <h4 className="text-lg font-semibold text-deep-black mb-1">Economize até R$ 35.000/ano</h4>
-                                    <p className="text-sm text-gray-500">Substitua 8+ ferramentas por uma</p>
+                                    <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#171717', margin: '0 0 4px 0', lineHeight: 1.3 }}>
+                                        Economize até R$ 35.000/ano
+                                    </h4>
+                                    <p style={{ fontSize: '14px', color: '#737373', margin: 0, lineHeight: 1.5 }}>
+                                        Substitua 8+ ferramentas por uma
+                                    </p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-4 p-5 bg-white border border-gray-200 rounded-xl hover:border-neon-green/50 hover:shadow-lg hover:translate-x-1 transition-all duration-300">
-                                <span className="text-3xl flex-shrink-0">⚡</span>
+
+                            {/* Card 2 */}
+                            <div
+                                className="benefit-card"
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    gap: '16px',
+                                    padding: '20px',
+                                    background: '#FFFFFF',
+                                    border: '1px solid #E5E5E5',
+                                    borderRadius: '12px',
+                                    transition: 'all 300ms ease',
+                                    cursor: 'default',
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.borderColor = '#84FF0B';
+                                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(132, 255, 11, 0.15)';
+                                    e.currentTarget.style.transform = 'translateX(4px)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.borderColor = '#E5E5E5';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                    e.currentTarget.style.transform = 'translateX(0)';
+                                }}
+                            >
+                                <span style={{ fontSize: '32px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>⚡</span>
                                 <div>
-                                    <h4 className="text-lg font-semibold text-deep-black mb-1">80% mais produtividade</h4>
-                                    <p className="text-sm text-gray-500">Dados centralizados e sincronizados</p>
+                                    <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#171717', margin: '0 0 4px 0', lineHeight: 1.3 }}>
+                                        80% mais produtividade
+                                    </h4>
+                                    <p style={{ fontSize: '14px', color: '#737373', margin: 0, lineHeight: 1.5 }}>
+                                        Dados centralizados e sincronizados
+                                    </p>
                                 </div>
                             </div>
-                            <div className="flex items-start gap-4 p-5 bg-white border border-gray-200 rounded-xl hover:border-neon-green/50 hover:shadow-lg hover:translate-x-1 transition-all duration-300">
-                                <span className="text-3xl flex-shrink-0">🎯</span>
+
+                            {/* Card 3 */}
+                            <div
+                                className="benefit-card"
+                                style={{
+                                    display: 'flex',
+                                    flexDirection: 'row',
+                                    alignItems: 'flex-start',
+                                    gap: '16px',
+                                    padding: '20px',
+                                    background: '#FFFFFF',
+                                    border: '1px solid #E5E5E5',
+                                    borderRadius: '12px',
+                                    transition: 'all 300ms ease',
+                                    cursor: 'default',
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.borderColor = '#84FF0B';
+                                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(132, 255, 11, 0.15)';
+                                    e.currentTarget.style.transform = 'translateX(4px)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.borderColor = '#E5E5E5';
+                                    e.currentTarget.style.boxShadow = 'none';
+                                    e.currentTarget.style.transform = 'translateX(0)';
+                                }}
+                            >
+                                <span style={{ fontSize: '32px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>🎯</span>
                                 <div>
-                                    <h4 className="text-lg font-semibold text-deep-black mb-1">Zero integrações quebradas</h4>
-                                    <p className="text-sm text-gray-500">Tudo funciona nativamente</p>
+                                    <h4 style={{ fontSize: '18px', fontWeight: 600, color: '#171717', margin: '0 0 4px 0', lineHeight: 1.3 }}>
+                                        Zero integrações quebradas
+                                    </h4>
+                                    <p style={{ fontSize: '14px', color: '#737373', margin: 0, lineHeight: 1.5 }}>
+                                        Tudo funciona nativamente
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
-                        {/* CTAs */}
-                        <div className="flex flex-col sm:flex-row gap-4 mb-10">
+                        {/* 5. Botões de CTA */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                gap: '16px',
+                                marginBottom: '40px',
+                            }}
+                            className="cta-buttons"
+                        >
                             <button
                                 onClick={onBookDemo}
-                                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-neon-green text-black font-semibold rounded-lg hover:bg-green-dark transition-all duration-200 shadow-[0_2px_8px_rgba(27,252,79,0.3)] hover:shadow-[0_8px_24px_rgba(27,252,79,0.4)] hover:-translate-y-0.5 group"
+                                className="btn-primary-integration"
+                                style={{
+                                    background: '#84FF0B',
+                                    color: '#000000',
+                                    padding: '18px 32px',
+                                    border: 'none',
+                                    borderRadius: '8px',
+                                    fontSize: '16px',
+                                    fontWeight: 600,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: '8px',
+                                    cursor: 'pointer',
+                                    transition: 'all 200ms ease',
+                                    boxShadow: '0 2px 8px rgba(132, 255, 11, 0.2)',
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.background = '#6FD908';
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                    e.currentTarget.style.boxShadow = '0 8px 20px rgba(132, 255, 11, 0.3)';
+                                    const arrow = e.currentTarget.querySelector('.btn-arrow') as HTMLElement;
+                                    if (arrow) arrow.style.transform = 'translateX(4px)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.background = '#84FF0B';
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(132, 255, 11, 0.2)';
+                                    const arrow = e.currentTarget.querySelector('.btn-arrow') as HTMLElement;
+                                    if (arrow) arrow.style.transform = 'translateX(0)';
+                                }}
                             >
-                                Agendar Demo Gratuita
-                                <span className="transition-transform group-hover:translate-x-1">→</span>
+                                <span>Agendar Demo Gratuita</span>
+                                <span className="btn-arrow" style={{ transition: 'transform 200ms ease' }}>→</span>
                             </button>
-                            <button className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-deep-black font-semibold border-2 border-gray-200 rounded-lg hover:border-neon-green hover:text-green-darker transition-all duration-200">
+
+                            <button
+                                style={{
+                                    background: 'transparent',
+                                    color: '#171717',
+                                    padding: '18px 32px',
+                                    border: '2px solid #E5E5E5',
+                                    borderRadius: '8px',
+                                    fontSize: '16px',
+                                    fontWeight: 600,
+                                    cursor: 'pointer',
+                                    transition: 'all 200ms ease',
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.borderColor = '#84FF0B';
+                                    e.currentTarget.style.color = '#5AB906';
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.borderColor = '#E5E5E5';
+                                    e.currentTarget.style.color = '#171717';
+                                }}
+                            >
                                 Ver Todas Integrações
                             </button>
                         </div>
 
-                        {/* Social Proof */}
-                        <div className="flex items-center gap-4">
-                            <div className="flex items-center">
-                                {[1, 2, 3, 4].map((i) => (
-                                    <div
+                        {/* 6. Social Proof */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '16px',
+                            }}
+                        >
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                {AVATARS.map((avatar, i) => (
+                                    <img
                                         key={i}
-                                        className="w-10 h-10 rounded-full border-2 border-white bg-gray-200 -ml-3 first:ml-0 flex items-center justify-center text-xs font-medium"
+                                        src={avatar}
+                                        alt=""
                                         style={{
-                                            backgroundImage: `url(https://i.pravatar.cc/40?img=${i + 10})`,
-                                            backgroundSize: 'cover'
+                                            width: '40px',
+                                            height: '40px',
+                                            borderRadius: '50%',
+                                            border: '2px solid #FFFFFF',
+                                            marginLeft: i === 0 ? 0 : '-12px',
+                                            objectFit: 'cover',
                                         }}
                                     />
                                 ))}
-                                <div className="w-10 h-10 rounded-full border-2 border-white bg-neon-green -ml-3 flex items-center justify-center text-xs font-bold text-black">
+                                <span
+                                    style={{
+                                        width: '40px',
+                                        height: '40px',
+                                        borderRadius: '50%',
+                                        background: '#84FF0B',
+                                        color: '#000000',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '12px',
+                                        fontWeight: 700,
+                                        marginLeft: '-12px',
+                                        border: '2px solid #FFFFFF',
+                                    }}
+                                >
                                     +847
-                                </div>
+                                </span>
                             </div>
-                            <p className="text-sm text-gray-600">
-                                <strong className="text-deep-black">800+ empresas</strong> economizando com Funnels
+                            <p style={{ fontSize: '14px', color: '#525252', margin: 0 }}>
+                                <strong style={{ color: '#171717', fontWeight: 600 }}>800+ empresas</strong> economizando com Funnels
                             </p>
                         </div>
                     </div>
 
-                    {/* LADO DIREITO - Visualização "Sistema Solar" */}
-                    <div className="order-1 lg:order-2 relative w-full h-[500px] lg:h-[600px]">
+                    {/* ============================================ */}
+                    {/* COLUNA DIREITA - Visualização "Sistema Solar" */}
+                    {/* ============================================ */}
+                    <div
+                        className="integration-visual"
+                        style={{
+                            position: 'relative',
+                            width: '600px',
+                            height: '600px',
+                            margin: '0 auto',
+                        }}
+                    >
+                        {/* HUB CENTRAL (Funnels) */}
+                        <div
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                zIndex: 10,
+                            }}
+                        >
+                            {/* Glow Effect */}
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    width: '240px',
+                                    height: '240px',
+                                    background: 'radial-gradient(circle, rgba(132, 255, 11, 0.4) 0%, rgba(132, 255, 11, 0.2) 40%, transparent 70%)',
+                                    animation: 'pulse-glow 3s ease-in-out infinite',
+                                    zIndex: 1,
+                                }}
+                            />
 
-                        {/* Hub Central - Logo Funnels */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10">
-                            {/* Glow effect */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[radial-gradient(circle,rgba(27,252,79,0.3)_0%,transparent_70%)] animate-pulse"></div>
+                            {/* Pulse Ring */}
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    width: '140px',
+                                    height: '140px',
+                                    border: '3px solid #84FF0B',
+                                    borderRadius: '24px',
+                                    animation: 'pulse-ring 2.5s ease-out infinite',
+                                    zIndex: 0,
+                                }}
+                            />
 
-                            {/* Pulse ring */}
-                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 border-2 border-neon-green rounded-2xl animate-[ping_2s_ease-out_infinite] opacity-50"></div>
-
-                            {/* Logo container */}
-                            <div className="relative w-28 h-28 bg-white rounded-2xl flex items-center justify-center shadow-[0_0_0_8px_rgba(27,252,79,0.1),0_8px_32px_rgba(0,0,0,0.1)]">
+                            {/* Logo Box */}
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    width: '140px',
+                                    height: '140px',
+                                    background: '#FFFFFF',
+                                    borderRadius: '24px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    boxShadow: '0 0 0 12px rgba(132, 255, 11, 0.15), 0 12px 40px rgba(0, 0, 0, 0.12)',
+                                    zIndex: 2,
+                                }}
+                            >
                                 <img
                                     src={ASSETS.logoBlack}
                                     alt="Funnels"
-                                    className="w-20 h-auto"
+                                    style={{ width: '100px', height: 'auto' }}
                                 />
                             </div>
                         </div>
 
-                        {/* Órbita 1 */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] md:w-[360px] md:h-[360px] border border-dashed border-neon-green/20 rounded-full animate-[spin_60s_linear_infinite]">
-                            {INTEGRATIONS_ORBIT_1.map((tool, index) => (
+                        {/* ÓRBITA 1 (mais próxima) */}
+                        <div
+                            className="orbit-1-container"
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                width: '400px',
+                                height: '400px',
+                                borderRadius: '50%',
+                                border: '2px dashed rgba(132, 255, 11, 0.25)',
+                            }}
+                        >
+                            {ORBIT_1_TOOLS.map((tool) => (
                                 <div
                                     key={tool.name}
-                                    className="absolute top-1/2 left-1/2 w-14 h-14 md:w-16 md:h-16 group"
+                                    className="tool-node-1"
                                     style={{
-                                        transform: `rotate(${tool.angle}deg) translateX(150px) md:translateX(180px) rotate(-${tool.angle}deg)`,
-                                        transformOrigin: '0 0'
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '50%',
+                                        width: '72px',
+                                        height: '72px',
+                                        transform: `rotate(${tool.angle}deg) translateX(200px) rotate(-${tool.angle}deg)`,
+                                        transformOrigin: '0 0',
+                                        marginTop: '-36px',
+                                        marginLeft: '-36px',
                                     }}
                                 >
                                     <div
-                                        className="w-full h-full bg-white rounded-xl border-2 border-gray-200 p-3 flex items-center justify-center hover:border-neon-green hover:scale-110 hover:shadow-[0_0_0_4px_rgba(27,252,79,0.1),0_8px_20px_rgba(27,252,79,0.2)] transition-all duration-300 cursor-pointer animate-[spin_60s_linear_infinite_reverse]"
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            padding: '14px',
+                                            background: '#FFFFFF',
+                                            border: '2px solid #E5E5E5',
+                                            borderRadius: '16px',
+                                            cursor: 'pointer',
+                                            boxShadow: '0 2px 12px rgba(0, 0, 0, 0.06)',
+                                            transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.borderColor = '#84FF0B';
+                                            e.currentTarget.style.transform = 'scale(1.2)';
+                                            e.currentTarget.style.boxShadow = '0 0 0 6px rgba(132, 255, 11, 0.15), 0 12px 28px rgba(132, 255, 11, 0.25)';
+                                            e.currentTarget.style.zIndex = '100';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.borderColor = '#E5E5E5';
+                                            e.currentTarget.style.transform = 'scale(1)';
+                                            e.currentTarget.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.06)';
+                                            e.currentTarget.style.zIndex = 'auto';
+                                        }}
+                                        title={tool.name}
                                     >
-                                        <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain" />
-                                    </div>
-                                    {/* Tooltip */}
-                                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-neon-green px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                                        {tool.name}
+                                        <img
+                                            src={tool.logo}
+                                            alt={tool.name}
+                                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                        />
                                     </div>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Órbita 2 */}
-                        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] md:w-[500px] md:h-[500px] border border-dashed border-neon-green/10 rounded-full animate-[spin_80s_linear_infinite_reverse] hidden md:block">
-                            {INTEGRATIONS_ORBIT_2.map((tool) => (
+                        {/* ÓRBITA 2 (mais distante) */}
+                        <div
+                            className="orbit-2-container"
+                            style={{
+                                position: 'absolute',
+                                top: '50%',
+                                left: '50%',
+                                transform: 'translate(-50%, -50%)',
+                                width: '540px',
+                                height: '540px',
+                                borderRadius: '50%',
+                                border: '2px dotted rgba(132, 255, 11, 0.15)',
+                            }}
+                        >
+                            {ORBIT_2_TOOLS.map((tool) => (
                                 <div
                                     key={tool.name}
-                                    className="absolute top-1/2 left-1/2 w-12 h-12 md:w-14 md:h-14 group"
+                                    className="tool-node-2"
                                     style={{
-                                        transform: `rotate(${tool.angle}deg) translateX(210px) md:translateX(250px) rotate(-${tool.angle}deg)`,
-                                        transformOrigin: '0 0'
+                                        position: 'absolute',
+                                        top: '50%',
+                                        left: '50%',
+                                        width: '64px',
+                                        height: '64px',
+                                        transform: `rotate(${tool.angle}deg) translateX(270px) rotate(-${tool.angle}deg)`,
+                                        transformOrigin: '0 0',
+                                        marginTop: '-32px',
+                                        marginLeft: '-32px',
                                     }}
                                 >
                                     <div
-                                        className="w-full h-full bg-white rounded-xl border-2 border-gray-200 p-2.5 flex items-center justify-center hover:border-neon-green hover:scale-110 hover:shadow-[0_0_0_4px_rgba(27,252,79,0.1),0_8px_20px_rgba(27,252,79,0.2)] transition-all duration-300 cursor-pointer animate-[spin_80s_linear_infinite]"
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            padding: '12px',
+                                            background: '#FFFFFF',
+                                            border: '2px solid #E5E5E5',
+                                            borderRadius: '14px',
+                                            cursor: 'pointer',
+                                            boxShadow: '0 2px 12px rgba(0, 0, 0, 0.06)',
+                                            transition: 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.borderColor = '#84FF0B';
+                                            e.currentTarget.style.transform = 'scale(1.2)';
+                                            e.currentTarget.style.boxShadow = '0 0 0 6px rgba(132, 255, 11, 0.15), 0 12px 28px rgba(132, 255, 11, 0.25)';
+                                            e.currentTarget.style.zIndex = '100';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.borderColor = '#E5E5E5';
+                                            e.currentTarget.style.transform = 'scale(1)';
+                                            e.currentTarget.style.boxShadow = '0 2px 12px rgba(0, 0, 0, 0.06)';
+                                            e.currentTarget.style.zIndex = 'auto';
+                                        }}
+                                        title={tool.name}
                                     >
-                                        <img src={tool.logo} alt={tool.name} className="w-full h-full object-contain" />
-                                    </div>
-                                    {/* Tooltip */}
-                                    <div className="absolute -top-10 left-1/2 -translate-x-1/2 bg-black text-neon-green px-3 py-1.5 rounded-md text-xs font-semibold whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-50">
-                                        {tool.name}
+                                        <img
+                                            src={tool.logo}
+                                            alt={tool.name}
+                                            style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                                        />
                                     </div>
                                 </div>
                             ))}
                         </div>
 
-                        {/* Contador de ferramentas */}
-                        <div className="absolute bottom-8 right-8 bg-white p-5 rounded-2xl border-2 border-neon-green shadow-[0_8px_24px_rgba(27,252,79,0.2)] text-center">
-                            <div className="text-4xl md:text-5xl font-bold text-neon-green leading-none mb-2">
+                        {/* CONTADOR */}
+                        <div
+                            style={{
+                                position: 'absolute',
+                                bottom: '20px',
+                                right: '20px',
+                                background: '#FFFFFF',
+                                padding: '24px 32px',
+                                borderRadius: '16px',
+                                border: '3px solid #84FF0B',
+                                boxShadow: '0 0 0 8px rgba(132, 255, 11, 0.1), 0 12px 32px rgba(132, 255, 11, 0.25)',
+                                textAlign: 'center',
+                                zIndex: 20,
+                            }}
+                        >
+                            <div
+                                style={{
+                                    fontSize: '56px',
+                                    fontWeight: 700,
+                                    color: '#84FF0B',
+                                    lineHeight: 1,
+                                    marginBottom: '8px',
+                                    fontFamily: '"Plus Jakarta Sans", sans-serif',
+                                }}
+                            >
                                 {count}
                             </div>
-                            <div className="text-xs font-semibold text-gray-500 uppercase tracking-wider">
+                            <div
+                                style={{
+                                    fontSize: '11px',
+                                    fontWeight: 600,
+                                    color: '#525252',
+                                    textTransform: 'uppercase',
+                                    letterSpacing: '0.8px',
+                                    lineHeight: 1.3,
+                                }}
+                            >
                                 Ferramentas Unificadas
                             </div>
                         </div>
-
-                        {/* Data particles */}
-                        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-neon-green rounded-full animate-[ping_4s_ease-in-out_infinite]"></div>
-                        <div className="absolute top-3/4 right-1/4 w-2 h-2 bg-neon-green rounded-full animate-[ping_4s_ease-in-out_infinite_2s]"></div>
                     </div>
                 </div>
-            </div>
-        </section>
+
+                {/* Responsive Styles */}
+                <style>{`
+                    @media (max-width: 1024px) {
+                        .hero-grid {
+                            grid-template-columns: 1fr !important;
+                            gap: 60px !important;
+                        }
+                        .hero-content {
+                            max-width: 100%;
+                            text-align: center;
+                        }
+                        .hero-content > div:not(.cta-buttons) {
+                            justify-content: center;
+                        }
+                        .cta-buttons {
+                            justify-content: center !important;
+                        }
+                        .integration-visual {
+                            width: 500px !important;
+                            height: 500px !important;
+                        }
+                        .orbit-1-container {
+                            width: 340px !important;
+                            height: 340px !important;
+                        }
+                        .orbit-2-container {
+                            width: 460px !important;
+                            height: 460px !important;
+                        }
+                    }
+                    
+                    @media (max-width: 768px) {
+                        .hero-content h2 {
+                            font-size: 40px !important;
+                        }
+                        .hero-content p {
+                            font-size: 16px !important;
+                        }
+                        .benefit-card {
+                            padding: 16px !important;
+                        }
+                        .cta-buttons {
+                            flex-direction: column !important;
+                            width: 100% !important;
+                        }
+                        .cta-buttons button {
+                            width: 100% !important;
+                            justify-content: center !important;
+                        }
+                        .integration-visual {
+                            width: 100% !important;
+                            max-width: 380px !important;
+                            height: 380px !important;
+                        }
+                        .orbit-1-container {
+                            width: 260px !important;
+                            height: 260px !important;
+                        }
+                        .orbit-2-container {
+                            width: 340px !important;
+                            height: 340px !important;
+                        }
+                        .tool-node-1, .tool-node-2 {
+                            width: 56px !important;
+                            height: 56px !important;
+                        }
+                    }
+                `}</style>
+            </section>
+        </>
     );
 };
