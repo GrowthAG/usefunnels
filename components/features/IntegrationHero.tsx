@@ -169,6 +169,72 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             produtividade real.
                         </p>
 
+                        {/* VISUALIZAÇÃO SINGULARIDADE - Centralizada */}
+                        <div
+                            className="integration-visual"
+                            style={{
+                                position: 'relative',
+                                width: '600px',
+                                height: '600px',
+                                margin: '0 auto 60px auto',
+                                overflow: 'visible'
+                            }}
+                        >
+                            {/* HUB CENTRAL (Funnels) */}
+                            <div
+                                style={{
+                                    position: 'absolute',
+                                    top: '50%',
+                                    left: '50%',
+                                    transform: 'translate(-50%, -50%)',
+                                    zIndex: 50,
+                                    animation: 'pulse-core 4s ease-in-out infinite'
+                                }}
+                            >
+                                {/* Logo Box */}
+                                <div
+                                    style={{
+                                        width: '100px',
+                                        height: '100px',
+                                        background: '#050505',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        border: '2px solid #84FF0B',
+                                        boxShadow: '0 0 60px rgba(132, 255, 11, 0.3)'
+                                    }}
+                                >
+                                    <img
+                                        src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/6942ede10190af58ee895209.png"
+                                        alt="Funnels"
+                                        style={{ width: '48px', height: '48px', objectFit: 'contain' }}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* ÓRBITA 1 (Inner) */}
+                            <div className="orbit-1-container" style={{ ...orbitContainerStyle, width: '280px', height: '280px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                                {ORBIT_1.map((tool) => (
+                                    <OrbitNode key={tool.logo} tool={tool} radius={140} className="tool-node-1" size={48} />
+                                ))}
+                            </div>
+
+                            {/* ÓRBITA 2 (Middle) */}
+                            <div className="orbit-2-container" style={{ ...orbitContainerStyle, width: '440px', height: '440px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                                {ORBIT_2.map((tool) => (
+                                    <OrbitNode key={tool.logo} tool={tool} radius={220} className="tool-node-2" size={40} />
+                                ))}
+                            </div>
+
+                            {/* ÓRBITA 3 (Outer) */}
+                            <div className="orbit-3-container" style={{ ...orbitContainerStyle, width: '600px', height: '600px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                                {ORBIT_3.map((tool) => (
+                                    <OrbitNode key={tool.logo} tool={tool} radius={300} className="tool-node-3" size={32} opacity={0.8} />
+                                ))}
+                            </div>
+                        </div>
+
                         {/* 4. Cards de Benefícios - Horizontal para centralizado */}
                         <div
                             style={{
@@ -240,73 +306,6 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     </div>
 
 
-                    {/* ============================================ */}
-                    {/* VISUALIZAÇÃO SINGULARIDADE - Centralizada */}
-                    {/* ============================================ */}
-                    <div
-                        className="integration-visual"
-                        style={{
-                            position: 'relative',
-                            width: '600px',
-                            height: '600px',
-                            margin: '0 auto',
-                            overflow: 'visible'
-                        }}
-                    >
-                        {/* HUB CENTRAL (Funnels) */}
-                        <div
-                            style={{
-                                position: 'absolute',
-                                top: '50%',
-                                left: '50%',
-                                transform: 'translate(-50%, -50%)',
-                                zIndex: 50,
-                                animation: 'pulse-core 4s ease-in-out infinite'
-                            }}
-                        >
-                            {/* Logo Box */}
-                            <div
-                                style={{
-                                    width: '100px', // Slightly smaller for favicon elegance
-                                    height: '100px',
-                                    background: '#050505',
-                                    borderRadius: '50%',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    border: '2px solid #84FF0B',
-                                    boxShadow: '0 0 60px rgba(132, 255, 11, 0.3)'
-                                }}
-                            >
-                                <img
-                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/6942ede10190af58ee895209.png"
-                                    alt="Funnels"
-                                    style={{ width: '48px', height: '48px', objectFit: 'contain' }}
-                                />
-                            </div>
-                        </div>
-
-                        {/* ÓRBITA 1 (Inner) */}
-                        <div className="orbit-1-container" style={{ ...orbitContainerStyle, width: '280px', height: '280px', border: '1px solid rgba(0,0,0,0.05)' }}>
-                            {ORBIT_1.map((tool) => (
-                                <OrbitNode key={tool.logo} tool={tool} radius={140} className="tool-node-1" size={48} />
-                            ))}
-                        </div>
-
-                        {/* ÓRBITA 2 (Middle) */}
-                        <div className="orbit-2-container" style={{ ...orbitContainerStyle, width: '440px', height: '440px', border: '1px solid rgba(0,0,0,0.05)' }}>
-                            {ORBIT_2.map((tool) => (
-                                <OrbitNode key={tool.logo} tool={tool} radius={220} className="tool-node-2" size={40} />
-                            ))}
-                        </div>
-
-                        {/* ÓRBITA 3 (Outer) */}
-                        <div className="orbit-3-container" style={{ ...orbitContainerStyle, width: '600px', height: '600px', border: '1px solid rgba(0,0,0,0.05)' }}>
-                            {ORBIT_3.map((tool) => (
-                                <OrbitNode key={tool.logo} tool={tool} radius={300} className="tool-node-3" size={32} opacity={0.8} />
-                            ))}
-                        </div>
-                    </div>
                 </div>
 
                 {/* Responsive Styles */}
