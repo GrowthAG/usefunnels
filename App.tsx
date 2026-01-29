@@ -71,7 +71,7 @@ const App = () => {
                 <Header onBookDemo={() => setIsDemoModalOpen(true)} />
 
                 <Routes>
-                    <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} onCheckout={handleCheckout} />} />
+                    <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/recursos/:id" element={<FeaturePage onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/sobre" element={<About />} />
                     <Route path="/precos" element={<PricingPageFull onBookDemo={() => setIsDemoModalOpen(true)} onCheckout={handleCheckout} />} />
