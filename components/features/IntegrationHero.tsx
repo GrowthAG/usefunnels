@@ -116,26 +116,25 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     zIndex: 0
                 }}></div>
 
-                {/* Grid Container */}
+                {/* Grid Container -> Now Flex Container for Centered Layout */}
                 <div
                     style={{
                         maxWidth: '1400px',
                         margin: '0 auto',
-                        display: 'grid',
-                        gridTemplateColumns: '45% 55%',
-                        gap: '80px',
+                        display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '60px',
                         position: 'relative',
                         zIndex: 1
                     }}
                     className="hero-grid"
                 >
                     {/* ============================================ */}
-                    {/* COLUNA ESQUERDA - Conteúdo */}
+                    {/* CONTEÚDO CENTRALIZADO */}
                     {/* ============================================ */}
-                    <div className="hero-content">
-
-
+                    <div className="hero-content" style={{ maxWidth: '800px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
                         {/* 2. Título Principal */}
                         <h2
@@ -162,7 +161,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                                 lineHeight: 1.6,
                                 color: '#525252',
                                 marginBottom: '48px',
-                                maxWidth: '540px',
+                                maxWidth: '600px',
                             }}
                         >
                             Conecte CRM, automação, WhatsApp, e-mail e IA em uma plataforma
@@ -170,18 +169,20 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             produtividade real.
                         </p>
 
-                        {/* 4. Cards de Benefícios */}
+                        {/* 4. Cards de Benefícios - Horizontal para centralizado */}
                         <div
                             style={{
                                 display: 'flex',
-                                flexDirection: 'column',
-                                gap: '16px',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                flexWrap: 'wrap',
+                                gap: '24px',
                                 marginBottom: '48px',
                                 width: '100%',
                             }}
                         >
                             {/* Card 1 */}
-                            <div className="benefit-card" style={benefitCardStyle}>
+                            <div className="benefit-card" style={{ ...benefitCardStyle, textAlign: 'left' }}>
                                 <span style={{ fontSize: '24px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>💰</span>
                                 <div>
                                     <h4 style={benefitTitleStyle}>Economize até R$ 35.000/ano</h4>
@@ -190,7 +191,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             </div>
 
                             {/* Card 2 */}
-                            <div className="benefit-card" style={benefitCardStyle}>
+                            <div className="benefit-card" style={{ ...benefitCardStyle, textAlign: 'left' }}>
                                 <span style={{ fontSize: '24px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>⚡</span>
                                 <div>
                                     <h4 style={benefitTitleStyle}>80% mais produtividade</h4>
@@ -199,43 +200,47 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             </div>
                         </div>
 
-                        {/* 5. Botões de CTA */}
-                        <div
-                            style={{
-                                display: 'flex',
-                                gap: '16px',
-                                marginBottom: '40px',
-                            }}
-                            className="cta-buttons"
-                        >
-                            <button onClick={onBookDemo} className="btn-primary-integration" style={btnPrimaryStyle}>
-                                <span>Agendar Demo Gratuita</span>
-                                <span className="btn-arrow" style={{ transition: 'transform 200ms ease' }}>→</span>
-                            </button>
-
-                            <button style={btnSecondaryStyle}>
-                                Ver Todas Integrações
-                            </button>
-                        </div>
-
-                        {/* 6. Social Proof */}
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                                {AVATARS.map((avatar, i) => (
-                                    <img key={i} src={avatar} alt="" style={{ ...avatarStyle, marginLeft: i === 0 ? 0 : '-12px' }} />
-                                ))}
-                                <span style={{ ...avatarStyle, background: '#84FF0B', color: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, marginLeft: '-12px' }}>
-                                    +847
-                                </span>
-                            </div>
-                            <p style={{ fontSize: '14px', color: '#525252', margin: 0 }}>
-                                <strong style={{ color: '#171717', fontWeight: 600 }}>800+ empresas</strong> economizando
-                            </p>
-                        </div>
                     </div>
 
+                    {/* 5. Botões de CTA */}
+                    <div
+                        style={{
+                            display: 'flex',
+                            gap: '16px',
+                            marginBottom: '40px',
+                            justifyContent: 'center',
+                            flexWrap: 'wrap'
+                        }}
+                        className="cta-buttons"
+                    >
+                        <button onClick={onBookDemo} className="btn-primary-integration" style={btnPrimaryStyle}>
+                            <span>Agendar Demo Gratuita</span>
+                            <span className="btn-arrow" style={{ transition: 'transform 200ms ease' }}>→</span>
+                        </button>
+
+                        <button style={btnSecondaryStyle}>
+                            Ver Todas Integrações
+                        </button>
+                    </div>
+
+                    {/* 6. Social Proof */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '40px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                            {AVATARS.map((avatar, i) => (
+                                <img key={i} src={avatar} alt="" style={{ ...avatarStyle, marginLeft: i === 0 ? 0 : '-12px' }} />
+                            ))}
+                            <span style={{ ...avatarStyle, background: '#84FF0B', color: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, marginLeft: '-12px' }}>
+                                +847
+                            </span>
+                        </div>
+                        <p style={{ fontSize: '14px', color: '#525252', margin: 0 }}>
+                            <strong style={{ color: '#171717', fontWeight: 600 }}>800+ empresas</strong> economizando
+                        </p>
+                    </div>
+
+
                     {/* ============================================ */}
-                    {/* COLUNA DIREITA - SINGULARIDADE */}
+                    {/* VISUALIZAÇÃO SINGULARIDADE - Centralizada */}
                     {/* ============================================ */}
                     <div
                         className="integration-visual"
@@ -260,21 +265,21 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             {/* Logo Box */}
                             <div
                                 style={{
-                                    width: '120px',
-                                    height: '120px',
-                                    background: '#050505', // Updated to Singularity Black
+                                    width: '100px', // Slightly smaller for favicon elegance
+                                    height: '100px',
+                                    background: '#050505',
                                     borderRadius: '50%',
                                     display: 'flex',
                                     alignItems: 'center',
                                     justifyContent: 'center',
-                                    border: '4px solid #84FF0B',
-                                    boxShadow: '0 0 60px rgba(132, 255, 11, 0.4)'
+                                    border: '2px solid #84FF0B',
+                                    boxShadow: '0 0 60px rgba(132, 255, 11, 0.3)'
                                 }}
                             >
                                 <img
-                                    src={ASSETS.logoWhite}
+                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/6942ede10190af58ee895209.png"
                                     alt="Funnels"
-                                    style={{ width: '70px', height: 'auto' }}
+                                    style={{ width: '48px', height: '48px', objectFit: 'contain' }}
                                 />
                             </div>
                         </div>
@@ -341,7 +346,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                         }
                     }
                 `}</style>
-            </section>
+            </section >
         </>
     );
 };
