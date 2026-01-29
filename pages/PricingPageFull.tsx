@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { Container, Section, Reveal, Button, TechBadge, CornerBrackets } from '../components/ui';
 import { Pricing, PricingTable } from '../components/Pricing';
 
-// FUNNELS pricing tiers
+// FUNNELS pricing tiers with feature availability
 const FUNNELS_PLANS = [
-    { name: 'Starter', price: 497, users: 3, contacts: 20000 },
-    { name: 'Growth', price: 697, users: 5, contacts: 50000 },
-    { name: 'Scale', price: 997, users: 10, contacts: 75000 },
+    { name: 'Starter', price: 497, users: 3, contacts: 20000, hasWhatsapp: false, hasAI: false },
+    { name: 'Growth', price: 697, users: 5, contacts: 50000, hasWhatsapp: true, hasAI: true },
+    { name: 'Scale', price: 997, users: 10, contacts: 75000, hasWhatsapp: true, hasAI: true },
 ];
 
 // FAQ Data
@@ -68,12 +68,13 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
         workflowPremium: 0.055
     };
 
-    // Calculate variable costs
+    // Calculate variable costs (respecting plan limitations)
+    const currentPlan = FUNNELS_PLANS[selectedPlan];
     const emailCost = emailsPerMonth * COST_RATES.emailPerUnit;
-    const whatsappCost = whatsappMessages * COST_RATES.whatsappAvgPerMsg;
-    const aiCost = aiActions * COST_RATES.aiPerAction;
+    const whatsappCost = currentPlan.hasWhatsapp ? whatsappMessages * COST_RATES.whatsappAvgPerMsg : 0;
+    const aiCost = currentPlan.hasAI ? aiActions * COST_RATES.aiPerAction : 0;
     const variableCost = emailCost + whatsappCost + aiCost;
-    const totalMonthlyCost = FUNNELS_PLANS[selectedPlan].price + variableCost;
+    const totalMonthlyCost = currentPlan.price + variableCost;
 
     const formatCurrency = (value: number) => {
         return new Intl.NumberFormat('pt-BR', {
@@ -178,49 +179,65 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                                         </div>
                                     </div>
 
-                                    {/* WhatsApp Usage */}
-                                    <div>
-                                        <div className="flex justify-between items-center mb-3">
-                                            <label className="text-sm font-medium text-gray-600">Conversas WhatsApp/mês</label>
-                                            <span className="text-lg font-bold text-deep-black font-mono">
-                                                {whatsappMessages >= 1000 ? `${(whatsappMessages / 1000).toFixed(1)}k` : whatsappMessages}
-                                            </span>
+                                    {/* WhatsApp Usage - Only for Growth/Scale */}
+                                    {currentPlan.hasWhatsapp ? (
+                                        <div>
+                                            <div className="flex justify-between items-center mb-3">
+                                                <label className="text-sm font-medium text-gray-600">Conversas WhatsApp/mês</label>
+                                                <span className="text-lg font-bold text-deep-black font-mono">
+                                                    {whatsappMessages >= 1000 ? `${(whatsappMessages / 1000).toFixed(1)}k` : whatsappMessages}
+                                                </span>
+                                            </div>
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="10000"
+                                                step="100"
+                                                value={whatsappMessages}
+                                                onChange={(e) => setWhatsappMessages(Number(e.target.value))}
+                                                className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                            />
+                                            <div className="flex justify-between text-xs text-gray-400 mt-2">
+                                                <span>0</span>
+                                                <span>10k</span>
+                                            </div>
                                         </div>
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="10000"
-                                            step="100"
-                                            value={whatsappMessages}
-                                            onChange={(e) => setWhatsappMessages(Number(e.target.value))}
-                                            className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
-                                        />
-                                        <div className="flex justify-between text-xs text-gray-400 mt-2">
-                                            <span>0</span>
-                                            <span>10k</span>
+                                    ) : (
+                                        <div className="bg-gray-100 p-4 rounded-sm">
+                                            <p className="text-sm text-gray-400">
+                                                <span className="font-medium text-gray-500">WhatsApp</span> — disponível nos planos Growth e Scale
+                                            </p>
                                         </div>
-                                    </div>
+                                    )}
 
-                                    {/* AI Usage */}
-                                    <div>
-                                        <div className="flex justify-between items-center mb-3">
-                                            <label className="text-sm font-medium text-gray-600">Ações de IA/mês</label>
-                                            <span className="text-lg font-bold text-deep-black font-mono">{aiActions}</span>
+                                    {/* AI Usage - Only for Growth/Scale */}
+                                    {currentPlan.hasAI ? (
+                                        <div>
+                                            <div className="flex justify-between items-center mb-3">
+                                                <label className="text-sm font-medium text-gray-600">Ações de IA/mês</label>
+                                                <span className="text-lg font-bold text-deep-black font-mono">{aiActions}</span>
+                                            </div>
+                                            <input
+                                                type="range"
+                                                min="0"
+                                                max="5000"
+                                                step="100"
+                                                value={aiActions}
+                                                onChange={(e) => setAiActions(Number(e.target.value))}
+                                                className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                            />
+                                            <div className="flex justify-between text-xs text-gray-400 mt-2">
+                                                <span>0</span>
+                                                <span>5k</span>
+                                            </div>
                                         </div>
-                                        <input
-                                            type="range"
-                                            min="0"
-                                            max="5000"
-                                            step="100"
-                                            value={aiActions}
-                                            onChange={(e) => setAiActions(Number(e.target.value))}
-                                            className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
-                                        />
-                                        <div className="flex justify-between text-xs text-gray-400 mt-2">
-                                            <span>0</span>
-                                            <span>5k</span>
+                                    ) : (
+                                        <div className="bg-gray-100 p-4 rounded-sm">
+                                            <p className="text-sm text-gray-400">
+                                                <span className="font-medium text-gray-500">IA</span> — disponível nos planos Growth e Scale
+                                            </p>
                                         </div>
-                                    </div>
+                                    )}
                                 </div>
 
                                 {/* Cost Breakdown */}
@@ -251,7 +268,7 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                                             </div>
                                         )}
 
-                                        {whatsappMessages > 0 && (
+                                        {currentPlan.hasWhatsapp && whatsappMessages > 0 && (
                                             <div className="flex justify-between items-center text-sm">
                                                 <span className="text-gray-500">WhatsApp ({whatsappMessages.toLocaleString()} msgs)</span>
                                                 <span className="font-mono text-gray-600">
@@ -260,7 +277,7 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                                             </div>
                                         )}
 
-                                        {aiActions > 0 && (
+                                        {currentPlan.hasAI && aiActions > 0 && (
                                             <div className="flex justify-between items-center text-sm">
                                                 <span className="text-gray-500">IA ({aiActions} ações)</span>
                                                 <span className="font-mono text-gray-600">
