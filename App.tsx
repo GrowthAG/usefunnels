@@ -1,15 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Header, Footer } from './components/HeaderFooter';
-import { Home } from './pages/Home';
-import { About, Partners, Enterprise, Blog, FeaturePage, Legal } from './pages/Pages';
-import { Modal } from './components/UI';
+import { Header, Footer } from './components/layout';
+import { Home, About, Partners, Enterprise, Blog, FeaturePage, Legal } from './pages';
+import { Modal } from './components/ui';
 
 // Scroll To Top Component
 const ScrollToTop = () => {
     const { pathname, hash } = useLocation();
-    
+
     useEffect(() => {
         // Handle scrolling behavior
         if (hash) {
@@ -22,7 +21,7 @@ const ScrollToTop = () => {
             window.scrollTo(0, 0);
         }
     }, [pathname, hash]);
-    
+
     return null;
 };
 
@@ -55,27 +54,27 @@ const App = () => {
             <ProgressBar />
             <div className="flex flex-col min-h-screen bg-pure-white text-deep-black font-space">
                 <Header onBookDemo={() => setIsDemoModalOpen(true)} />
-                
+
                 <Routes>
                     <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/recursos/:id" element={<FeaturePage />} />
                     <Route path="/sobre" element={<About />} />
                     <Route path="/legal/:type" element={<Legal />} />
-                    <Route 
-                        path="/parceiros" 
-                        element={<Partners onOpenForm={() => setIsPartnerModalOpen(true)} />} 
+                    <Route
+                        path="/parceiros"
+                        element={<Partners onOpenForm={() => setIsPartnerModalOpen(true)} />}
                     />
                     <Route path="/enterprise" element={<Enterprise />} />
                     <Route path="/blog" element={<Blog />} />
                 </Routes>
-                
+
                 <Footer />
 
                 {/* Global Demo Modal */}
                 <Modal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)}>
                     <div className="p-0 md:p-1 bg-white h-[85vh] md:h-auto flex flex-col">
-                         <iframe 
-                            src="https://pages.usefunnels.io/widget/booking/MPETKLENngnBUUDATVAd" 
+                        <iframe
+                            src="https://pages.usefunnels.io/widget/booking/MPETKLENngnBUUDATVAd"
                             style={{ width: '100%', border: 'none', flexGrow: 1, minHeight: '500px' }}
                             id="MPETKLENngnBUUDATVAd_1764182165031"
                             title="Agendar Demo"
@@ -93,9 +92,9 @@ const App = () => {
                             </div>
                         </div>
                         <div className="flex-grow w-full overflow-hidden">
-                            <iframe 
-                                src="https://pages.usefunnels.io/widget/form/jME4FK4zm8bkuVEux59g" 
-                                style={{ width: '100%', height: '100%', border: 'none' }} 
+                            <iframe
+                                src="https://pages.usefunnels.io/widget/form/jME4FK4zm8bkuVEux59g"
+                                style={{ width: '100%', height: '100%', border: 'none' }}
                                 title="Partner Form"
                             ></iframe>
                         </div>

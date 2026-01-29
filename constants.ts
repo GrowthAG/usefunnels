@@ -3,160 +3,160 @@
 import { Feature, Testimonial, ToolReplacement } from './types';
 
 export const ASSETS = {
-  logoBlack: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/69139063bf6977831eeff5bb.webp",
-  logoWhite: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68caa915f411f36d4ec3d0fa.png",
-  screenshots: {
-    dashboard2: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffea09edac701238582a57.png",
-    
-    // Mapped from user request
-    socialPlanner: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aedb9db078766.png",
-    websites: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6b6843e05d8690d87f8c.png",
-    emailMarketing: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed355307876d.png",
-    automationsAI: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed9a1d078758.png",
-    agents: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6928ab226de41a0b4ed5.png", // Headline image
-    aiBuilder: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff68cb9d3acf04072af2fc.png",
-    crmMobile: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6765a6ad638958e67183.png",
-    marketplace: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e871be35e86931aef8f921.png",
-    
-    // Fallbacks
-    workflow: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aedb9db078766.png", 
-    calendar: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12d79c184ebfd25098.png",
-    email: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed9a1d078758.png",
-    pageBuilder: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6b6843e05d8690d87f8c.png",
-    crm: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6765a6ad638958e67183.png",
-    forms: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6928ab226de41a0b4ed5.png",
-    analytics: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff68cb9d3acf04072af2fc.png",
-    mobile: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6765a6ad638958e67183.png",
-  }
+    logoBlack: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/69139063bf6977831eeff5bb.webp",
+    logoWhite: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68caa915f411f36d4ec3d0fa.png",
+    screenshots: {
+        dashboard2: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffea09edac701238582a57.png",
+
+        // Mapped from user request
+        socialPlanner: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aedb9db078766.png",
+        websites: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6b6843e05d8690d87f8c.png",
+        emailMarketing: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed355307876d.png",
+        automationsAI: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed9a1d078758.png",
+        agents: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6928ab226de41a0b4ed5.png", // Headline image
+        aiBuilder: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff68cb9d3acf04072af2fc.png",
+        crmMobile: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6765a6ad638958e67183.png",
+        marketplace: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e871be35e86931aef8f921.png",
+
+        // Fallbacks
+        workflow: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aedb9db078766.png",
+        calendar: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12d79c184ebfd25098.png",
+        email: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed9a1d078758.png",
+        pageBuilder: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6b6843e05d8690d87f8c.png",
+        crm: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6765a6ad638958e67183.png",
+        forms: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6928ab226de41a0b4ed5.png",
+        analytics: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff68cb9d3acf04072af2fc.png",
+        mobile: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6765a6ad638958e67183.png",
+    }
 };
 
 export const FEATURES: (Feature & { id: string, description: string, benefits: string[], detailImage: string })[] = [
-  { 
-      id: "crm",
-      title: "CRM & Pipeline", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e26670364b0f.png",
-      description: "Acompanhe leads, negociações e oportunidades em um único lugar.",
-      benefits: ["Pipeline Visual Kanban", "Automação de Follow-up", "Pontuação de Leads (Lead Scoring)", "Integração com WhatsApp"],
-      detailImage: ASSETS.screenshots.crmMobile
-  },
-  { 
-      id: "automacao",
-      title: "Automação de Fluxos", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e24571364b67.png",
-      description: "Automações que qualificam, nutrem e convertem leads de forma previsível.",
-      benefits: ["Construtor Visual de Fluxos", "Gatilhos Inteligentes", "SMS e E-mail Automáticos", "Atribuição de Tarefas"],
-      detailImage: ASSETS.screenshots.automationsAI
-  },
-  { 
-      id: "email",
-      title: "E-mail Marketing", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e248d6364b9b.png",
-      description: "Automatize e-mails, crie jornadas e mensure resultados com métricas.",
-      benefits: ["Editor Drag & Drop", "Testes A/B", "Segmentação Avançada", "Relatórios de Entregabilidade"],
-      detailImage: ASSETS.screenshots.emailMarketing
-  },
-  { 
-      id: "paginas",
-      title: "Construtor de Páginas", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12af128ed272e697da.png",
-      description: "Monte páginas de captura e vendas facilmente sem conhecimento técnico.",
-      benefits: ["Templates de Alta Conversão", "Hospedagem Inclusa", "Velocidade Otimizada", "Domínio Personalizado"],
-      detailImage: ASSETS.screenshots.websites
-  },
-  // Removed Social Planner to maintain 9-grid layout
-  { 
-      id: "analises",
-      title: "Análises Avançadas", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12af128e041ae697db.png",
-      description: "Visualize relatórios completos sobre performance de campanhas, equipe e retorno financeiro.",
-      benefits: ["Dashboards Personalizáveis", "Rastreamento de Origem", "Métricas de Conversão", "Relatórios de Chamadas"],
-      detailImage: ASSETS.screenshots.analytics
-  },
-  { 
-      id: "formularios",
-      title: "Formulários Personalizados", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb125fb5bde4cf85b60c.png",
-      description: "Capte informações com formulários dinâmicos totalmente personalizáveis.",
-      benefits: ["Lógica Condicional", "Upload de Arquivos", "Múltiplas Etapas", "Embed em Qualquer Site"],
-      detailImage: ASSETS.screenshots.forms
-  },
-  { 
-      id: "chatbot",
-      title: "Chat Bot + IA", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dd95c0df57373f1b47b75a.png",
-      description: "Centralize conversas com IA para responder e engajar leads automaticamente.",
-      benefits: ["Respostas Instantâneas", "Treinamento com Seus Dados", "Transbordo para Humano", "Multicanal (Web/Insta/Face)"],
-      detailImage: ASSETS.screenshots.agents
-  },
-  { 
-      id: "whatsapp",
-      title: "WhatsApp API Oficial", 
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfa6f5fb5bd46f08448a8.png", 
-      highlight: true,
-      description: "Envie mensagens automáticas de forma oficial, segura e escalável.",
-      benefits: ["Disparo em Massa Seguro", "Múltiplos Atendentes", "Automação de Conversas", "Selo de Verificação (Green Tick)"],
-      detailImage: ASSETS.screenshots.crmMobile
-  },
-  {
-      id: "calendarios",
-      title: "Calendários e Agendamentos",
-      icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12d79c184ebfd25098.png",
-      description: "Gerencie compromissos e agendamentos de forma simples e automatizada.",
-      benefits: ["Sincronização Google/Outlook", "Lembretes Automáticos", "Pagamento no Agendamento", "Round Robin para Times"],
-      detailImage: ASSETS.screenshots.calendar
-  }
+    {
+        id: "crm",
+        title: "CRM & Pipeline",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e26670364b0f.png",
+        description: "Acompanhe leads, negociações e receita prevista. Tudo em uma única tela.",
+        benefits: ["Pipeline Kanban Visual", "Follow-up Automático", "Classificação de Leads", "WhatsApp Integrado"],
+        detailImage: ASSETS.screenshots.crmMobile
+    },
+    {
+        id: "automacao",
+        title: "Automação de Fluxos",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e24571364b67.png",
+        description: "Crie fluxos que qualificam leads e agendam reuniões enquanto voê dorme.",
+        benefits: ["Construtor de Fluxos Visual", "Gatilhos por Comportamento", "SMS e E-mail", "Distribuição de Leads"],
+        detailImage: "/assets/screenshots/feature-automation.png"
+    },
+    {
+        id: "email",
+        title: "E-mail Marketing",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e248d6364b9b.png",
+        description: "Envie campanhas que chegam na caixa de entrada, não no spam.",
+        benefits: ["Editor Arrastar-e-Soltar", "Testes A/B Automáticos", "Segmentação por Tags", "Análise de Entregabilidade"],
+        detailImage: ASSETS.screenshots.emailMarketing
+    },
+    {
+        id: "paginas",
+        title: "Construtor de Páginas",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12af128ed272e697da.png",
+        description: "Publique páginas de alta conversão em minutos. Sem programadores.",
+        benefits: ["Templates Prontos", "Hospedagem Inclusa", "Carregamento Rápido", "Domínio Próprio"],
+        detailImage: ASSETS.screenshots.websites
+    },
+    // Removed Social Planner to maintain 9-grid layout
+    {
+        id: "analises",
+        title: "Análises Avançadas",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12af128e041ae697db.png",
+        description: "Saiba exatamente qual anúncio trouxe cada venda.",
+        benefits: ["Dashboards em Tempo Real", "Rastreamento UTM", "Taxas de Conversão", "Gravação de Chamadas"],
+        detailImage: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e871bedf76fee673049569.png"
+    },
+    {
+        id: "formularios",
+        title: "Formulários Personalizados",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb125fb5bde4cf85b60c.png",
+        description: "Crie formulários que convertem visitantes em leads qualificados.",
+        benefits: ["Lógica Condicional", "Upload de Arquivos", "Múltiplas Etapas", "Funciona em Qualquer Site"],
+        detailImage: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b73eeb3ae83b3dca5fe41.png"
+    },
+    {
+        id: "chatbot",
+        title: "Chat Bot + IA",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dd95c0df57373f1b47b75a.png",
+        description: "Use IA para responder dúvidas e agendar reuniões 24h por dia.",
+        benefits: ["Respostas em Segundos", "Treinado na Sua Empresa", "Transbordo Humano", "Web, Insta e Facebook"],
+        detailImage: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b726cf7a877358425c7d1.png"
+    },
+    {
+        id: "whatsapp",
+        title: "WhatsApp API Oficial",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfa6f5fb5bd46f08448a8.png",
+        highlight: true,
+        description: "Envie mensagens em massa sem perder seu número.",
+        benefits: ["Disparo em Massa", "Múltiplos Atendentes", "Respostas Automáticas", "Verificação Oficial (Green Tick)"],
+        detailImage: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff6b5d788aed885703ced4.png"
+    },
+    {
+        id: "calendarios",
+        title: "Calendários e Agendamentos",
+        icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb12d79c184ebfd25098.png",
+        description: "Elimine o 'vai e vem' de horários. Deixe o cliente agendar sozinho.",
+        benefits: ["Sincroniza Google/Outlook", "Lembretes Automáticos", "Cobrança no Agendamento", "Distribuição para Equipe"],
+        detailImage: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b73c2a74ce650758dde75.png"
+    }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
-  {
-    name: "Fábio",
-    company: "BLDN Digital",
-    quote: "Automação inteligente que gera novas oportunidades todos os dias. A implementação foi incrivelmente rápida.",
-    image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc97c03e1ce865d98b941e.png"
-  },
-  {
-    name: "Daniel Lestinge",
-    company: "BlueForecasts",
-    quote: "Resultados acelerados com o FUNNELS. Conseguimos triplicar nosso alcance em menos de 3 meses.",
-    image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc981c8da17338918c617c.png"
-  },
-  {
-    name: "Yves Mariano",
-    company: "Wysion",
-    quote: "Totalmente integrado e eficiente. Substituímos 5 ferramentas diferentes apenas pelo FUNNELS.",
-    image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc984a3e1ce8a0628ba669.png"
-  },
-  {
-    name: "Amanda Aguiar",
-    company: "Lindoya",
-    quote: "O FUNNELS transformou nosso gerenciamento de leads. A equipe de vendas nunca foi tão produtiva.",
-    image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc986e8da173cd2a8c691b.png"
-  }
+    {
+        name: "Fábio",
+        company: "BLDN Digital",
+        quote: "Automação inteligente que gera novas oportunidades todos os dias. A implementação foi incrivelmente rápida.",
+        image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc97c03e1ce865d98b941e.png"
+    },
+    {
+        name: "Daniel Lestinge",
+        company: "BlueForecasts",
+        quote: "Resultados acelerados com o FUNNELS. Conseguimos triplicar nosso alcance em menos de 3 meses.",
+        image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc981c8da17338918c617c.png"
+    },
+    {
+        name: "Yves Mariano",
+        company: "Wysion",
+        quote: "Totalmente integrado e eficiente. Substituímos 5 ferramentas diferentes apenas pelo FUNNELS.",
+        image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc984a3e1ce8a0628ba669.png"
+    },
+    {
+        name: "Amanda Aguiar",
+        company: "Lindoya",
+        quote: "O FUNNELS transformou nosso gerenciamento de leads. A equipe de vendas nunca foi tão produtiva.",
+        image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc986e8da173cd2a8c691b.png"
+    }
 ];
 
 export const CLIENT_LOGOS = [
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68d4a17352038776d98d0b73.png", 
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68d4a09bee89a7c04e209d9d.png", 
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68d4a24a2c411b69c9cd4c26.svg", 
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4b0c380f7835190650bd.png", 
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4d57a969ba7d9d0e5a7d.png", 
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4d573f9300829bcc9f33.png", 
-  "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4dad6027c20749ed1002.png"  
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68d4a17352038776d98d0b73.png",
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68d4a09bee89a7c04e209d9d.png",
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68d4a24a2c411b69c9cd4c26.svg",
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4b0c380f7835190650bd.png",
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4d57a969ba7d9d0e5a7d.png",
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4d573f9300829bcc9f33.png",
+    "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc4dad6027c20749ed1002.png"
 ];
 
 export const TOOLS_REPLACED: ToolReplacement[] = [
-  { name: "Mailchimp", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbceae13a4258b1f172d.png" },
-  { name: "ActiveCampaign", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbcd1c4c00ec79e22f48.png" },
-  { name: "HubSpot", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbcd2363ee02357ace3c.png" },
-  { name: "Pipedrive", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbcd2cc261ae64c108e0.png" },
-  { name: "Salesforce", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b976ce37bec6554c8ed1.png" },
-  { name: "Calendly", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b8bf06b06d505ec0c4ff.png" },
-  { name: "Zapier", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b7fe2cc261ce91c0a6ba.png" },
-  { name: "Typeform", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/69274eb86203af23da392a1c.png" },
-  { name: "Hotjar", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b6c11c4c00da8fe1b8c6.png" },
-  { name: "Unbounce", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b707b0b7213ee2c39d9e.png" },
-  { name: "Leadpages", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b51db0b72160fdc359b3.png" },
-  { name: "Intercom", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b6c106b06d91abc09814.png" }
+    { name: "Mailchimp", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbceae13a4258b1f172d.png" },
+    { name: "ActiveCampaign", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbcd1c4c00ec79e22f48.png" },
+    { name: "HubSpot", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbcd2363ee02357ace3c.png" },
+    { name: "Pipedrive", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5bbcd2cc261ae64c108e0.png" },
+    { name: "Salesforce", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b976ce37bec6554c8ed1.png" },
+    { name: "Calendly", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b8bf06b06d505ec0c4ff.png" },
+    { name: "Zapier", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b7fe2cc261ce91c0a6ba.png" },
+    { name: "Typeform", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/69274eb86203af23da392a1c.png" },
+    { name: "Hotjar", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b6c11c4c00da8fe1b8c6.png" },
+    { name: "Unbounce", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b707b0b7213ee2c39d9e.png" },
+    { name: "Leadpages", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b51db0b72160fdc359b3.png" },
+    { name: "Intercom", logo: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e5b6c106b06d91abc09814.png" }
 ];
 
 export const BLOG_POSTS = [

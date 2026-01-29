@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FUNNELS | Marketing e Vendas Inteligentes</title>
-    <meta name="description" content="O jeito mais inteligente de gerenciar marketing e vendas. Substitua dezenas de ferramentas por uma só.">
-    
+    <meta name="description"
+        content="O jeito mais inteligente de gerenciar marketing e vendas. Substitua dezenas de ferramentas por uma só.">
+
     <!-- Open Graph / Social Media -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://usefunnels.io/">
     <meta property="og:title" content="FUNNELS | Marketing e Vendas Inteligentes">
-    <meta property="og:description" content="Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.">
-    <meta property="og:image" content="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffea09edac701238582a57.png">
+    <meta property="og:description"
+        content="Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.">
+    <meta property="og:image"
+        content="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffea09edac701238582a57.png">
 
-    <link rel="icon" type="image/png" href="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ea81e096a2285e10022c50.png">
-    
+    <link rel="icon" type="image/png" href="/favicon.png">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -27,7 +33,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'neon-green': '#1bfc4f',
+                        'neon-green': '#1BFC4F',
+                        'saas-green': '#1BFC4F', /* Verde Growth do Brandboard */
                         'deep-black': '#050505',
                         'off-black': '#0a0a0a',
                         'pure-white': '#ffffff',
@@ -35,9 +42,9 @@
                         'border-gray': '#E5E7EB',
                     },
                     fontFamily: {
-                        'space': ['"Space Grotesk"', 'sans-serif'],
+                        'space': ['"Plus Jakarta Sans"', 'sans-serif'], /* Brandboard Typography */
                         'mono': ['"JetBrains Mono"', 'monospace'],
-                        'inter': ['"Inter"', 'sans-serif'],
+                        'jakarta': ['"Plus Jakarta Sans"', 'sans-serif'],
                     },
                     letterSpacing: {
                         tighter: '-0.04em',
@@ -90,8 +97,8 @@
                             '100%': { backgroundPosition: '0% 100%' },
                         },
                         panY: {
-                             '0%': { objectPosition: 'top center' },
-                             '100%': { objectPosition: 'bottom center' }
+                            '0%': { objectPosition: 'top center' },
+                            '100%': { objectPosition: 'bottom center' }
                         },
                         jitter: {
                             '0%, 100%': { transform: 'translate(0, 0) rotate(0deg)' },
@@ -106,10 +113,11 @@
     </script>
     <style>
         /* CRITICAL RESET FOR GOHIGHLEVEL */
-        html, body {
+        html,
+        body {
             margin: 0 !important;
             padding: 0 !important;
-            background-color: #050505 !important;
+            background-color: #ffffff !important;
             width: 100% !important;
             min-height: 100vh !important;
             overflow-x: hidden !important;
@@ -122,7 +130,7 @@
             width: 100%;
             margin: 0 !important;
             padding: 0 !important;
-            background-color: #050505;
+            background-color: #ffffff;
         }
 
         /* Force Header to Top */
@@ -135,22 +143,50 @@
 
         /* Prevent white gaps on internal pages */
         main {
-            background-color: #050505; /* Default safe color */
+            background-color: #ffffff;
+            /* Default safe color */
             flex-grow: 1;
         }
 
         /* Typography & Scrollbar */
-        ::selection { background: #1bfc4f; color: #000000; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #1bfc4f; }
-        
-        .bg-grid-pattern { background-size: 32px 32px; }
-        .bg-grid-pattern-dark { background-size: 32px 32px; }
-        .text-balance { text-wrap: balance; }
-        html { scroll-behavior: smooth; }
-        
+        ::selection {
+            background: #1BFC4F;
+            color: #000000;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1BFC4F;
+        }
+
+        .bg-grid-pattern {
+            background-size: 32px 32px;
+        }
+
+        .bg-grid-pattern-dark {
+            background-size: 32px 32px;
+        }
+
+        .text-balance {
+            text-wrap: balance;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         /* Ensure container clears float */
         .clearfix::after {
             content: "";
@@ -158,7 +194,7 @@
             display: table;
         }
     </style>
-<script type="importmap">
+    <script type="importmap">
 {
   "imports": {
     "react": "https://aistudiocdn.com/react@^19.2.0",
@@ -169,8 +205,10 @@
 }
 </script>
 </head>
+
 <body>
     <div id="root"></div>
     <script type="module" src="./index.tsx"></script>
 </body>
+
 </html>

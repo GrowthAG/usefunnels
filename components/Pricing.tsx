@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { PricingPlan } from '../types';
-import { CornerBrackets } from './UI';
+import { CornerBrackets } from './ui';
 import { Link } from 'react-router-dom';
 import { FEATURES } from '../constants';
 
@@ -118,7 +118,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
     return (
         <div className={`relative p-6 lg:p-8 rounded-sm transition-all duration-300 flex flex-col h-full w-full hover:-translate-y-2 hover:shadow-2xl group ${cardStyleClasses} ${showCosts ? 'z-50' : 'z-10'}`}>
-            
+
             {/* Badge for Popular */}
             {plan.isPopular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-green text-deep-black px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg border border-white whitespace-nowrap z-20">
@@ -171,10 +171,9 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
             </div>
 
             {/* Recommended Badge */}
-            <div className={`text-center text-xs font-bold py-2 rounded-lg mb-6 relative z-10 ${
-                plan.isPopular ? 'bg-deep-black text-white border border-gray-800' : 
-                plan.isDark || plan.isEnterprise ? 'bg-white/10 text-neon-green' : 'bg-gray-50 text-gray-500'
-            }`}>
+            <div className={`text-center text-xs font-bold py-2 rounded-lg mb-6 relative z-10 ${plan.isPopular ? 'bg-deep-black text-white border border-gray-800' :
+                    plan.isDark || plan.isEnterprise ? 'bg-white/10 text-neon-green' : 'bg-gray-50 text-gray-500'
+                }`}>
                 {plan.recommendedBadge}
             </div>
 
@@ -182,28 +181,26 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
             <div className="relative mb-6 z-20">
                 {plan.additionalCosts ? (
                     <div>
-                         <button 
+                        <button
                             onClick={() => setShowCosts(!showCosts)}
-                            className={`w-full flex items-center justify-between p-3 text-xs font-bold border rounded-sm transition-colors ${
-                                plan.isDark || plan.isEnterprise ? 'bg-gray-900 border-gray-700 text-gray-300 hover:bg-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
-                            }`}
+                            className={`w-full flex items-center justify-between p-3 text-xs font-bold border rounded-sm transition-colors ${plan.isDark || plan.isEnterprise ? 'bg-gray-900 border-gray-700 text-gray-300 hover:bg-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                                }`}
                         >
                             <span>{plan.additionalCosts.label}</span>
                             <svg className={`w-3 h-3 transition-transform duration-300 ${showCosts ? 'rotate-180' : ''}`} viewBox="0 0 12 8" fill="none">
-                                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                                <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                             </svg>
                         </button>
-                        
+
                         {/* Dropdown Content */}
                         <div className={`absolute left-0 right-0 z-50 mt-2 overflow-hidden transition-all duration-300 ease-in-out shadow-2xl rounded-sm ${showCosts ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}>
-                            <div className={`border p-4 text-xs text-left shadow-xl ${
-                                plan.isDark || plan.isEnterprise ? 'bg-[#151515] border-gray-700 text-gray-200' : 'bg-white border-gray-200 text-gray-700'
-                            }`}>
+                            <div className={`border p-4 text-xs text-left shadow-xl ${plan.isDark || plan.isEnterprise ? 'bg-[#151515] border-gray-700 text-gray-200' : 'bg-white border-gray-200 text-gray-700'
+                                }`}>
                                 {plan.additionalCosts.whatsapp && (
                                     <div className={`mb-3 pb-3 border-b ${plan.isDark || plan.isEnterprise ? 'border-gray-700' : 'border-gray-200'}`}>
                                         <div className="flex items-center gap-2 font-bold mb-2 text-sm">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[#25D366]">
-                                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                             </svg>
                                             WhatsApp Business API
                                         </div>
@@ -241,7 +238,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                         return (
                             <li key={idx} className={`flex items-start gap-3 text-sm font-medium text-left ${plan.isDark || plan.isEnterprise ? 'text-gray-300' : 'text-gray-600'}`}>
                                 <svg className="w-5 h-5 text-neon-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                 </svg>
                                 {linkId ? (
                                     <Link to={`/recursos/${linkId}`} className="border-b border-gray-300 hover:border-neon-green hover:text-neon-green transition-colors cursor-pointer flex items-center gap-1">
@@ -258,15 +255,14 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
             {/* CTA Button */}
             <div className="mt-8 pt-6 border-t border-dashed border-gray-200/20 relative z-10">
-                <a 
+                <a
                     href={isAnnual ? plan.linkAnnual : plan.linkMonthly}
                     onClick={handleCtaClick}
-                    className={`block w-full text-center py-4 rounded-sm font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer ${
-                        plan.isPopular ? 'bg-deep-black text-neon-green hover:bg-opacity-90 hover:shadow-lg hover:scale-[1.02]' :
-                        plan.isDark ? 'bg-neon-green text-deep-black hover:bg-white' :
-                        plan.isEnterprise ? 'bg-white text-deep-black hover:bg-neon-green' :
-                        'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
-                    }`}
+                    className={`block w-full text-center py-4 rounded-sm font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer ${plan.isPopular ? 'bg-deep-black text-neon-green hover:bg-opacity-90 hover:shadow-lg hover:scale-[1.02]' :
+                            plan.isDark ? 'bg-neon-green text-deep-black hover:bg-white' :
+                                plan.isEnterprise ? 'bg-white text-deep-black hover:bg-neon-green' :
+                                    'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
+                        }`}
                 >
                     {plan.isEnterprise ? 'Falar com Vendas' : 'Começar Agora'}
                 </a>
@@ -278,36 +274,44 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 /* --- NEW COMPARISON TABLE COMPONENT --- */
 export const PricingTable = () => {
     const featuresList = [
-        { category: "CRM & Vendas", items: [
-            { name: "Usuários", starter: "3", growth: "5", scale: "10", enterprise: "Ilimitado" },
-            { name: "Contatos", starter: "20.000", growth: "50.000", scale: "75.000", enterprise: "Ilimitado" },
-            { name: "Pipelines de Venda", starter: "3", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
-            { name: "Oportunidades", starter: "Ilimitado", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
-        ]},
-        { category: "Canais & Comunicação", items: [
-            { name: "E-mail Marketing", starter: true, growth: true, scale: true, enterprise: true },
-            { name: "WhatsApp Business API", starter: false, growth: true, scale: true, enterprise: true },
-            { name: "Chat Widget", starter: true, growth: true, scale: true, enterprise: true },
-            { name: "Telefonia VoIP", starter: false, growth: false, scale: true, enterprise: true },
-            { name: "Custo WhatsApp", starter: "-", growth: "Tarifa Meta", scale: "Tarifa Meta", enterprise: "Tarifa Meta" },
-        ]},
-        { category: "Automação & IA", items: [
-            { name: "Construtor de Fluxos", starter: "Básico", growth: "Avançado", scale: "Premium", enterprise: "Custom" },
-            { name: "Disparos de E-mail", starter: true, growth: true, scale: true, enterprise: true },
-            { name: "Chatbot IA", starter: false, growth: true, scale: true, enterprise: true },
-            { name: "IA Content Generator", starter: false, growth: true, scale: true, enterprise: true },
-        ]},
-        { category: "Suporte & Serviços", items: [
-            { name: "Suporte via Chat", starter: "Horário Comercial", growth: "Prioritário", scale: "Prioritário", enterprise: "24/7 Dedicado" },
-            { name: "Onboarding", starter: "Gravado", growth: "Gravado", scale: "Ao Vivo", enterprise: "Personalizado" },
-            { name: "API de Integração", starter: false, growth: true, scale: true, enterprise: true },
-            { name: "Whitelabel", starter: false, growth: false, scale: false, enterprise: true },
-        ]}
+        {
+            category: "CRM & Vendas", items: [
+                { name: "Usuários", starter: "3", growth: "5", scale: "10", enterprise: "Ilimitado" },
+                { name: "Contatos", starter: "20.000", growth: "50.000", scale: "75.000", enterprise: "Ilimitado" },
+                { name: "Pipelines de Venda", starter: "3", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
+                { name: "Oportunidades", starter: "Ilimitado", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
+            ]
+        },
+        {
+            category: "Canais & Comunicação", items: [
+                { name: "E-mail Marketing", starter: true, growth: true, scale: true, enterprise: true },
+                { name: "WhatsApp Business API", starter: false, growth: true, scale: true, enterprise: true },
+                { name: "Chat Widget", starter: true, growth: true, scale: true, enterprise: true },
+                { name: "Telefonia VoIP", starter: false, growth: false, scale: true, enterprise: true },
+                { name: "Custo WhatsApp", starter: "-", growth: "Tarifa Meta", scale: "Tarifa Meta", enterprise: "Tarifa Meta" },
+            ]
+        },
+        {
+            category: "Automação & IA", items: [
+                { name: "Construtor de Fluxos", starter: "Básico", growth: "Avançado", scale: "Premium", enterprise: "Custom" },
+                { name: "Disparos de E-mail", starter: true, growth: true, scale: true, enterprise: true },
+                { name: "Chatbot IA", starter: false, growth: true, scale: true, enterprise: true },
+                { name: "IA Content Generator", starter: false, growth: true, scale: true, enterprise: true },
+            ]
+        },
+        {
+            category: "Suporte & Serviços", items: [
+                { name: "Suporte via Chat", starter: "Horário Comercial", growth: "Prioritário", scale: "Prioritário", enterprise: "24/7 Dedicado" },
+                { name: "Onboarding", starter: "Gravado", growth: "Gravado", scale: "Ao Vivo", enterprise: "Personalizado" },
+                { name: "API de Integração", starter: false, growth: true, scale: true, enterprise: true },
+                { name: "Whitelabel", starter: false, growth: false, scale: false, enterprise: true },
+            ]
+        }
     ];
 
     const Check = () => <span className="text-neon-green text-lg">✓</span>;
     const Cross = () => <span className="text-gray-300 text-lg">✕</span>;
-    
+
     const renderValue = (val: string | boolean) => {
         if (val === true) return <Check />;
         if (val === false) return <Cross />;
@@ -316,14 +320,14 @@ export const PricingTable = () => {
 
     return (
         <div className="mt-20 overflow-x-auto relative pb-4">
-             {/* Fade Indicator for scrolling */}
+            {/* Fade Indicator for scrolling */}
             <div className="absolute top-0 right-0 h-full w-12 bg-gradient-to-l from-gray-50 to-transparent pointer-events-none md:hidden z-10"></div>
-            
+
             <div className="text-center mb-10">
                 <h3 className="text-2xl font-bold font-space mb-2">Compare os planos e veja o que está incluso</h3>
                 <p className="text-gray-500 font-mono text-xs uppercase tracking-widest">Transparente. Simples. Sem pegadinhas.</p>
             </div>
-            
+
             <div className="min-w-[800px] border border-gray-200 rounded-sm overflow-hidden bg-white shadow-sm">
                 {/* Header */}
                 <div className="grid grid-cols-5 bg-gray-50 border-b border-gray-200">
@@ -368,8 +372,8 @@ export const Pricing = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 <span className={`font-bold font-mono uppercase text-sm cursor-pointer transition-colors ${!isAnnual ? 'text-deep-black' : 'text-gray-400'}`} onClick={() => setIsAnnual(false)}>
                     Mensal
                 </span>
-                
-                <div 
+
+                <div
                     onClick={() => setIsAnnual(!isAnnual)}
                     className={`w-14 h-7 rounded-full p-1 cursor-pointer transition-colors duration-300 relative ${isAnnual ? 'bg-neon-green' : 'bg-gray-300'}`}
                 >
@@ -387,7 +391,7 @@ export const Pricing = ({ onBookDemo }: { onBookDemo: () => void }) => {
                     )}
                 </div>
             </div>
-            
+
             {/* Grid Layout - Standardized */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto mb-16 items-stretch">
                 {plans.map((plan, idx) => (
