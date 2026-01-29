@@ -83,7 +83,7 @@ const App = () => {
                     <div className="p-0 md:p-1 bg-white h-[85vh] md:h-auto flex flex-col">
                         <iframe
                             src="https://pages.usefunnels.io/widget/booking/MPETKLENngnBUUDATVAd"
-                            style={{ width: '100%', border: 'none', flexGrow: 1, minHeight: '500px' }}
+                            style={{ width: '100%', border: 'none', flexGrow: 1, minHeight: '750px' }}
                             id="MPETKLENngnBUUDATVAd_1764182165031"
                             title="Agendar Demo"
                         ></iframe>
