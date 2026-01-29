@@ -6,10 +6,17 @@ export const InfiniteLogoCarousel: React.FC<{ logos: string[] }> = ({ logos }) =
     const seamlessLogos = [...logos, ...logos, ...logos];
 
     return (
-        <div className="w-full overflow-hidden relative bg-white py-8 md:py-12 border-b border-gray-100">
+        <div className="w-full overflow-hidden relative bg-white py-10 md:py-16 border-b border-gray-100">
+            {/* Headline */}
+            <div className="text-center mb-8">
+                <p className="text-sm md:text-base text-gray-400 font-medium uppercase tracking-widest">
+                    Empresas que confiam no FUNNELS
+                </p>
+            </div>
+
             {/* Gradient Fade Edges - Subtle */}
-            <div className="absolute top-0 left-0 w-12 md:w-24 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute top-0 right-0 w-12 md:w-24 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute bottom-0 left-0 w-12 md:w-24 h-20 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute bottom-0 right-0 w-12 md:w-24 h-20 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
 
             <div className="flex animate-scroll hover:pause-animation w-max">
                 {seamlessLogos.map((logo, index) => (
