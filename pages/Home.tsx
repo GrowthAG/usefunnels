@@ -92,6 +92,38 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                 Suporte 24/7
                             </span>
                         </div>
+
+                        {/* Interactive Demo Restored */}
+                        <div className="mt-16 md:mt-24 max-w-5xl mx-auto text-left">
+                            <div className="bg-gray-800/80 backdrop-blur-md rounded-t-xl border border-white/10 border-b-0 px-4 py-3 flex items-center gap-3">
+                                {/* Traffic Lights */}
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-400/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-400/80"></div>
+                                </div>
+                                {/* URL Bar */}
+                                <div className="flex-1 flex justify-center">
+                                    <div className="bg-black/50 rounded-md px-4 py-1.5 text-xs text-gray-400 font-mono w-full max-w-md text-center border border-white/5">
+                                        app.usefunnels.io/dashboard
+                                    </div>
+                                </div>
+                                <div className="w-16"></div> {/* Spacer for symmetry */}
+                            </div>
+
+                            {/* Demo Content */}
+                            <div className="bg-white rounded-b-xl border border-white/10 overflow-hidden shadow-2xl relative">
+                                <iframe
+                                    src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
+                                    loading="lazy"
+                                    title="FUNNELS Demo Interativa"
+                                    allow="clipboard-write"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    className="w-full aspect-video"
+                                ></iframe>
+                            </div>
+                        </div>
                     </Reveal>
                 </Container>
             </Section>

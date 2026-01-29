@@ -4,7 +4,7 @@ import { Container, Section, Reveal, Button } from '../components/ui';
 import { ASSETS } from '../constants';
 
 export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
-
+    
     const scrollToForm = () => {
         const formSection = document.getElementById('partner-form');
         if (formSection) {
@@ -14,97 +14,49 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
     return (
         <main className="overflow-hidden bg-deep-black">
-            {/* HERO SECTION - Two columns with screenshot */}
+            {/* HERO SECTION - Centered Standard Pattern */}
             <Section className="min-h-[90vh] flex flex-col justify-center bg-deep-black pt-[100px] md:pt-[120px] relative overflow-hidden border-b border-gray-900">
-                {/* Volumetric Light Source */}
+                {/* Volumetric Light Source (Radial Gradient) */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,_rgba(27,252,79,0.12),_transparent_50%)] pointer-events-none"></div>
                 <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
 
-                <Container className="relative z-10 px-4 md:px-12">
-                    <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                        {/* LEFT - Content */}
-                        <div className="text-center lg:text-left order-2 lg:order-1">
-                            <Reveal>
-                                {/* Badge */}
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon-green/10 border border-neon-green/30 rounded-sm text-xs font-mono font-bold uppercase tracking-widest text-neon-green mb-6">
-                                    Programa de Canais 2025
-                                </div>
-
-                                {/* Headline - Reduced size */}
-                                <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] font-bold tracking-[-0.04em] mb-6 leading-[1.1] font-space drop-shadow-2xl">
-                                    <span className="block text-white">A Tecnologia é Nossa.</span>
-                                    <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">A Marca é Sua.</span>
-                                </h1>
-
-                                {/* Subheadline */}
-                                <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-lg mx-auto lg:mx-0 mb-8 leading-relaxed font-light font-space text-balance">
-                                    Entregue valor real. Com o modelo <strong className="text-white">White-Label</strong>, o cliente vê a SUA logo, o SEU domínio e paga o preço que VOCÊ definir.
-                                </p>
-
-                                {/* Benefits List */}
-                                <ul className="space-y-3 text-sm text-gray-300 mb-8 max-w-lg mx-auto lg:mx-0">
-                                    <li className="flex items-center gap-3 justify-center lg:justify-start">
-                                        <span className="text-neon-green font-mono font-bold">{'>>'}</span>
-                                        Infraestrutura gerenciada por nós.
-                                    </li>
-                                    <li className="flex items-center gap-3 justify-center lg:justify-start">
-                                        <span className="text-neon-green font-mono font-bold">{'>>'}</span>
-                                        Cobrança direta ao seu cliente.
-                                    </li>
-                                    <li className="flex items-center gap-3 justify-center lg:justify-start">
-                                        <span className="text-neon-green font-mono font-bold">{'>>'}</span>
-                                        Margem de lucro de 100% no setup.
-                                    </li>
-                                </ul>
-
-                                {/* CTA */}
-                                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                                    <Button
-                                        className="min-w-[200px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300"
-                                        onClick={scrollToForm}
-                                    >
-                                        Quero Ser Parceiro
-                                    </Button>
-                                </div>
-                            </Reveal>
+                <Container className="text-center relative z-10 px-4 md:px-12">
+                    <Reveal>
+                        {/* Badge */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon-green/10 border border-neon-green/30 rounded-sm text-xs font-mono font-bold uppercase tracking-widest text-neon-green mb-8">
+                            Programa de Canais 2025
                         </div>
 
-                        {/* RIGHT - Screenshot */}
-                        <div className="order-1 lg:order-2">
-                            <Reveal delay={200}>
-                                <div className="relative">
-                                    {/* Browser Mockup */}
-                                    <div className="bg-gray-900 rounded-t-xl border border-gray-700 border-b-0 px-4 py-3 flex items-center gap-3">
-                                        <div className="flex items-center gap-2">
-                                            <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                                            <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                                            <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-                                        </div>
-                                        <div className="flex-1 flex justify-center">
-                                            <div className="bg-gray-800 rounded-md px-4 py-1.5 text-xs text-gray-400 font-mono w-full max-w-[200px] text-center border border-gray-700">
-                                                suamarca.com.br
-                                            </div>
-                                        </div>
-                                        <div className="w-16"></div>
-                                    </div>
+                        {/* Headline - Standardized Size */}
+                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
+                            <span className="block text-white">A Tecnologia é Nossa.</span>
+                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">A Marca é Sua.</span>
+                        </h1>
 
-                                    {/* Screenshot Content */}
-                                    <div className="bg-white rounded-b-xl border border-gray-700 overflow-hidden shadow-2xl">
-                                        <img
-                                            src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e871be35e86931aef8f921.png"
-                                            alt="Dashboard White-Label"
-                                            className="w-full h-auto"
-                                        />
-                                    </div>
+                        {/* Subheadline */}
+                        <p className="text-sm sm:text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed font-light font-space px-2 text-balance">
+                            Entregue valor real. Com o modelo <strong className="text-white">White-Label</strong>, o cliente vê a SUA logo, o SEU domínio e paga o preço que VOCÊ definir.
+                        </p>
 
-                                    {/* White-Label Badge */}
-                                    <div className="absolute -bottom-4 -right-4 bg-deep-black border-2 border-neon-green px-4 py-2 rounded-sm shadow-[0_0_20px_rgba(27,252,79,0.3)]">
-                                        <span className="text-xs font-mono font-bold text-neon-green uppercase tracking-wider">White-Label</span>
-                                    </div>
-                                </div>
-                            </Reveal>
+                        {/* New Hero Image - Centered below subheadline */}
+                        <div className="max-w-5xl mx-auto mb-12 md:mb-20">
+                            <div className="relative p-2 bg-white/5 rounded-xl border border-white/10 shadow-2xl backdrop-blur-sm">
+                                <img 
+                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b95b24d5683f7a3b59080.jpeg"
+                                    alt="Programa de Parceiros Funnels"
+                                    className="w-full h-auto rounded-lg shadow-lg border border-gray-800"
+                                />
+                                {/* Bottom Glow */}
+                                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-neon-green opacity-20 blur-[100px] -z-10"></div>
+                            </div>
                         </div>
-                    </div>
+
+                        {/* CTAs */}
+                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-12 md:mb-16 px-2">
+                            <Button className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300" onClick={scrollToForm}>Quero Ser Parceiro</Button>
+                            <Button variant="outline" className="w-full sm:w-auto min-w-[200px] py-4" onClick={onBookDemo}>Agendar Demo</Button>
+                        </div>
+                    </Reveal>
                 </Container>
             </Section>
 
@@ -210,7 +162,7 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
             {/* CTA FORM - Dark Section */}
             <Section id="partner-form" className="bg-deep-black py-20 md:py-28 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,_rgba(27,252,79,0.08),_transparent_50%)] pointer-events-none"></div>
-
+                
                 <Container className="relative z-10">
                     <Reveal>
                         <div className="text-center max-w-2xl mx-auto">
@@ -222,8 +174,8 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             <p className="text-gray-400 text-lg mb-10 text-balance">
                                 Agende uma conversa e descubra como o programa White-Label pode transformar sua agência.
                             </p>
-                            <Button
-                                className="min-w-[250px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300"
+                            <Button 
+                                className="min-w-[250px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300" 
                                 onClick={onBookDemo}
                             >
                                 Agendar Conversa →
