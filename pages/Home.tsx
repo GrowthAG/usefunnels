@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
-import { FeatureTabs, AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero } from '../components/features';
+import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero } from '../components/features';
 import { Pricing } from '../components/Pricing';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
@@ -131,21 +131,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             {/* PARTNERS - Infinite Carousel with headline */}
             <InfiniteLogoCarousel logos={CLIENT_LOGOS} />
 
-            {/* FEATURES TABS - CORE FUNCTIONALITY */}
-            <Section id="recursos" className="py-16 md:py-[120px] bg-white">
-                <Container>
-                    <Reveal>
-                        <div className="text-center mb-10 md:mb-16">
-                            <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-saas-green mb-2 md:mb-4 block">Ecossistema Integrado</span>
-                            <h2 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-deep-black text-balance">O poder de um sistema único.</h2>
-                            <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-lg text-balance">Tudo o que você precisa para capturar, nutrir e converter leads em escala.</p>
-                        </div>
-                    </Reveal>
-                    <Reveal delay={200}>
-                        <FeatureTabs onBookDemo={scrollToPricing} />
-                    </Reveal>
-                </Container>
-            </Section>
+
 
             {/* 1. AI BENEFITS - DARK MODE (Exact Match to Screenshot 2) */}
             <Section className="bg-[#050505] text-white border-y border-gray-900 py-24 md:py-32 relative overflow-hidden">
