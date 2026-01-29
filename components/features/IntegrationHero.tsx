@@ -174,8 +174,8 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             className="integration-visual"
                             style={{
                                 position: 'relative',
-                                width: '600px',
-                                height: '600px',
+                                width: '800px',
+                                height: '800px',
                                 margin: '0 auto 60px auto',
                                 overflow: 'visible'
                             }}
@@ -213,23 +213,23 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             </div>
 
                             {/* ÓRBITA 1 (Inner) */}
-                            <div className="orbit-1-container" style={{ ...orbitContainerStyle, width: '280px', height: '280px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                            <div className="orbit-1-container" style={{ ...orbitContainerStyle, width: '360px', height: '360px', border: '1px solid rgba(0,0,0,0.05)' }}>
                                 {ORBIT_1.map((tool) => (
-                                    <OrbitNode key={tool.logo} tool={tool} radius={140} className="tool-node-1" size={48} />
+                                    <OrbitNode key={tool.logo} tool={tool} radius={180} className="tool-node-1" size={48} />
                                 ))}
                             </div>
 
                             {/* ÓRBITA 2 (Middle) */}
-                            <div className="orbit-2-container" style={{ ...orbitContainerStyle, width: '440px', height: '440px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                            <div className="orbit-2-container" style={{ ...orbitContainerStyle, width: '560px', height: '560px', border: '1px solid rgba(0,0,0,0.05)' }}>
                                 {ORBIT_2.map((tool) => (
-                                    <OrbitNode key={tool.logo} tool={tool} radius={220} className="tool-node-2" size={40} />
+                                    <OrbitNode key={tool.logo} tool={tool} radius={280} className="tool-node-2" size={40} />
                                 ))}
                             </div>
 
                             {/* ÓRBITA 3 (Outer) */}
-                            <div className="orbit-3-container" style={{ ...orbitContainerStyle, width: '600px', height: '600px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                            <div className="orbit-3-container" style={{ ...orbitContainerStyle, width: '760px', height: '760px', border: '1px solid rgba(0,0,0,0.05)' }}>
                                 {ORBIT_3.map((tool) => (
-                                    <OrbitNode key={tool.logo} tool={tool} radius={300} className="tool-node-3" size={32} opacity={0.8} />
+                                    <OrbitNode key={tool.logo} tool={tool} radius={380} className="tool-node-3" size={32} opacity={0.8} />
                                 ))}
                             </div>
                         </div>
