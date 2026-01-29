@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from './components/layout';
-import { Home, About, Partners, Enterprise, Blog, FeaturePage, Legal, PricingPage } from './pages';
+import { Home, About, Partners, Enterprise, Blog, FeaturePage, Legal } from './pages';
 import { Modal } from './components/ui';
 
 // Scroll To Top Component
@@ -66,7 +66,6 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/recursos/:id" element={<FeaturePage onBookDemo={() => setIsDemoModalOpen(true)} />} />
-                    <Route path="/precos" element={<PricingPage onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/sobre" element={<About />} />
                     <Route path="/legal/:type" element={<Legal />} />
                     <Route

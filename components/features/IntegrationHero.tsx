@@ -121,10 +121,9 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     style={{
                         maxWidth: '1400px',
                         margin: '0 auto',
-                        display: 'flex',
-                        flexDirection: 'column',
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
                         alignItems: 'center',
-                        justifyContent: 'center',
                         gap: '60px',
                         position: 'relative',
                         zIndex: 1
@@ -134,7 +133,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     {/* ============================================ */}
                     {/* CONTEÚDO CENTRALIZADO */}
                     {/* ============================================ */}
-                    <div className="hero-content" style={{ maxWidth: '800px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <div className="hero-content" style={{ maxWidth: '600px', textAlign: 'left' }}>
 
                         {/* 2. Título Principal */}
                         <h2
@@ -172,13 +171,10 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                         {/* 4. Cards de Benefícios - Horizontal para centralizado */}
                         <div
                             style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                justifyContent: 'center',
-                                flexWrap: 'wrap',
+                                display: 'grid',
+                                gridTemplateColumns: '1fr',
                                 gap: '24px',
                                 marginBottom: '48px',
-                                width: '100%',
                             }}
                         >
                             {/* Card 1 */}
@@ -200,42 +196,43 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             </div>
                         </div>
 
-                    </div>
 
-                    {/* 5. Botões de CTA */}
-                    <div
-                        style={{
-                            display: 'flex',
-                            gap: '16px',
-                            marginBottom: '40px',
-                            justifyContent: 'center',
-                            flexWrap: 'wrap'
-                        }}
-                        className="cta-buttons"
-                    >
-                        <button onClick={onBookDemo} className="btn-primary-integration" style={btnPrimaryStyle}>
-                            <span>Agendar Demo Gratuita</span>
-                            <span className="btn-arrow" style={{ transition: 'transform 200ms ease' }}>→</span>
-                        </button>
 
-                        <button style={btnSecondaryStyle}>
-                            Ver Todas Integrações
-                        </button>
-                    </div>
+                        {/* 5. Botões de CTA */}
+                        <div
+                            style={{
+                                display: 'flex',
+                                gap: '16px',
+                                marginBottom: '40px',
+                                alignItems: 'center',
+                                flexWrap: 'wrap'
+                            }}
+                            className="cta-buttons"
+                        >
+                            <button onClick={onBookDemo} className="btn-primary-integration" style={btnPrimaryStyle}>
+                                <span>Agendar Demo Gratuita</span>
+                                <span className="btn-arrow" style={{ transition: 'transform 200ms ease' }}>→</span>
+                            </button>
 
-                    {/* 6. Social Proof */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '40px' }}>
-                        <div style={{ display: 'flex', alignItems: 'center' }}>
-                            {AVATARS.map((avatar, i) => (
-                                <img key={i} src={avatar} alt="" style={{ ...avatarStyle, marginLeft: i === 0 ? 0 : '-12px' }} />
-                            ))}
-                            <span style={{ ...avatarStyle, background: '#84FF0B', color: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, marginLeft: '-12px' }}>
-                                +847
-                            </span>
+                            <button style={btnSecondaryStyle}>
+                                Ver Todas Integrações
+                            </button>
                         </div>
-                        <p style={{ fontSize: '14px', color: '#525252', margin: 0 }}>
-                            <strong style={{ color: '#171717', fontWeight: 600 }}>800+ empresas</strong> economizando
-                        </p>
+
+                        {/* 6. Social Proof */}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '40px' }}>
+                            <div style={{ display: 'flex', alignItems: 'center' }}>
+                                {AVATARS.map((avatar, i) => (
+                                    <img key={i} src={avatar} alt="" style={{ ...avatarStyle, marginLeft: i === 0 ? 0 : '-12px' }} />
+                                ))}
+                                <span style={{ ...avatarStyle, background: '#84FF0B', color: '#000000', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 700, marginLeft: '-12px' }}>
+                                    +847
+                                </span>
+                            </div>
+                            <p style={{ fontSize: '14px', color: '#525252', margin: 0 }}>
+                                <strong style={{ color: '#171717', fontWeight: 600 }}>800+ empresas</strong> economizando
+                            </p>
+                        </div>
                     </div>
 
 

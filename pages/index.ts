@@ -6,5 +6,5 @@ export * from './Partners';
 export * from './Enterprise';
 export * from './Blog';
 export * from './Legal';
-export * from './PricingPage';
+
 

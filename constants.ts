@@ -43,9 +43,9 @@ export const FEATURES: (Feature & { id: string, description: string, benefits: s
         id: "automacao",
         title: "Automação de Fluxos",
         icon: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ddfb1226a5e24571364b67.png",
-        description: "Crie fluxos que qualificam leads e agendam reuniões enquanto voê dorme.",
+        description: "Crie fluxos que qualificam leads e agendam reuniões enquanto você dorme.",
         benefits: ["Construtor de Fluxos Visual", "Gatilhos por Comportamento", "SMS e E-mail", "Distribuição de Leads"],
-        detailImage: "/assets/screenshots/feature-automation.png"
+        detailImage: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffec766f3caf41ae5ee191.png"
     },
     {
         id: "email",

@@ -15,7 +15,7 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
     return (
         <main className="overflow-hidden bg-deep-black">
             {/* HERO SECTION - Centered Standard Pattern */}
-            <Section className="min-h-[90vh] flex flex-col justify-center bg-deep-black pt-[100px] md:pt-[120px] relative overflow-hidden border-b border-gray-900">
+            <Section className="min-h-[70vh] flex flex-col justify-center bg-deep-black pt-[100px] md:pt-[120px] relative overflow-hidden border-b border-gray-900">
                 {/* Volumetric Light Source (Radial Gradient) */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,_rgba(27,252,79,0.12),_transparent_50%)] pointer-events-none"></div>
                 <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
@@ -25,31 +25,53 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
 
                         {/* Headline - Standardized Size */}
-                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
+                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.04em] mb-5 md:mb-6 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
                             <span className="block text-white">A Tecnologia é Nossa.</span>
                             <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">A Marca é Sua.</span>
                         </h1>
 
                         {/* Subheadline */}
-                        <p className="text-sm sm:text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed font-light font-space px-2 text-balance">
+                        <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light font-space px-2 text-balance">
                             Entregue valor real. Com o modelo <strong className="text-white">White-Label</strong>, o cliente vê a SUA logo, o SEU domínio e paga o preço que VOCÊ definir.
                         </p>
 
-                        {/* New Hero Image - Centered below subheadline */}
-                        <div className="max-w-5xl mx-auto mb-12 md:mb-20">
-                            <div className="relative p-2 bg-white/5 rounded-xl border border-white/10 shadow-2xl backdrop-blur-sm">
-                                <img
-                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b95b24d5683f7a3b59080.jpeg"
-                                    alt="Programa de Parceiros Funnels"
-                                    className="w-full h-auto rounded-lg shadow-lg border border-gray-800"
-                                />
+                        {/* Interactive Demo - Browser Mockup */}
+                        <div className="max-w-5xl mx-auto mb-8 md:mb-12">
+                            <div className="relative shadow-2xl rounded-xl overflow-hidden">
+                                {/* Browser Header - Dark Mode */}
+                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-4 py-3 flex items-center gap-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3 h-3 rounded-full bg-[#FF5F56] opacity-50"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] opacity-50"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#27C93F] opacity-50"></div>
+                                    </div>
+                                    <div className="flex-1 flex justify-center">
+                                        <div className="bg-gray-900 rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-800 shadow-sm">
+                                            app.usefunnels.io/dashboard
+                                        </div>
+                                    </div>
+                                    <div className="w-16"></div>
+                                </div>
+
+                                <div className="relative aspect-video bg-black">
+                                    <iframe
+                                        src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
+                                        loading="lazy"
+                                        title="FUNNELS Demo Interativa - White Label"
+                                        allow="clipboard-write"
+                                        frameBorder="0"
+                                        allowFullScreen
+                                        className="w-full h-full"
+                                    ></iframe>
+                                </div>
+
                                 {/* Bottom Glow */}
-                                <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-20 bg-neon-green opacity-20 blur-[100px] -z-10"></div>
+                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
                             </div>
                         </div>
 
                         {/* CTAs */}
-                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-12 md:mb-16 px-2">
+                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-0 px-2">
                             <Button className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300" onClick={scrollToForm}>Quero Ser Parceiro</Button>
                             <Button variant="outline" className="w-full sm:w-auto min-w-[200px] py-4" onClick={onBookDemo}>Agendar Demo</Button>
                         </div>
@@ -58,12 +80,12 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
             </Section>
 
             {/* HOW IT WORKS - White Section */}
-            <Section className="bg-white py-20 md:py-28">
+            <Section className="bg-white py-16 md:py-20">
                 <Container>
                     <Reveal>
-                        <div className="text-center mb-16">
-                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Como Funciona</span>
-                            <h2 className="text-3xl md:text-5xl font-bold font-space text-deep-black text-balance">White-Label em 3 passos</h2>
+                        <div className="text-center mb-12">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-3 block">Como Funciona</span>
+                            <h2 className="text-3xl md:text-4xl font-bold font-space text-deep-black text-balance">White-Label em 3 passos</h2>
                         </div>
                     </Reveal>
 
@@ -106,12 +128,12 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
             </Section>
 
             {/* BENEFITS - Gray Section */}
-            <Section className="bg-gray-50 py-20 md:py-28">
+            <Section className="bg-gray-50 py-16 md:py-20">
                 <Container>
                     <Reveal>
-                        <div className="text-center mb-16">
-                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Vantagens</span>
-                            <h2 className="text-3xl md:text-5xl font-bold font-space text-deep-black text-balance">Por que ser Parceiro</h2>
+                        <div className="text-center mb-12">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-3 block">Vantagens</span>
+                            <h2 className="text-3xl md:text-4xl font-bold font-space text-deep-black text-balance">Por que ser Parceiro</h2>
                         </div>
                     </Reveal>
 
@@ -157,14 +179,14 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
             </Section>
 
             {/* CTA FORM - Dark Section */}
-            <Section id="partner-form" className="bg-deep-black py-20 md:py-28 relative overflow-hidden">
+            <Section id="partner-form" className="bg-deep-black py-16 md:py-20 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,_rgba(27,252,79,0.08),_transparent_50%)] pointer-events-none"></div>
 
                 <Container className="relative z-10">
                     <Reveal>
                         <div className="text-center max-w-2xl mx-auto">
-                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Próximo Passo</span>
-                            <h2 className="text-3xl md:text-5xl font-bold font-space text-white mb-6 text-balance">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-3 block">Próximo Passo</span>
+                            <h2 className="text-3xl md:text-4xl font-bold font-space text-white mb-5 text-balance">
                                 Pronto para escalar<br />
                                 <span className="text-neon-green">com a sua marca?</span>
                             </h2>

@@ -5,3 +5,6 @@ export * from './FeaturePopupModal';
 export * from './ExitPopup';
 export * from './InfiniteLogoCarousel';
 export * from './IntegrationHero';
+export * from './ToolsOrbit';
+export * from './ToolsOrbitHero';
+export * from './AgentsShowcase';

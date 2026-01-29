@@ -4,22 +4,22 @@ import { Mic, Brain, Zap } from 'lucide-react';
 export const AICarousel: React.FC = () => {
     const aiFeatures = [
         {
-            title: "Reconhecimento de Voz",
-            description: "Analisa chamadas em tempo real e extrai insights de vendas.",
-            icon: Mic,
-            stat: "98% Precisão"
-        },
-        {
-            title: "Lead Scoring Preditivo",
-            description: "Identifica quais leads vão fechar antes mesmo de falar com eles.",
-            icon: Brain,
-            stat: "+40% Conversão"
-        },
-        {
-            title: "Automação de Follow-up",
-            description: "Nunca mais esqueça de ligar para um cliente em potencial.",
+            title: "Email + WhatsApp + SMS",
+            description: "Envie campanhas multicanal direto da plataforma. Sem integrações, sem Twilio, sem complicação.",
             icon: Zap,
-            stat: "0 Leads Perdidos"
+            stat: "Tudo Nativo"
+        },
+        {
+            title: "Workflows Visuais",
+            description: "Crie automações complexas com drag-and-drop. Se o lead abrir email X, enviar WhatsApp Y. Sem código.",
+            icon: Brain,
+            stat: "100% No-Code"
+        },
+        {
+            title: "Gatilhos Inteligentes",
+            description: "Dispara ações automaticamente quando leads visitam páginas, clicam em links ou abandonam carrinhos.",
+            icon: Mic,
+            stat: "24/7 Ativo"
         }
     ];
 
