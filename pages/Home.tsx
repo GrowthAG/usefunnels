@@ -96,24 +96,45 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 </Container>
             </Section>
 
-            {/* INTERACTIVE DEMO - Supademo Embed */}
-            <Section className="bg-deep-black py-16 md:py-24">
+            {/* INTERACTIVE DEMO - Supademo Embed with Browser Mockup */}
+            <Section className="bg-gray-50 py-16 md:py-24">
                 <Container>
                     <Reveal>
-                        <div className="text-center mb-8">
-                            <span className="font-mono text-[10px] md:text-xs font-bold uppercase tracking-widest text-neon-green mb-2 md:mb-4 block">Demo Interativa</span>
-                            <h2 className="text-2xl md:text-4xl font-bold font-space mb-4 tracking-tight text-white text-balance">Veja o FUNNELS em ação</h2>
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-deep-black text-balance">Veja o FUNNELS em ação</h2>
+                            <p className="text-gray-500 max-w-xl mx-auto text-balance">Explore nossa plataforma de forma interativa e descubra como simplificar suas operações.</p>
                         </div>
-                        <div className="max-w-5xl mx-auto rounded-lg overflow-hidden shadow-2xl border border-gray-800">
-                            <iframe
-                                src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
-                                loading="lazy"
-                                title="FUNNELS Demo Interativa"
-                                allow="clipboard-write"
-                                frameBorder="0"
-                                allowFullScreen
-                                className="w-full aspect-video"
-                            ></iframe>
+
+                        {/* Browser Mockup Frame */}
+                        <div className="max-w-5xl mx-auto">
+                            <div className="bg-gray-100 rounded-t-xl border border-gray-200 border-b-0 px-4 py-3 flex items-center gap-3">
+                                {/* Traffic Lights */}
+                                <div className="flex items-center gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                                </div>
+                                {/* URL Bar */}
+                                <div className="flex-1 flex justify-center">
+                                    <div className="bg-white rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-200">
+                                        app.usefunnels.io/dashboard
+                                    </div>
+                                </div>
+                                <div className="w-16"></div> {/* Spacer for symmetry */}
+                            </div>
+
+                            {/* Demo Content */}
+                            <div className="bg-white rounded-b-xl border border-gray-200 overflow-hidden shadow-2xl">
+                                <iframe
+                                    src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
+                                    loading="lazy"
+                                    title="FUNNELS Demo Interativa"
+                                    allow="clipboard-write"
+                                    frameBorder="0"
+                                    allowFullScreen
+                                    className="w-full aspect-video"
+                                ></iframe>
+                            </div>
                         </div>
                     </Reveal>
                 </Container>
