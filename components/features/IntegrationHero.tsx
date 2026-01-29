@@ -280,7 +280,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                                 style={{
                                     width: '120px',
                                     height: '120px',
-                                    background: '#000000',
+                                    background: '#050505', // Updated to Singularity Black
                                     borderRadius: '50%',
                                     display: 'flex',
                                     alignItems: 'center',
