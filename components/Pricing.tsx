@@ -5,13 +5,21 @@ import { CornerBrackets } from './ui';
 import { Link } from 'react-router-dom';
 import { FEATURES } from '../constants';
 
-const commonCosts = [
-    { label: "Fluxos de trabalho Premium", value: "$0.0105" },
-    { label: "Verificação de e-mail", value: "$0.002625" },
+// Basic costs for Starter (only email-related)
+const starterCosts = [
+    { label: "Verificação de e-mail", value: "$0.0025" },
     { label: "Envio de E-mail", value: "$0.000675" },
+    { label: "Fluxos de trabalho Premium", value: "$0.0105" },
+];
+
+// Full costs for Growth/Scale (includes AI)
+const fullCosts = [
+    { label: "Verificação de e-mail", value: "$0.0025" },
+    { label: "Envio de E-mail", value: "$0.000675" },
+    { label: "Fluxos de trabalho Premium", value: "$0.0105" },
     { label: "Conteúdo de IA", value: "$0.0945" },
     { label: "Fluxos de trabalho com IA", value: "$0.0315" },
-    { label: "Por mensagem para IA", value: "$0.021" }
+    { label: "Conversação de IA", value: "$0.011" }
 ];
 
 const whatsappCosts = {
@@ -30,10 +38,10 @@ const plans: PricingPlan[] = [
         linkMonthly: "https://checkout.usefunnels.io/plano-starter-mensal",
         linkAnnual: "https://checkout.usefunnels.io/plano-starter-anual",
         recommendedBadge: "Ideal para: Startups e Freelancers",
-        features: ["3 usuários", "20.000 contatos", "Landing Pages ilimitadas", "CRM de vendas"],
+        features: ["3 usuários", "20.000 contatos", "Landing Pages ilimitadas", "CRM de vendas", "E-mail Marketing"],
         additionalCosts: {
             label: "Ver custos adicionais",
-            items: commonCosts
+            items: starterCosts
         }
     },
     {
@@ -45,12 +53,12 @@ const plans: PricingPlan[] = [
         linkMonthly: "https://checkout.usefunnels.io/plano-growth-mensal",
         linkAnnual: "https://checkout.usefunnels.io/plano-growth-anual",
         recommendedBadge: "Ideal para: E-commerce e Agências",
-        features: ["5 usuários", "50.000 contatos", "WhatsApp Business", "Chat Bots IA"],
+        features: ["5 usuários", "50.000 contatos", "WhatsApp Business", "Chat Bots IA", "Tudo do Starter +"],
         isPopular: true,
         additionalCosts: {
             label: "Ver custos adicionais",
             whatsapp: whatsappCosts,
-            items: commonCosts
+            items: fullCosts
         }
     },
     {
@@ -62,12 +70,12 @@ const plans: PricingPlan[] = [
         linkMonthly: "#",
         linkAnnual: "#",
         recommendedBadge: "Ideal para: Empresas Médias",
-        features: ["10 usuários", "75.000 contatos", "WhatsApp API + VoIP", "Suporte prioritário"],
+        features: ["10 usuários", "75.000 contatos", "WhatsApp API + VoIP", "Suporte prioritário", "Tudo do Growth +"],
         isDark: true,
         additionalCosts: {
             label: "Ver custos adicionais",
             whatsapp: whatsappCosts,
-            items: commonCosts
+            items: fullCosts
         }
     },
     {
