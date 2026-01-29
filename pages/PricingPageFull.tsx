@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Container, Section, Reveal, Button, TechBadge, CornerBrackets } from '../components/ui';
-import { Pricing, PricingTable } from '../components/Pricing';
+import { Pricing } from '../components/Pricing';
 
 // FUNNELS pricing tiers with feature availability
 const FUNNELS_PLANS = [
@@ -367,15 +367,6 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                                 </div>
                             </div>
                         </div>
-                    </Reveal>
-                </Container>
-            </Section>
-
-            {/* COMPARISON TABLE */}
-            <Section className="bg-gray-50 py-16 md:py-24">
-                <Container>
-                    <Reveal>
-                        <PricingTable />
                     </Reveal>
                 </Container>
             </Section>

@@ -39,7 +39,7 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
                         <div className="max-w-5xl mx-auto mb-8 md:mb-12">
                             <div className="relative shadow-2xl rounded-xl overflow-hidden border border-gray-800">
                                 <img
-                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b82a204b05bc454517c8c.jpeg"
+                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b95b24d5683f7a3b59080.jpeg"
                                     alt="FUNNELS White-Label Dashboard"
                                     className="w-full h-auto object-cover"
                                     loading="lazy"
