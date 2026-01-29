@@ -7,11 +7,19 @@ import { Modal } from './components/ui';
 
 // Scroll To Top Component
 const ScrollToTop = () => {
-    const { pathname, hash } = useLocation();
+    const { pathname, hash, state } = useLocation();
 
     useEffect(() => {
         // Handle scrolling behavior
-        if (hash) {
+        if (state && (state as any).targetId) {
+            const id = (state as any).targetId;
+            setTimeout(() => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 100);
+        } else if (hash) {
             const id = hash.replace('#', '');
             const element = document.getElementById(id);
             if (element) {
@@ -20,7 +28,7 @@ const ScrollToTop = () => {
         } else {
             window.scrollTo(0, 0);
         }
-    }, [pathname, hash]);
+    }, [pathname, hash, state]);
 
     return null;
 };

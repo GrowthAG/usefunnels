@@ -1,11 +1,13 @@
 
 import React from 'react';
-import { useParams, Navigate, Link } from 'react-router-dom';
+import { useParams, Navigate, Link, useNavigate } from 'react-router-dom';
 import { Container, Section, Button, CornerBrackets, TechBadge } from '../components/ui';
 import { FEATURES } from '../constants';
 
 export const FeaturePage = ({ onBookDemo }: { onBookDemo: () => void }) => {
     const { id } = useParams();
+    const navigate = useNavigate();
+
     // Find feature in the FEATURES array
     const feature = FEATURES.find(f => f.id === id);
 
@@ -38,7 +40,7 @@ export const FeaturePage = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             <div className="flex flex-col sm:flex-row gap-4 mt-8">
                                 <Button
                                     className="min-w-[200px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all"
-                                    onClick={() => window.location.href = '/#precos'}
+                                    onClick={() => navigate('/', { state: { targetId: 'precos' } })}
                                 >
                                     Testar Agora
                                 </Button>
@@ -90,7 +92,7 @@ export const FeaturePage = ({ onBookDemo }: { onBookDemo: () => void }) => {
             <Section className="bg-light-gray border-t border-gray-200">
                 <Container className="text-center">
                     <h2 className="text-4xl font-bold font-space mb-8 text-balance">Pronto para dominar {feature.title}?</h2>
-                    <Button variant="dark" onClick={() => window.location.href = '/#precos'} className="text-lg px-12 py-5">
+                    <Button variant="dark" onClick={() => navigate('/', { state: { targetId: 'precos' } })} className="text-lg px-12 py-5">
                         Escolher meu Plano
                     </Button>
                 </Container>
