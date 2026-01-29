@@ -93,26 +93,41 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             </span>
                         </div>
 
-                        {/* Interactive Demo Restored */}
-                        <div className="mt-16 md:mt-24 max-w-5xl mx-auto text-left">
-                            <div className="bg-gray-800/80 backdrop-blur-md rounded-t-xl border border-white/10 border-b-0 px-4 py-3 flex items-center gap-3">
-                                {/* Traffic Lights */}
+
+                    </Reveal>
+                </Container>
+            </Section>
+
+            {/* DEMO SECTION - White Background (Relocated) */}
+            <Section className="py-16 bg-white border-b border-gray-100">
+                <Container>
+                    <Reveal>
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl md:text-5xl font-bold font-space text-deep-black tracking-tight mb-4">
+                                Veja como funciona
+                            </h2>
+                            <p className="text-gray-500 max-w-2xl mx-auto text-lg">
+                                Navegue pela plataforma e veja em tempo real como unificamos sua operação.
+                            </p>
+                        </div>
+
+                        <div className="max-w-5xl mx-auto text-left shadow-2xl rounded-xl overflow-hidden animate-fade-in-up">
+                            {/* Browser Header - Light Mode */}
+                            <div className="bg-gray-100 border-b border-gray-200 px-4 py-3 flex items-center gap-3">
                                 <div className="flex items-center gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
-                                    <div className="w-3 h-3 rounded-full bg-yellow-400/80"></div>
-                                    <div className="w-3 h-3 rounded-full bg-green-400/80"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#FF5F56] border border-black/10"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#FFBD2E] border border-black/10"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#27C93F] border border-black/10"></div>
                                 </div>
-                                {/* URL Bar */}
                                 <div className="flex-1 flex justify-center">
-                                    <div className="bg-black/50 rounded-md px-4 py-1.5 text-xs text-gray-400 font-mono w-full max-w-md text-center border border-white/5">
+                                    <div className="bg-white rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-200 shadow-sm">
                                         app.usefunnels.io/dashboard
                                     </div>
                                 </div>
-                                <div className="w-16"></div> {/* Spacer for symmetry */}
+                                <div className="w-16"></div>
                             </div>
 
-                            {/* Demo Content */}
-                            <div className="bg-white rounded-b-xl border border-white/10 overflow-hidden shadow-2xl relative">
+                            <div className="relative aspect-video bg-white">
                                 <iframe
                                     src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
                                     loading="lazy"
@@ -120,7 +135,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                     allow="clipboard-write"
                                     frameBorder="0"
                                     allowFullScreen
-                                    className="w-full aspect-video"
+                                    className="w-full h-full"
                                 ></iframe>
                             </div>
                         </div>

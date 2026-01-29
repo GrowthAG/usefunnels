@@ -135,25 +135,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     {/* ============================================ */}
                     <div className="hero-content">
 
-                        {/* 1. Badge */}
-                        <div
-                            style={{
-                                display: 'inline-flex',
-                                alignItems: 'center',
-                                gap: '8px',
-                                padding: '8px 16px',
-                                background: 'rgba(132, 255, 11, 0.1)',
-                                border: '1px solid rgba(132, 255, 11, 0.3)',
-                                borderRadius: '100px',
-                                fontSize: '14px',
-                                fontWeight: 600,
-                                color: '#5AB906',
-                                marginBottom: '24px',
-                            }}
-                        >
-                            <span>🔗</span>
-                            <span>Integração Total</span>
-                        </div>
+
 
                         {/* 2. Título Principal */}
                         <h2

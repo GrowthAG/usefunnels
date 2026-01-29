@@ -4,7 +4,7 @@ import { Container, Section, Reveal, Button } from '../components/ui';
 import { ASSETS } from '../constants';
 
 export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
-    
+
     const scrollToForm = () => {
         const formSection = document.getElementById('partner-form');
         if (formSection) {
@@ -22,10 +22,7 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
                 <Container className="text-center relative z-10 px-4 md:px-12">
                     <Reveal>
-                        {/* Badge */}
-                        <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon-green/10 border border-neon-green/30 rounded-sm text-xs font-mono font-bold uppercase tracking-widest text-neon-green mb-8">
-                            Programa de Canais 2025
-                        </div>
+
 
                         {/* Headline - Standardized Size */}
                         <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
@@ -41,7 +38,7 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
                         {/* New Hero Image - Centered below subheadline */}
                         <div className="max-w-5xl mx-auto mb-12 md:mb-20">
                             <div className="relative p-2 bg-white/5 rounded-xl border border-white/10 shadow-2xl backdrop-blur-sm">
-                                <img 
+                                <img
                                     src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b95b24d5683f7a3b59080.jpeg"
                                     alt="Programa de Parceiros Funnels"
                                     className="w-full h-auto rounded-lg shadow-lg border border-gray-800"
@@ -162,7 +159,7 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
             {/* CTA FORM - Dark Section */}
             <Section id="partner-form" className="bg-deep-black py-20 md:py-28 relative overflow-hidden">
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_120%,_rgba(27,252,79,0.08),_transparent_50%)] pointer-events-none"></div>
-                
+
                 <Container className="relative z-10">
                     <Reveal>
                         <div className="text-center max-w-2xl mx-auto">
@@ -174,8 +171,8 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             <p className="text-gray-400 text-lg mb-10 text-balance">
                                 Agende uma conversa e descubra como o programa White-Label pode transformar sua agência.
                             </p>
-                            <Button 
-                                className="min-w-[250px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300" 
+                            <Button
+                                className="min-w-[250px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300"
                                 onClick={onBookDemo}
                             >
                                 Agendar Conversa →
