@@ -90,9 +90,14 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     animation: rotate-orbit-3 120s linear infinite;
                 }
                 
-                .tool-node-1 { animation: rotate-orbit-1 60s linear infinite reverse; }
-                .tool-node-2 { animation: rotate-orbit-2 90s linear infinite reverse; }
-                .tool-node-3 { animation: rotate-orbit-3 120s linear infinite reverse; }
+                @keyframes counter-rotate {
+                    from { transform: rotate(360deg); }
+                    to { transform: rotate(0deg); }
+                }
+
+                .tool-node-1 { animation: counter-rotate 60s linear infinite; }
+                .tool-node-2 { animation: counter-rotate 90s linear infinite; }
+                .tool-node-3 { animation: counter-rotate 120s linear infinite; }
             `}</style>
 
             <section
@@ -364,7 +369,6 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
 
 const OrbitNode = ({ tool, radius, className, size, opacity = 1 }: any) => (
     <div
-        className={className}
         style={{
             position: 'absolute',
             top: '50%',
@@ -378,18 +382,21 @@ const OrbitNode = ({ tool, radius, className, size, opacity = 1 }: any) => (
             opacity: opacity
         }}
     >
-        <div style={{
-            width: '100%',
-            height: '100%',
-            background: '#FFFFFF',
-            borderRadius: '50%',
-            padding: '6px',
-            boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid #F0F0F0'
-        }}>
+        <div
+            className={className}
+            style={{
+                width: '100%',
+                height: '100%',
+                background: '#FFFFFF',
+                borderRadius: '50%',
+                padding: '6px',
+                boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '1px solid #F0F0F0'
+            }}
+        >
             <img src={tool.logo} alt="Tool" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
     </div>
