@@ -121,9 +121,10 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     style={{
                         maxWidth: '1400px',
                         margin: '0 auto',
-                        display: 'grid',
-                        gridTemplateColumns: '1fr 1fr',
+                        display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
+                        justifyContent: 'center',
                         gap: '60px',
                         position: 'relative',
                         zIndex: 1
@@ -133,7 +134,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                     {/* ============================================ */}
                     {/* CONTEÚDO CENTRALIZADO */}
                     {/* ============================================ */}
-                    <div className="hero-content" style={{ maxWidth: '600px', textAlign: 'left' }}>
+                    <div className="hero-content" style={{ maxWidth: '800px', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
                         {/* 2. Título Principal */}
                         <h2
@@ -171,10 +172,13 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                         {/* 4. Cards de Benefícios - Horizontal para centralizado */}
                         <div
                             style={{
-                                display: 'grid',
-                                gridTemplateColumns: '1fr',
+                                display: 'flex',
+                                flexDirection: 'row',
+                                justifyContent: 'center',
+                                flexWrap: 'wrap',
                                 gap: '24px',
                                 marginBottom: '48px',
+                                width: '100%',
                             }}
                         >
                             {/* Card 1 */}
@@ -204,7 +208,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                                 display: 'flex',
                                 gap: '16px',
                                 marginBottom: '40px',
-                                alignItems: 'center',
+                                justifyContent: 'center',
                                 flexWrap: 'wrap'
                             }}
                             className="cta-buttons"
@@ -246,6 +250,7 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             width: '600px',
                             height: '600px',
                             margin: '0 auto',
+                            overflow: 'visible'
                         }}
                     >
                         {/* HUB CENTRAL (Funnels) */}
