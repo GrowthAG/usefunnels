@@ -87,18 +87,21 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
 
     return (
         <main className="pt-[80px] bg-white">
-            {/* HERO - Minimalist */}
-            <Section className="bg-white py-16 md:py-24 border-b border-gray-100">
-                <Container className="text-center">
+            {/* HERO - Dark like other pages */}
+            <Section className="bg-deep-black py-16 md:py-24 relative overflow-hidden">
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-neon-green/5 via-transparent to-transparent pointer-events-none"></div>
+
+                <Container className="text-center relative z-10">
                     <Reveal>
                         <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">
                             Preços
                         </span>
-                        <h1 className="text-4xl md:text-6xl font-bold font-space mb-6 tracking-tight text-deep-black">
+                        <h1 className="text-4xl md:text-6xl font-bold font-space mb-6 tracking-tight text-white">
                             Planos simples.<br />
-                            <span className="text-gray-400">Preços justos.</span>
+                            <span className="text-neon-green">Preços justos.</span>
                         </h1>
-                        <p className="text-lg text-gray-500 max-w-xl mx-auto">
+                        <p className="text-lg text-gray-400 max-w-xl mx-auto">
                             Sem taxas escondidas, sem fidelidade.<br />
                             Tudo incluído para você começar agora.
                         </p>
