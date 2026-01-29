@@ -52,8 +52,8 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
             {/* HERO SECTION - Dark Mode with Volumetric Lighting */}
             <Section className="min-h-screen flex flex-col justify-center bg-deep-black pt-[100px] md:pt-[120px] relative overflow-hidden border-b border-gray-900">
-                {/* Volumetric Light Source (Radial Gradient) */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,_rgba(27,252,79,0.12),_transparent_50%)] pointer-events-none"></div>
+                {/* Volumetric Light Source (Radial Gradient) REMOVED */}
+
                 <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
 
                 <Container className="text-center relative z-10 px-4 md:px-12">

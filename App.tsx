@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { Header, Footer } from './components/layout';
-import { Home, About, Partners, Enterprise, Blog, FeaturePage, Legal, PricingPageFull } from './pages';
+import { Home, About, Partners, Enterprise, Blog, BlogPost, FeaturePage, Legal, PricingPageFull } from './pages';
 import { Modal } from './components/ui';
 
 // Scroll To Top Component
@@ -82,6 +82,7 @@ const App = () => {
                     />
                     <Route path="/enterprise" element={<Enterprise />} />
                     <Route path="/blog" element={<Blog />} />
+                    <Route path="/blog/:slug" element={<BlogPost />} />
                 </Routes>
 
                 <Footer />
