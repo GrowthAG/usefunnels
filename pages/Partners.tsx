@@ -35,36 +35,15 @@ export const Partners = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             Entregue valor real. Com o modelo <strong className="text-white">White-Label</strong>, o cliente vê a SUA logo, o SEU domínio e paga o preço que VOCÊ definir.
                         </p>
 
-                        {/* Interactive Demo - Browser Mockup */}
+                        {/* White-Label Visual */}
                         <div className="max-w-5xl mx-auto mb-8 md:mb-12">
-                            <div className="relative shadow-2xl rounded-xl overflow-hidden">
-                                {/* Browser Header - Dark Mode */}
-                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-4 py-3 flex items-center gap-3">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full bg-[#FF5F56] opacity-50"></div>
-                                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] opacity-50"></div>
-                                        <div className="w-3 h-3 rounded-full bg-[#27C93F] opacity-50"></div>
-                                    </div>
-                                    <div className="flex-1 flex justify-center">
-                                        <div className="bg-gray-900 rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-800 shadow-sm">
-                                            app.usefunnels.io/dashboard
-                                        </div>
-                                    </div>
-                                    <div className="w-16"></div>
-                                </div>
-
-                                <div className="relative aspect-video bg-black">
-                                    <iframe
-                                        src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
-                                        loading="lazy"
-                                        title="FUNNELS Demo Interativa - White Label"
-                                        allow="clipboard-write"
-                                        frameBorder="0"
-                                        allowFullScreen
-                                        className="w-full h-full"
-                                    ></iframe>
-                                </div>
-
+                            <div className="relative shadow-2xl rounded-xl overflow-hidden border border-gray-800">
+                                <img
+                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b82a204b05bc454517c8c.jpeg"
+                                    alt="FUNNELS White-Label Dashboard"
+                                    className="w-full h-auto object-cover"
+                                    loading="lazy"
+                                />
                                 {/* Bottom Glow */}
                                 <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
                             </div>
