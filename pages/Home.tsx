@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
-import { FeatureTabs, AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal } from '../components/features';
+import { FeatureTabs, AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero } from '../components/features';
 import { Pricing } from '../components/Pricing';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
@@ -98,6 +98,9 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
             {/* PARTNERS - Infinite Carousel with headline */}
             <InfiniteLogoCarousel logos={CLIENT_LOGOS} />
+
+            {/* INTEGRATION HUB - Solar System Visual */}
+            <IntegrationHero onBookDemo={onBookDemo} />
 
             {/* FEATURES TABS - CORE FUNCTIONALITY */}
             <Section id="recursos" className="py-16 md:py-[120px] bg-white">
