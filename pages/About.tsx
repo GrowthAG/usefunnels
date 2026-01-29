@@ -39,10 +39,12 @@ export const About = () => (
                 </Reveal>
 
                 <div className="max-w-3xl mx-auto">
-                    <div className="relative border-l-2 border-gray-200 ml-4 md:ml-0 space-y-10">
+                    <div className="relative border-l-2 border-gray-200 ml-4 md:ml-0 space-y-12">
                         <Reveal delay={50}>
                             <div className="relative pl-8 md:pl-12">
-                                <div className="absolute -left-[9px] top-0 w-4 h-4 bg-gray-300 rounded-full border-4 border-white"></div>
+                                <div className="absolute -left-[20px] top-0 w-10 h-10 bg-gray-100 rounded-full border-4 border-white flex items-center justify-center text-gray-400">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                </div>
                                 <span className="font-mono text-gray-400 text-sm mb-2 block">2022</span>
                                 <h3 className="text-xl font-bold font-space mb-2 text-deep-black">O Problema</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed text-balance">
@@ -53,7 +55,9 @@ export const About = () => (
 
                         <Reveal delay={100}>
                             <div className="relative pl-8 md:pl-12">
-                                <div className="absolute -left-[9px] top-0 w-4 h-4 bg-gray-400 rounded-full border-4 border-white"></div>
+                                <div className="absolute -left-[20px] top-0 w-10 h-10 bg-gray-100 rounded-full border-4 border-white flex items-center justify-center text-gray-400">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                                </div>
                                 <span className="font-mono text-gray-400 text-sm mb-2 block">2023</span>
                                 <h3 className="text-xl font-bold font-space mb-2 text-deep-black">A Solução</h3>
                                 <p className="text-gray-500 text-sm leading-relaxed text-balance">
@@ -64,7 +68,9 @@ export const About = () => (
 
                         <Reveal delay={150}>
                             <div className="relative pl-8 md:pl-12">
-                                <div className="absolute -left-[11px] top-0 w-6 h-6 bg-neon-green rounded-full border-4 border-white shadow-[0_0_20px_rgba(27,252,79,0.3)]"></div>
+                                <div className="absolute -left-[24px] top-0 w-12 h-12 bg-neon-green rounded-full border-4 border-white shadow-[0_0_20px_rgba(27,252,79,0.3)] flex items-center justify-center text-deep-black">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                                </div>
                                 <span className="font-mono text-neon-green text-sm mb-2 block font-bold">2025</span>
                                 <h3 className="text-2xl font-bold font-space mb-2 text-deep-black">O Resultado</h3>
                                 <p className="text-gray-600 text-base leading-relaxed text-balance">
@@ -88,8 +94,10 @@ export const About = () => (
                 </Reveal>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
                     <Reveal delay={50}>
-                        <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-neon-green/50 transition-all hover:shadow-lg h-full">
-                            <span className="font-mono text-neon-green text-xl font-bold mb-3 block">01.</span>
+                        <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-neon-green/50 transition-all hover:shadow-lg h-full group">
+                            <div className="w-10 h-10 mb-4 text-neon-green bg-neon-green/5 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                            </div>
                             <h3 className="text-base font-bold font-space mb-2 text-deep-black text-balance">Funciona de Primeira</h3>
                             <p className="text-gray-500 text-sm leading-relaxed text-balance">
                                 Chega de configurar integrações, APIs e webhooks. Tudo já vem pronto. Você cria páginas, captura leads e automatiza no mesmo dia.
@@ -97,8 +105,10 @@ export const About = () => (
                         </div>
                     </Reveal>
                     <Reveal delay={100}>
-                        <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-neon-green/50 transition-all hover:shadow-lg h-full">
-                            <span className="font-mono text-neon-green text-xl font-bold mb-3 block">02.</span>
+                        <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-neon-green/50 transition-all hover:shadow-lg h-full group">
+                            <div className="w-10 h-10 mb-4 text-neon-green bg-neon-green/5 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                            </div>
                             <h3 className="text-base font-bold font-space mb-2 text-deep-black text-balance">Preço Honesto</h3>
                             <p className="text-gray-500 text-sm leading-relaxed text-balance">
                                 Não cobramos por "módulos extras" nem limitamos recursos no plano básico. Um preço fixo, todas as ferramentas. Sem surpresas na fatura.
@@ -106,8 +116,10 @@ export const About = () => (
                         </div>
                     </Reveal>
                     <Reveal delay={150}>
-                        <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-neon-green/50 transition-all hover:shadow-lg h-full">
-                            <span className="font-mono text-neon-green text-xl font-bold mb-3 block">03.</span>
+                        <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-neon-green/50 transition-all hover:shadow-lg h-full group">
+                            <div className="w-10 h-10 mb-4 text-neon-green bg-neon-green/5 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                            </div>
                             <h3 className="text-base font-bold font-space mb-2 text-deep-black text-balance">Suporte que Responde</h3>
                             <p className="text-gray-500 text-sm leading-relaxed text-balance">
                                 Time brasileiro, suporte em português, sem bots genéricos. Quando você precisar, a gente está aqui. Simples assim.

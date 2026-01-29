@@ -7,24 +7,24 @@ import { FEATURES } from '../constants';
 
 // Basic costs for Starter (only email-related)
 const starterCosts = [
-    { label: "Verificação de e-mail", value: "$0.0025" },
-    { label: "Envio de E-mail", value: "$0.000675" },
-    { label: "Fluxos de trabalho Premium", value: "$0.0105" },
+    { label: "Verificação de e-mail", value: "$ 0,0025 / verificação" },
+    { label: "Envio de E-mail", value: "$ 0,000675 / e-mail" },
+    { label: "Fluxos Premium", value: "$ 0,0105 / execução" },
 ];
 
 // Full costs for Growth/Scale (includes AI)
 const fullCosts = [
-    { label: "Verificação de e-mail", value: "$0.0025" },
-    { label: "Envio de E-mail", value: "$0.000675" },
-    { label: "Fluxos de trabalho Premium", value: "$0.0105" },
-    { label: "Conteúdo de IA", value: "$0.0945" },
-    { label: "Fluxos de trabalho com IA", value: "$0.0315" },
-    { label: "Conversação de IA", value: "$0.011" }
+    { label: "Verificação de e-mail", value: "$ 0,0025 / verificação" },
+    { label: "Envio de E-mail", value: "$ 0,000675 / e-mail" },
+    { label: "Fluxos Premium", value: "$ 0,0105 / execução" },
+    { label: "Conteúdo de IA", value: "$ 0,09 / geração" },
+    { label: "Fluxos de IA", value: "$ 0,03 / execução" },
+    { label: "Conversação IA", value: "$ 0,01 / mensagem" }
 ];
 
 const whatsappCosts = {
-    monthly: "$29 USD/mês",
-    perMessage: "$0.0080 USD"
+    monthly: "$ 29 USD / mês",
+    perMessage: "$ 0,008 USD / msg"
 };
 
 const plans: PricingPlan[] = [
