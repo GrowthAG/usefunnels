@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
 import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsShowcase } from '../components/features';
-import { Pricing } from '../components/Pricing';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
 import { WikimeeCarousel } from '../components/features/WikimeeCarousel';
@@ -40,12 +39,7 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
     ];
 
     const scrollToPricing = () => {
-        const pricingSection = document.getElementById('precos');
-        if (pricingSection) {
-            pricingSection.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            window.location.href = '/#precos';
-        }
+        window.location.href = '/#/precos';
     };
 
     return (
@@ -218,15 +212,49 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
 
 
 
-            {/* PRICING - Premium Layout */}
+            {/* PRICING CTA - Link para página dedicada */}
             <Section className="bg-gray-50 relative py-16 md:py-[120px]" id="precos">
                 <Container>
                     <Reveal>
-                        <div className="text-center mb-12 md:mb-20 relative z-10">
-                            <h2 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-deep-black text-balance">Planos simples. Preços justos.<br />Sem surpresas.</h2>
-                            <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-lg text-balance">Sem taxas escondidas, sem fidelidade e com tudo incluído para começar agora.</p>
+                        <div className="text-center max-w-4xl mx-auto">
+                            <h2 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-deep-black">
+                                Planos Transparentes
+                            </h2>
+                            <p className="text-gray-600 text-lg md:text-xl mb-12">
+                                Preços justos, sem taxas escondidas, sem fidelidade
+                            </p>
+                            <div className="grid md:grid-cols-4 gap-4 mb-12 text-left">
+                                <div className="bg-white p-6 rounded border border-gray-200">
+                                    <h3 className="font-bold text-xl mb-2">Starter</h3>
+                                    <div className="text-3xl font-bold mb-4">R$ 497<span className="text-sm text-gray-500">/mês</span></div>
+                                    <p className="text-sm text-gray-600">Ideal para pequenas empresas</p>
+                                </div>
+                                <div className="bg-white p-6 rounded border-2 border-neon-green relative">
+                                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-green text-deep-black text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                        Mais Popular
+                                    </div>
+                                    <h3 className="font-bold text-xl mb-2">Growth</h3>
+                                    <div className="text-3xl font-bold mb-4">R$ 697<span className="text-sm text-gray-500">/mês</span></div>
+                                    <p className="text-sm text-gray-600">Para empresas em expansão</p>
+                                </div>
+                                <div className="bg-white p-6 rounded border border-gray-200">
+                                    <h3 className="font-bold text-xl mb-2">Scale</h3>
+                                    <div className="text-3xl font-bold mb-4">R$ 997<span className="text-sm text-gray-500">/mês</span></div>
+                                    <p className="text-sm text-gray-600">Empresas em crescimento</p>
+                                </div>
+                                <div className="bg-deep-black text-white p-6 rounded border border-gray-800">
+                                    <h3 className="font-bold text-xl mb-2">Enterprise</h3>
+                                    <div className="text-3xl font-bold mb-4">Custom</div>
+                                    <p className="text-sm text-gray-300">Sob consulta</p>
+                                </div>
+                            </div>
+                            <a
+                                href="/#/precos"
+                                className="inline-block px-8 py-4 bg-neon-green text-deep-black font-bold rounded hover:bg-opacity-90 transition-all text-lg"
+                            >
+                                Ver Comparação Completa de Planos →
+                            </a>
                         </div>
-                        <Pricing onBookDemo={onBookDemo} onCheckout={onCheckout} />
                     </Reveal>
                 </Container>
             </Section>
