@@ -214,23 +214,23 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                             </div>
 
                             {/* ÓRBITA 1 (Inner) */}
-                            <div className="orbit-1-container" style={{ ...orbitContainerStyle, width: '280px', height: '280px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                            <div className="orbit-1-container" style={{ ...orbitContainerStyle, width: '260px', height: '260px', border: '1px solid rgba(0,0,0,0.05)' }}>
                                 {ORBIT_1.map((tool) => (
-                                    <OrbitNode key={tool.logo} tool={tool} radius={140} className="tool-node-1" size={48} />
+                                    <OrbitNode key={tool.logo} tool={tool} radius={130} className="tool-node-1" size={48} />
                                 ))}
                             </div>
 
                             {/* ÓRBITA 2 (Middle) */}
-                            <div className="orbit-2-container" style={{ ...orbitContainerStyle, width: '440px', height: '440px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                            <div className="orbit-2-container" style={{ ...orbitContainerStyle, width: '400px', height: '400px', border: '1px solid rgba(0,0,0,0.05)' }}>
                                 {ORBIT_2.map((tool) => (
-                                    <OrbitNode key={tool.logo} tool={tool} radius={220} className="tool-node-2" size={40} />
+                                    <OrbitNode key={tool.logo} tool={tool} radius={200} className="tool-node-2" size={40} />
                                 ))}
                             </div>
 
                             {/* ÓRBITA 3 (Outer) */}
-                            <div className="orbit-3-container" style={{ ...orbitContainerStyle, width: '600px', height: '600px', border: '1px solid rgba(0,0,0,0.05)' }}>
+                            <div className="orbit-3-container" style={{ ...orbitContainerStyle, width: '540px', height: '540px', border: '1px solid rgba(0,0,0,0.05)' }}>
                                 {ORBIT_3.map((tool) => (
-                                    <OrbitNode key={tool.logo} tool={tool} radius={300} className="tool-node-3" size={32} opacity={0.8} />
+                                    <OrbitNode key={tool.logo} tool={tool} radius={270} className="tool-node-3" size={32} opacity={0.8} />
                                 ))}
                             </div>
                         </div>
@@ -249,7 +249,12 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                         >
                             {/* Card 1 */}
                             <div className="benefit-card" style={{ ...benefitCardStyle, textAlign: 'left' }}>
-                                <span style={{ fontSize: '24px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>💰</span>
+                                <span style={{ fontSize: '24px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F5F5F5', borderRadius: '8px' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#171717" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                    </svg>
+                                </span>
                                 <div>
                                     <h4 style={benefitTitleStyle}>Economize até R$ 35.000/ano</h4>
                                     <p style={benefitDescStyle}>Substitua 8+ ferramentas por uma</p>
@@ -258,7 +263,11 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
 
                             {/* Card 2 */}
                             <div className="benefit-card" style={{ ...benefitCardStyle, textAlign: 'left' }}>
-                                <span style={{ fontSize: '24px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>⚡</span>
+                                <span style={{ fontSize: '24px', flexShrink: 0, width: '40px', height: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F5F5F5', borderRadius: '8px' }}>
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#171717" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                </span>
                                 <div>
                                     <h4 style={benefitTitleStyle}>80% mais produtividade</h4>
                                     <p style={benefitDescStyle}>Dados centralizados e sincronizados</p>
