@@ -57,12 +57,12 @@ const App = () => {
 
                 <Routes>
                     <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} />} />
-                    <Route path="/recursos/:id" element={<FeaturePage />} />
+                    <Route path="/recursos/:id" element={<FeaturePage onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/sobre" element={<About />} />
                     <Route path="/legal/:type" element={<Legal />} />
                     <Route
                         path="/parceiros"
-                        element={<Partners onOpenForm={() => setIsPartnerModalOpen(true)} />}
+                        element={<Partners onBookDemo={() => setIsDemoModalOpen(true)} />}
                     />
                     <Route path="/enterprise" element={<Enterprise />} />
                     <Route path="/blog" element={<Blog />} />

@@ -4,7 +4,7 @@ import { useParams, Navigate, Link } from 'react-router-dom';
 import { Container, Section, Button, CornerBrackets, TechBadge } from '../components/ui';
 import { FEATURES } from '../constants';
 
-export const FeaturePage = () => {
+export const FeaturePage = ({ onBookDemo }: { onBookDemo: () => void }) => {
     const { id } = useParams();
     // Find feature in the FEATURES array
     const feature = FEATURES.find(f => f.id === id);
@@ -12,7 +12,7 @@ export const FeaturePage = () => {
     if (!feature) return <Navigate to="/" replace />;
 
     return (
-        <main className="pt-[100px]">
+        <main className="pt-[100px] bg-deep-black">
             {/* HERO */}
             <Section className="bg-off-black text-white border-b border-gray-800 min-h-[80vh] flex flex-col justify-center">
                 <Container>
@@ -35,9 +35,19 @@ export const FeaturePage = () => {
                                 Potencialize sua operação com a ferramenta de {feature.title} mais completa do mercado. Totalmente integrada e pronta para escalar.
                             </p>
 
-                            <div className="flex flex-col sm:flex-row gap-4">
-                                <Button variant="primary" onClick={() => window.location.href = '/#precos'}>
+                            <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                                <Button
+                                    className="min-w-[200px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all"
+                                    onClick={() => window.location.href = '/#precos'}
+                                >
                                     Testar Agora
+                                </Button>
+                                <Button
+                                    variant="outline"
+                                    className="min-w-[200px] py-4"
+                                    onClick={onBookDemo}
+                                >
+                                    Agendar Demo
                                 </Button>
                             </div>
                         </div>
