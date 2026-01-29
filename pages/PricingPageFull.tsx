@@ -52,19 +52,25 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
     const [whatsappMessages, setWhatsappMessages] = useState(1000);
     const [aiActions, setAiActions] = useState(500);
 
-    // Cost rates (based on FUNNELS pricing)
+    // Cost rates (based on real GoHighLevel billing - USD converted to BRL at ~5.50)
     const COST_RATES = {
-        emailPerUnit: 0.000675,        // R$ per email
-        whatsappFixed: 29,             // R$ fixed monthly
-        whatsappPerMessage: 0.008,     // R$ per message
-        aiPerAction: 0.02              // R$ per AI action (average)
+        // Email: $0.000675/email = R$ 0.0037
+        emailPerUnit: 0.0037,
+        // WhatsApp Marketing: ~$0.065/msg = R$ 0.36
+        whatsappMarketingPerMsg: 0.36,
+        // WhatsApp Utility: ~$0.007/msg = R$ 0.04  
+        whatsappUtilityPerMsg: 0.04,
+        // Average WhatsApp (70% utility, 30% marketing)
+        whatsappAvgPerMsg: 0.14,
+        // AI Conversation: ~$0.011/action = R$ 0.06
+        aiPerAction: 0.06,
+        // Workflow Premium: ~$0.01/action = R$ 0.055
+        workflowPremium: 0.055
     };
 
     // Calculate variable costs
     const emailCost = emailsPerMonth * COST_RATES.emailPerUnit;
-    const whatsappCost = whatsappMessages > 0
-        ? COST_RATES.whatsappFixed + (whatsappMessages * COST_RATES.whatsappPerMessage)
-        : 0;
+    const whatsappCost = whatsappMessages * COST_RATES.whatsappAvgPerMsg;
     const aiCost = aiActions * COST_RATES.aiPerAction;
     const variableCost = emailCost + whatsappCost + aiCost;
     const totalMonthlyCost = FUNNELS_PLANS[selectedPlan].price + variableCost;
