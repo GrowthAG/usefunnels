@@ -57,7 +57,7 @@ export const Footer = () => {
                         <h4 className="font-space font-bold text-sm mb-6 md:mb-8 text-white uppercase tracking-widest border-b border-neon-green pb-2 inline-block">Produto</h4>
                         <ul className="space-y-3 md:space-y-4 text-sm text-gray-400 font-mono">
                             <li><Link to="/#recursos" className="hover:text-white hover:translate-x-1 transition-all inline-block">Recursos</Link></li>
-                            <li><Link to="/#precos" className="hover:text-white hover:translate-x-1 transition-all inline-block">Preços</Link></li>
+                            <li><Link to="/precos" className="hover:text-white hover:translate-x-1 transition-all inline-block">Preços</Link></li>
                         </ul>
                     </div>
 

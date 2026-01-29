@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
 import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsShowcase } from '../components/features';
 import { Pricing } from '../components/Pricing';
+import { SavingsCalculator } from '../components/SavingsCalculator';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
 import { WikimeeCarousel } from '../components/features/WikimeeCarousel';
@@ -225,6 +226,15 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
                             <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-lg text-balance">Sem taxas escondidas, sem fidelidade e com tudo incluído para começar agora.</p>
                         </div>
                         <Pricing onBookDemo={onBookDemo} onCheckout={onCheckout} />
+                    </Reveal>
+                </Container>
+            </Section>
+
+            {/* SAVINGS CALCULATOR */}
+            <Section className="bg-white py-16 md:py-24">
+                <Container>
+                    <Reveal>
+                        <SavingsCalculator variant="compact" />
                     </Reveal>
                 </Container>
             </Section>
