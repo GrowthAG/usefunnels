@@ -95,14 +95,14 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                 <Container className="relative z-10">
                     <Reveal>
                         <div className="text-center mb-10 md:mb-12">
-                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-3 block">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">
                                 Preços Transparentes
                             </span>
-                            <h1 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-white">
-                                Escolha seu plano.<br />
-                                <span className="text-neon-green">Comece hoje.</span>
+                            <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.04em] mb-5 md:mb-6 leading-[1.1] md:leading-[0.95] font-space">
+                                <span className="block text-white">Escolha seu plano.</span>
+                                <span className="block text-neon-green">Comece hoje.</span>
                             </h1>
-                            <p className="text-base text-gray-400 max-w-md mx-auto">
+                            <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed font-light font-space">
                                 Sem taxas escondidas. Sem fidelidade. Cancele quando quiser.
                             </p>
                         </div>
