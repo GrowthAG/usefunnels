@@ -8,3 +8,4 @@ export * from './IntegrationHero';
 export * from './ToolsOrbit';
 export * from './ToolsOrbitHero';
 export * from './AgentsShowcase';
+export * from './BentoGrid';

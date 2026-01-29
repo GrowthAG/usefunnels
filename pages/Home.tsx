@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
-import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsShowcase } from '../components/features';
+import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, BentoGrid } from '../components/features';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
 import { WikimeeCarousel } from '../components/features/WikimeeCarousel';
@@ -164,8 +164,20 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 </Container>
             </Section>
 
-            {/* A ERA DOS AGENTES - PREMIUM SHOWCASE */}
-            <AgentsShowcase items={CAROUSEL_ITEMS} />
+            {/* A ERA DOS AGENTES - BENTO GRID MODERN LAYOUT */}
+            <Section className="bg-deep-black py-20 md:py-32 relative overflow-hidden">
+                <div className="absolute inset-0 bg-grid-pattern-dark opacity-[0.03] pointer-events-none"></div>
+                <div className="text-center max-w-3xl mx-auto mb-16 px-4">
+                    <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Inteligência Artificial</span>
+                    <h2 className="text-4xl md:text-6xl font-bold font-space mb-4 tracking-tight text-white leading-none">
+                        A Era dos Agentes.
+                    </h2>
+                    <p className="text-gray-400 text-lg leading-relaxed">
+                        Não apenas ferramentas. Inteligência que trabalha por você 24/7.
+                    </p>
+                </div>
+                <BentoGrid />
+            </Section>
 
             {/* FEATURE CARDS - Secondary Grid (REFINED DESIGN) */}
             <Section id="features-grid" className="bg-light-gray py-16 md:py-[120px]">
