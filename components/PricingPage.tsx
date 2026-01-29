@@ -1,75 +1,70 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { CompactPricingTable } from './pricing/CompactPricingTable';
 
 interface PricingPageProps {
     onBookDemo: () => void;
 }
 
 export const PricingPage: React.FC<PricingPageProps> = ({ onBookDemo }) => {
-    const Check = () => <span className="text-neon-green text-lg">✓</span>;
-    const Cross = () => <span className="text-gray-400 text-lg">✕</span>;
+    const [users, setUsers] = useState(5);
+    const [contacts, setContacts] = useState(50000);
+    const [whatsappMessages, setWhatsappMessages] = useState(1000);
+    const [emails, setEmails] = useState(5000);
 
-    const features = [
-        {
-            category: "USUÁRIOS & CONTATOS",
-            items: [
-                { name: "Usuários inclusos", starter: "3", growth: "5", scale: "10", enterprise: "Ilimitado" },
-                { name: "Contatos no CRM", starter: "20.000", growth: "50.000", scale: "75.000", enterprise: "Ilimitado" },
-                { name: "Usuários extras", starter: "R$ 99/usuário", growth: "R$ 99/usuário", scale: "R$ 99/usuário", enterprise: "Negociável" },
-            ]
-        },
-        {
-            category: "CRM & VENDAS",
-            items: [
-                { name: "Pipeline de Vendas", starter: "3 pipelines", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
-                { name: "Oportunidades", starter: true, growth: true, scale: true, enterprise: true },
-                { name: "Relatórios", starter: "Básico", growth: "Avançado", scale: "Avançado", enterprise: "Custom" },
-                { name: "API de Integração", starter: false, growth: true, scale: true, enterprise: true },
-            ]
-        },
-        {
-            category: "COMUNICAÇÃO",
-            items: [
-                { name: "E-mail Marketing", starter: true, growth: true, scale: true, enterprise: true },
-                { name: "WhatsApp Business API", starter: false, growth: true, scale: true, enterprise: true },
-                { name: "SMS", starter: false, growth: true, scale: true, enterprise: true },
-                { name: "Chat Widget", starter: true, growth: true, scale: true, enterprise: true },
-                { name: "Telefonia VoIP", starter: false, growth: false, scale: true, enterprise: true },
-            ]
-        },
-        {
-            category: "AUTOMAÇÃO & IA",
-            items: [
-                { name: "Workflows", starter: "Básico", growth: "Avançado", scale: "Premium", enterprise: "Ilimitado" },
-                { name: "Chatbot com IA", starter: false, growth: true, scale: true, enterprise: true },
-                { name: "IA Content Generator", starter: false, growth: true, scale: true, enterprise: true },
-                { name: "Respostas Automáticas", starter: true, growth: true, scale: true, enterprise: true },
-            ]
-        },
-        {
-            category: "PÁGINAS & FORMULÁRIOS",
-            items: [
-                { name: "Landing Pages", starter: "Ilimitado", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
-                { name: "Formulários", starter: "Ilimitado", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
-                { name: "Sites Completos", starter: false, growth: true, scale: true, enterprise: true },
-                { name: "Domínio Próprio", starter: true, growth: true, scale: true, enterprise: true },
-            ]
-        },
-        {
-            category: "SUPORTE",
-            items: [
-                { name: "Suporte via Chat", starter: "Horário Comercial", growth: "Prioritário", scale: "Prioritário", enterprise: "24/7 Dedicado" },
-                { name: "Onboarding", starter: "Gravado", growth: "Gravado", scale: "Ao Vivo", enterprise: "Personalizado" },
-                { name: "Gerente de Conta", starter: false, growth: false, scale: false, enterprise: true },
-                { name: "Whitelabel", starter: false, growth: false, scale: false, enterprise: true },
-            ]
+    // Lógica da calculadora
+    const calculatePlan = () => {
+        // Starter: 3 users, 20k contacts
+        // Growth: 5 users, 50k contacts
+        // Scale: 10 users, 75k contacts
+
+        if (users <= 3 && contacts <= 20000) {
+            return { name: 'Starter', base: 497 };
+        } else if (users <= 5 && contacts <= 50000) {
+            return { name: 'Growth', base: 697 };
+        } else if (users <= 10 && contacts <= 75000) {
+            return { name: 'Scale', base: 997 };
+        } else {
+            return { name: 'Enterprise', base: 0 };
         }
-    ];
-
-    const renderValue = (val: string | boolean) => {
-        if (val === true) return <Check />;
-        if (val === false) return <Cross />;
-        return <span className="text-sm font-medium">{val}</span>;
     };
+
+    const calculateAdditionalCosts = () => {
+        const plan = calculatePlan();
+        let extraUsers = 0;
+        let extraContacts = 0;
+
+        // Calcular usuários extras
+        if (plan.name === 'Starter' && users > 3) extraUsers = (users - 3) * 99;
+        else if (plan.name === 'Growth' && users > 5) extraUsers = (users - 5) * 99;
+        else if (plan.name === 'Scale' && users > 10) extraUsers = (users - 10) * 99;
+
+        // Calcular contatos extras (pacote de 25k = R$ 197)
+        if (plan.name === 'Starter' && contacts > 20000) {
+            extraContacts = Math.ceil((contacts - 20000) / 25000) * 197;
+        } else if (plan.name === 'Growth' && contacts > 50000) {
+            extraContacts = Math.ceil((contacts - 50000) / 25000) * 197;
+        } else if (plan.name === 'Scale' && contacts > 75000) {
+            extraContacts = Math.ceil((contacts - 75000) / 25000) * 197;
+        }
+
+        // WhatsApp: R$ 29/mês + R$ 0,04 por mensagem
+        const whatsappCost = (plan.name !== 'Starter' ? 29 : 0) + (whatsappMessages * 0.04);
+
+        // E-mails: R$ 0,0034 por e-mail enviado (convertido de USD)
+        const emailCost = emails * 0.0034;
+
+        return {
+            plan: plan.name,
+            base: plan.base,
+            extraUsers,
+            extraContacts,
+            whatsapp: whatsappCost,
+            email: emailCost,
+            total: plan.base + extraUsers + extraContacts + whatsappCost + emailCost
+        };
+    };
+
+    const costs = calculateAdditionalCosts();
 
     return (
         <div className="min-h-screen bg-white pt-24 pb-16 px-6">
@@ -77,136 +72,179 @@ export const PricingPage: React.FC<PricingPageProps> = ({ onBookDemo }) => {
                 {/* Hero */}
                 <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-5xl font-bold font-space mb-4">
-                        Preços Transparentes
+                        Compare Planos e Calcule Seus Custos
                     </h1>
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-                        Compare todos os planos e escolha o melhor para o seu negócio
+                        Use nossa calculadora para estimar o custo do FUNNELS para o seu negócio
                     </p>
                 </div>
 
-                {/* Tabela de Comparação */}
-                <div className="overflow-x-auto mb-16">
-                    <div className="min-w-[900px]">
-                        {/* Header com preços */}
-                        <div className="grid grid-cols-5 gap-4 mb-8">
-                            <div className="col-span-1"></div>
-                            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
-                                <h3 className="font-bold text-xl mb-2">Starter</h3>
-                                <div className="text-3xl font-bold mb-1">R$ 497</div>
-                                <div className="text-sm text-gray-500 mb-4">/mês</div>
-                                <a
-                                    href="https://checkout.usefunnels.io/plano-starter-mensal"
-                                    className="block w-full py-3 bg-deep-black text-white font-bold rounded hover:bg-opacity-90 transition-all text-sm"
-                                >
-                                    Começar
-                                </a>
-                            </div>
-                            <div className="bg-neon-green/5 border-2 border-neon-green rounded-lg p-6 text-center relative">
-                                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-neon-green text-deep-black text-xs font-bold px-3 py-1 rounded-full">
-                                    MAIS POPULAR
+                {/* Calculadora Inteligente */}
+                <div className="max-w-5xl mx-auto mb-20">
+                    <div className="bg-gradient-to-br from-gray-50 to-white border-2 border-gray-200 rounded-lg p-8 md:p-12">
+                        <h2 className="text-2xl font-bold mb-8 text-center">Calculadora de Custos FUNNELS</h2>
+
+                        <div className="grid md:grid-cols-2 gap-8 mb-8">
+                            {/* Usuários */}
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-3">
+                                    Número de Usuários
+                                </label>
+                                <input
+                                    type="range"
+                                    min="1"
+                                    max="50"
+                                    value={users}
+                                    onChange={(e) => setUsers(Number(e.target.value))}
+                                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                />
+                                <div className="flex justify-between mt-2">
+                                    <span className="text-xs text-gray-500">1</span>
+                                    <span className="text-2xl font-bold">{users}</span>
+                                    <span className="text-xs text-gray-500">50</span>
                                 </div>
-                                <h3 className="font-bold text-xl mb-2">Growth</h3>
-                                <div className="text-3xl font-bold mb-1">R$ 697</div>
-                                <div className="text-sm text-gray-500 mb-4">/mês</div>
-                                <a
-                                    href="https://checkout.usefunnels.io/plano-growth-mensal"
-                                    className="block w-full py-3 bg-neon-green text-deep-black font-bold rounded hover:bg-opacity-90 transition-all text-sm"
-                                >
-                                    Começar
-                                </a>
                             </div>
-                            <div className="bg-white border border-gray-200 rounded-lg p-6 text-center">
-                                <h3 className="font-bold text-xl mb-2">Scale</h3>
-                                <div className="text-3xl font-bold mb-1">R$ 997</div>
-                                <div className="text-sm text-gray-500 mb-4">/mês</div>
-                                <a
-                                    href="https://checkout.usefunnels.io/plano-scale-mensal"
-                                    className="block w-full py-3 bg-deep-black text-white font-bold rounded hover:bg-opacity-90 transition-all text-sm"
-                                >
-                                    Começar
-                                </a>
+
+                            {/* Contatos */}
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-3">
+                                    Contatos no CRM
+                                </label>
+                                <input
+                                    type="range"
+                                    min="1000"
+                                    max="200000"
+                                    step="1000"
+                                    value={contacts}
+                                    onChange={(e) => setContacts(Number(e.target.value))}
+                                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                />
+                                <div className="flex justify-between mt-2">
+                                    <span className="text-xs text-gray-500">1k</span>
+                                    <span className="text-2xl font-bold">{(contacts / 1000).toFixed(0)}k</span>
+                                    <span className="text-xs text-gray-500">200k</span>
+                                </div>
                             </div>
-                            <div className="bg-deep-black text-white border border-gray-800 rounded-lg p-6 text-center">
-                                <h3 className="font-bold text-xl mb-2">Enterprise</h3>
-                                <div className="text-3xl font-bold mb-1">Custom</div>
-                                <div className="text-sm text-gray-400 mb-4">Sob consulta</div>
-                                <button
-                                    onClick={onBookDemo}
-                                    className="block w-full py-3 bg-neon-green text-deep-black font-bold rounded hover:bg-opacity-90 transition-all text-sm"
-                                >
-                                    Falar com Vendas
-                                </button>
+
+                            {/* WhatsApp Mensagens */}
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-3">
+                                    Mensagens WhatsApp/mês
+                                </label>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="10000"
+                                    step="100"
+                                    value={whatsappMessages}
+                                    onChange={(e) => setWhatsappMessages(Number(e.target.value))}
+                                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                />
+                                <div className="flex justify-between mt-2">
+                                    <span className="text-xs text-gray-500">0</span>
+                                    <span className="text-2xl font-bold">{whatsappMessages.toLocaleString('pt-BR')}</span>
+                                    <span className="text-xs text-gray-500">10k</span>
+                                </div>
+                            </div>
+
+                            {/* E-mails */}
+                            <div>
+                                <label className="block text-sm font-bold text-gray-700 mb-3">
+                                    E-mails Enviados/mês
+                                </label>
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="50000"
+                                    step="1000"
+                                    value={emails}
+                                    onChange={(e) => setEmails(Number(e.target.value))}
+                                    className="w-full h-2 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                />
+                                <div className="flex justify-between mt-2">
+                                    <span className="text-xs text-gray-500">0</span>
+                                    <span className="text-2xl font-bold">{(emails / 1000).toFixed(0)}k</span>
+                                    <span className="text-xs text-gray-500">50k</span>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Tabela de Features */}
-                        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
-                            {features.map((category, catIdx) => (
-                                <React.Fragment key={catIdx}>
-                                    <div className="bg-gray-100 px-6 py-3 border-b border-gray-200">
-                                        <h4 className="font-bold text-sm uppercase tracking-wider text-gray-700">
-                                            {category.category}
-                                        </h4>
-                                    </div>
-                                    {category.items.map((item, itemIdx) => (
-                                        <div
-                                            key={itemIdx}
-                                            className="grid grid-cols-5 gap-4 px-6 py-4 border-b border-gray-100 hover:bg-gray-50 transition-colors"
-                                        >
-                                            <div className="col-span-1 text-sm font-medium text-gray-700 flex items-center">
-                                                {item.name}
+                        {/* Resultado da Calculadora */}
+                        <div className="border-t-2 border-gray-200 pt-8">
+                            <div className="bg-white border-2 border-neon-green rounded-lg p-6">
+                                <div className="grid md:grid-cols-2 gap-6">
+                                    <div>
+                                        <h3 className="text-lg font-bold mb-4">Plano Recomendado: {costs.plan}</h3>
+                                        <div className="space-y-2 text-sm">
+                                            <div className="flex justify-between">
+                                                <span>Plano base:</span>
+                                                <span className="font-bold">R$ {costs.base}</span>
                                             </div>
-                                            <div className="text-center flex items-center justify-center">
-                                                {renderValue(item.starter)}
-                                            </div>
-                                            <div className="text-center flex items-center justify-center bg-neon-green/5">
-                                                {renderValue(item.growth)}
-                                            </div>
-                                            <div className="text-center flex items-center justify-center">
-                                                {renderValue(item.scale)}
-                                            </div>
-                                            <div className="text-center flex items-center justify-center bg-gray-50">
-                                                {renderValue(item.enterprise)}
-                                            </div>
+                                            {costs.extraUsers > 0 && (
+                                                <div className="flex justify-between text-gray-600">
+                                                    <span>+ Usuários extras:</span>
+                                                    <span className="font-bold">R$ {costs.extraUsers}</span>
+                                                </div>
+                                            )}
+                                            {costs.extraContacts > 0 && (
+                                                <div className="flex justify-between text-gray-600">
+                                                    <span>+ Contatos extras:</span>
+                                                    <span className="font-bold">R$ {costs.extraContacts}</span>
+                                                </div>
+                                            )}
+                                            {costs.whatsapp > 0 && (
+                                                <div className="flex justify-between text-gray-600">
+                                                    <span>+ WhatsApp:</span>
+                                                    <span className="font-bold">R$ {costs.whatsapp.toFixed(2)}</span>
+                                                </div>
+                                            )}
+                                            {costs.email > 0 && (
+                                                <div className="flex justify-between text-gray-600">
+                                                    <span>+ E-mails:</span>
+                                                    <span className="font-bold">R$ {costs.email.toFixed(2)}</span>
+                                                </div>
+                                            )}
                                         </div>
-                                    ))}
-                                </React.Fragment>
-                            ))}
+                                    </div>
+                                    <div className="flex flex-col justify-center items-center border-l-2 border-gray-200 pl-6">
+                                        <div className="text-sm text-gray-600 mb-2">Custo Total Estimado</div>
+                                        <div className="text-4xl font-bold text-neon-green mb-4">
+                                            R$ {costs.total.toFixed(2)}
+                                        </div>
+                                        <div className="text-xs text-gray-500">/mês</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                {/* FAQ Simples */}
-                <div className="max-w-3xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold text-center mb-8">Perguntas Frequentes</h2>
-                    <div className="space-y-4">
-                        <details className="bg-white border border-gray-200 rounded-lg p-6">
-                            <summary className="font-bold cursor-pointer">Posso mudar de plano a qualquer momento?</summary>
-                            <p className="mt-3 text-gray-600">Sim! Você pode fazer upgrade ou downgrade do seu plano a qualquer momento sem taxas adicionais.</p>
-                        </details>
-                        <details className="bg-white border border-gray-200 rounded-lg p-6">
-                            <summary className="font-bold cursor-pointer">Como funcionam os custos adicionais?</summary>
-                            <p className="mt-3 text-gray-600">Você paga apenas pelo que usa além do plano base. Automações avançadas, e-mails e mensagens têm custo por uso com valores transparentes.</p>
-                        </details>
-                        <details className="bg-white border border-gray-200 rounded-lg p-6">
-                            <summary className="font-bold cursor-pointer">Existe período de teste gratuito?</summary>
-                            <p className="mt-3 text-gray-600">Oferecemos garantia de reembolso total em até 7 dias após a primeira assinatura. Experimente sem riscos!</p>
-                        </details>
-                    </div>
+                {/* Tabela Comparativa */}
+                <div className="mb-16">
+                    <h2 className="text-3xl font-bold text-center mb-8">Comparação Completa de Recursos</h2>
+                    <CompactPricingTable />
                 </div>
 
-                {/* CTA Final */}
+                {/* CTA */}
                 <div className="text-center bg-gray-50 border border-gray-200 rounded-lg p-12">
                     <h2 className="text-3xl font-bold mb-4">Pronto para começar?</h2>
                     <p className="text-gray-600 mb-8 text-lg">
-                        Escolha o plano ideal e comece agora mesmo
+                        Fale com um especialista ou comece agora mesmo
                     </p>
-                    <button
-                        onClick={onBookDemo}
-                        className="px-8 py-4 bg-neon-green text-deep-black font-bold rounded hover:bg-opacity-90 transition-all text-lg"
-                    >
-                        Falar com Especialista
-                    </button>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <button
+                            onClick={onBookDemo}
+                            className="px-8 py-4 bg-neon-green text-deep-black font-bold rounded hover:bg-opacity-90 transition-all text-lg"
+                        >
+                            Falar com Especialista
+                        </button>
+                        <a
+                            href="/#/pricing"
+                            className="px-8 py-4 border-2 border-deep-black text-deep-black font-bold rounded hover:bg-deep-black hover:text-white transition-all text-lg"
+                        >
+                            Ver Planos Completos
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
