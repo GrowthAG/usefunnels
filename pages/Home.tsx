@@ -8,7 +8,7 @@ import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '..
 
 import { WikimeeCarousel } from '../components/features/WikimeeCarousel';
 
-export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
+export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onCheckout: (url: string) => void }) => {
     // Modal State for Features
     const [selectedFeature, setSelectedFeature] = useState<typeof FEATURES[0] | null>(null);
 
@@ -226,7 +226,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             <h2 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-deep-black text-balance">Planos simples. Preços justos.<br />Sem surpresas.</h2>
                             <p className="text-gray-500 max-w-xl mx-auto text-sm md:text-lg text-balance">Sem taxas escondidas, sem fidelidade e com tudo incluído para começar agora.</p>
                         </div>
-                        <Pricing onBookDemo={onBookDemo} />
+                        <Pricing onBookDemo={onBookDemo} onCheckout={onCheckout} />
                     </Reveal>
                 </Container>
             </Section>

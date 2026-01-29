@@ -84,7 +84,7 @@ const plans: PricingPlan[] = [
     }
 ];
 
-const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: () => void }> = ({ plan, isAnnual, onBookDemo }) => {
+const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: () => void; onCheckout?: (url: string) => void }> = ({ plan, isAnnual, onBookDemo, onCheckout }) => {
     const [showCosts, setShowCosts] = useState(false);
 
     // Helper to check if a feature matches a resource page
@@ -97,10 +97,15 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
     };
 
     const handleCtaClick = (e: React.MouseEvent) => {
+        e.preventDefault();
         const link = isAnnual ? plan.linkAnnual : plan.linkMonthly;
+
         if (link === '#' || link.includes('enterprise')) {
-            e.preventDefault();
             onBookDemo();
+        } else if (onCheckout) {
+            onCheckout(link);
+        } else {
+            window.location.href = link;
         }
     };
 
@@ -172,7 +177,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
             {/* Recommended Badge */}
             <div className={`text-center text-xs font-bold py-2 rounded-lg mb-6 relative z-10 ${plan.isPopular ? 'bg-deep-black text-white border border-gray-800' :
-                    plan.isDark || plan.isEnterprise ? 'bg-white/10 text-neon-green' : 'bg-gray-50 text-gray-500'
+                plan.isDark || plan.isEnterprise ? 'bg-white/10 text-neon-green' : 'bg-gray-50 text-gray-500'
                 }`}>
                 {plan.recommendedBadge}
             </div>
@@ -259,9 +264,9 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                     href={isAnnual ? plan.linkAnnual : plan.linkMonthly}
                     onClick={handleCtaClick}
                     className={`block w-full text-center py-4 rounded-sm font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer ${plan.isPopular ? 'bg-deep-black text-neon-green hover:bg-opacity-90 hover:shadow-lg hover:scale-[1.02]' :
-                            plan.isDark ? 'bg-neon-green text-deep-black hover:bg-white' :
-                                plan.isEnterprise ? 'bg-white text-deep-black hover:bg-neon-green' :
-                                    'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
+                        plan.isDark ? 'bg-neon-green text-deep-black hover:bg-white' :
+                            plan.isEnterprise ? 'bg-white text-deep-black hover:bg-neon-green' :
+                                'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
                         }`}
                 >
                     {plan.isEnterprise ? 'Falar com Vendas' : 'Começar Agora'}
@@ -363,7 +368,7 @@ export const PricingTable = () => {
     );
 };
 
-export const Pricing = ({ onBookDemo }: { onBookDemo: () => void }) => {
+export const Pricing = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onCheckout?: (url: string) => void }) => {
     const [isAnnual, setIsAnnual] = useState(false);
 
     return (
@@ -396,7 +401,7 @@ export const Pricing = ({ onBookDemo }: { onBookDemo: () => void }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-[1400px] mx-auto mb-16 items-stretch">
                 {plans.map((plan, idx) => (
                     <div key={idx} className="w-full h-full">
-                        <PricingCard plan={plan} isAnnual={isAnnual} onBookDemo={onBookDemo} />
+                        <PricingCard plan={plan} isAnnual={isAnnual} onBookDemo={onBookDemo} onCheckout={onCheckout} />
                     </div>
                 ))}
             </div>
