@@ -358,7 +358,7 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                                         className="w-full"
                                         onClick={onBookDemo}
                                     >
-                                        Começar com {FUNNELS_PLANS[selectedPlan].name}
+                                        Agendar Demo
                                     </Button>
 
                                     <p className="text-center text-xs text-gray-400 mt-4">
