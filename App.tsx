@@ -4,6 +4,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import { Header, Footer } from './components/layout';
 import { Home, About, Partners, Enterprise, Blog, FeaturePage, Legal } from './pages';
 import { Modal } from './components/ui';
+import { PricingPage } from './components/PricingPage';
 
 // Scroll To Top Component
 const ScrollToTop = () => {
@@ -74,6 +75,7 @@ const App = () => {
                     <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} onCheckout={handleCheckout} />} />
                     <Route path="/recursos/:id" element={<FeaturePage onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/sobre" element={<About />} />
+                    <Route path="/precos" element={<PricingPage onBookDemo={() => setIsDemoModalOpen(true)} />} />
                     <Route path="/legal/:type" element={<Legal />} />
                     <Route
                         path="/parceiros"

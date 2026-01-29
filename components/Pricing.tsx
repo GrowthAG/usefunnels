@@ -392,20 +392,34 @@ export const Pricing = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; on
                 ))}
             </div>
 
-            {/* INTEGRATE COMPACT COMPARISON TABLE */}
-            <CompactPricingTable />
+            {/* Link para página de preços detalhada */}
+            <div className="mt-12 text-center">
+                <a
+                    href="/#/precos"
+                    className="inline-flex items-center gap-2 text-deep-black hover:text-neon-green transition-colors font-medium"
+                >
+                    Ver tabela comparativa completa
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    );
+};
 
-            {/* SAVINGS CALCULATOR */}
-            <PricingSavingsCalculator />
+/* ===================================
+   PÁGINA DEDICADA DE PREÇOS
+   =================================== */
 
-            {/* ADD-ONS SECTION */}
-            <PricingAddons />
+interface PricingPageProps {
+    onBookDemo: () => void;
+}
 
-            {/* FAQ SECTION */}
-            <PricingFAQ />
-
-            {/* FINAL CTA */}
-            <div className="mt-24 mb-16 text-center bg-gradient-to-r from-deep-black to-gray-900 text-white py-16 px-8 rounded-sm">
+export const PricingPage: React.FC<PricingPageProps> = ({ onBookDemo }) => {
+    return (
+        <div className="min-h-screen bg-white pt-24 pb-16 px-6">
+            <div className="max-w-7xl mx-auto">
                 <h2 className="text-3xl md:text-4xl font-bold font-space mb-4">
                     Pronto para Crescer com FUNNELS?
                 </h2>

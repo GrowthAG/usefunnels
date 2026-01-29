@@ -1,0 +1,19 @@
+═══════════════════════════════════════════════════════════
+🚀 COMANDOS PARA INICIAR O SERVIDOR
+═══════════════════════════════════════════════════════════
+
+COPIE E COLE ESTE BLOCO NO SEU TERMINAL:
+
+cd "/Users/giullianoalves/Documents/Projetos Antigravity/Funnels" && rm -rf node_modules/.vite dist && npm run dev
+
+═══════════════════════════════════════════════════════════
+
+Depois que o servidor iniciar, abra no navegador:
+
+👉 http://localhost:3000/#/pricing
+
+═══════════════════════════════════════════════════════════
+
+⚠️  IMPORTANTE: Limpe o cache do navegador com Cmd+Shift+R
+
+═══════════════════════════════════════════════════════════
