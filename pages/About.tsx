@@ -1,38 +1,43 @@
 
 import React from 'react';
-import { Container, Section, Reveal, TechBadge } from '../components/ui';
+import { Container, Section, Reveal, Button } from '../components/ui';
 
 export const About = () => (
-    <main className="pt-[100px]">
-        {/* HERO - Dark Section (Same pattern as Home) */}
-        <Section className="bg-deep-black text-white py-24 md:py-32 relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(27,252,79,0.08),_transparent_40%)] pointer-events-none"></div>
+    <main className="overflow-hidden bg-deep-black">
+        {/* HERO SECTION - Same pattern as Home */}
+        <Section className="min-h-[90vh] flex flex-col justify-center bg-deep-black pt-[100px] md:pt-[120px] relative overflow-hidden border-b border-gray-900">
+            {/* Volumetric Light Source (Radial Gradient) */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,_rgba(27,252,79,0.12),_transparent_50%)] pointer-events-none"></div>
+            <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
 
-            <Container className="relative z-10">
-                <div className="max-w-3xl mx-auto text-center">
-                    <Reveal>
-                        <TechBadge className="bg-neon-green text-black mb-6 font-bold border-none mx-auto">MANIFESTO 2025</TechBadge>
+            <Container className="text-center relative z-10 px-4 md:px-12">
+                <Reveal>
+                    {/* Badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 bg-neon-green/10 border border-neon-green/30 rounded-sm text-xs font-mono font-bold uppercase tracking-widest text-neon-green mb-8">
+                        Manifesto 2025
+                    </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space mb-6 leading-[1.1] tracking-tight text-white text-balance">
-                            Complexidade drena lucro.<br />
-                            <span className="text-neon-green">Unificação gera escala.</span>
-                        </h1>
+                    {/* Headline - Same size as Home */}
+                    <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[48px] md:text-[72px] lg:text-[90px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
+                        <span className="block text-white">Complexidade drena lucro.</span>
+                        <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">Unificação gera escala.</span>
+                    </h1>
 
-                        <p className="text-lg text-gray-400 leading-relaxed font-light max-w-2xl mx-auto text-balance">
-                            O FUNNELS não nasceu para ser "mais um software". Nasceu para ser o <strong className="text-white">Sistema Operacional Definitivo</strong> de quem quer crescer.
-                        </p>
-                    </Reveal>
-                </div>
+                    {/* Subheadline */}
+                    <p className="text-sm sm:text-lg md:text-2xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-12 leading-relaxed font-light font-space px-2 text-balance">
+                        O FUNNELS não nasceu para ser "mais um software". Nasceu para ser o <strong className="text-white">Sistema Operacional Definitivo</strong> de quem quer crescer.
+                    </p>
+                </Reveal>
             </Container>
         </Section>
 
-        {/* TIMELINE - White Section (Same pattern as Home) */}
+        {/* TIMELINE - White Section */}
         <Section className="bg-white py-20 md:py-28">
             <Container>
                 <Reveal>
                     <div className="text-center mb-12">
                         <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Nossa Jornada</span>
-                        <h2 className="text-3xl md:text-4xl font-bold font-space text-deep-black text-balance">Como chegamos aqui</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold font-space text-deep-black text-balance">Como chegamos aqui</h2>
                     </div>
                 </Reveal>
 
@@ -75,13 +80,13 @@ export const About = () => (
             </Container>
         </Section>
 
-        {/* DNA GRID - Light Gray Section (Same pattern as Home) */}
+        {/* DNA GRID - Light Gray Section */}
         <Section className="bg-gray-50 py-20 md:py-28">
             <Container>
                 <Reveal>
                     <div className="text-center mb-12">
                         <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Princípios</span>
-                        <h2 className="text-3xl md:text-4xl font-bold font-space text-deep-black text-balance">Nosso DNA</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold font-space text-deep-black text-balance">Nosso DNA</h2>
                     </div>
                 </Reveal>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
