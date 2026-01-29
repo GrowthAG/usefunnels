@@ -27,7 +27,7 @@ export const Header = ({ onBookDemo }: { onBookDemo: () => void }) => {
         { name: "Sobre", path: "/sobre", external: false },
         { name: "Parceiros", path: "/parceiros", external: false },
         { name: "Blog", path: "https://usefunnels.io/blog", external: true },
-        { name: "Preços", path: "/#precos", external: false },
+        { name: "Preços", path: "/precos", external: false },
     ];
 
     const linkClasses = ({ isActive }: { isActive: boolean }) => `relative font-space font-medium text-sm hover:text-white transition-colors uppercase tracking-wide py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-neon-green after:transition-all after:duration-300 hover:after:w-full ${isActive ? 'text-white font-bold after:w-full' : 'text-gray-400'}`;
