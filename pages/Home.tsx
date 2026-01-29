@@ -245,10 +245,13 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
                 <Container className="relative z-10 px-4">
                     <Reveal>
-                        <h2 className="text-4xl md:text-7xl font-bold font-space mb-8 md:mb-10 tracking-tight leading-none drop-shadow-xl text-balance">
-                            Pare de adivinhar.<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-white">Comece a escalar.</span>
-                        </h2>
+                        <div className="text-center max-w-4xl mx-auto">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Próximo Passo</span>
+                            <h2 className="text-3xl md:text-5xl font-bold font-space text-white mb-8 tracking-tight leading-none text-balance">
+                                Pare de adivinhar.<br />
+                                <span className="text-neon-green">Comece a escalar.</span>
+                            </h2>
+                        </div>
                         <Button variant="primary" className="!text-lg md:!text-xl !px-10 md:!px-16 !py-5 md:!py-6 mb-8 md:mb-12 shadow-[0_0_40px_rgba(27,252,79,0.3)] hover:shadow-[0_0_60px_rgba(27,252,79,0.5)] scale-100 hover:scale-105 w-full md:w-auto transition-transform" onClick={scrollToPricing}>Começar Agora</Button>
                         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-[10px] md:text-xs text-gray-500 font-mono uppercase tracking-widest">
                             <span className="flex items-center justify-center gap-2">[+] Acesso Imediato</span>
