@@ -194,10 +194,9 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                                 {/* Logo Box */}
                                 <div
                                     style={{
-                                        width: '100px',
-                                        height: '100px',
+                                        padding: '16px 32px',
                                         background: '#050505',
-                                        borderRadius: '50%',
+                                        borderRadius: '100px',
                                         display: 'flex',
                                         alignItems: 'center',
                                         justifyContent: 'center',
@@ -206,9 +205,9 @@ export const IntegrationHero: React.FC<IntegrationHeroProps> = ({ onBookDemo }) 
                                     }}
                                 >
                                     <img
-                                        src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/6942ede10190af58ee895209.png"
+                                        src={ASSETS.logoWhite}
                                         alt="Funnels"
-                                        style={{ width: '48px', height: '48px', objectFit: 'contain' }}
+                                        style={{ height: '20px', width: 'auto', objectFit: 'contain' }}
                                     />
                                 </div>
                             </div>
