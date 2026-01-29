@@ -2,10 +2,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
-import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, BentoGrid } from '../components/features';
+import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsShowcase } from '../components/features';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
-
-import { WikimeeCarousel } from '../components/features/WikimeeCarousel';
 
 export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
     // Modal State for Features
@@ -18,7 +16,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             subtitle: "FORÇA DE TRABALHO DIGITAL",
             label: "FUNNELS AI",
             quote: "Crie agentes que trabalham 24/7. Eles qualificam leads, agendam reuniões e fecham vendas enquanto sua equipe dorme.",
-            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff68cb9d3acf04072af2fc.png"
+            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b726cf7a877358425c7d1.png"
         },
         {
             id: 'marketplace',
@@ -34,7 +32,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             subtitle: "AUTOMAÇÃO VISUAL",
             label: "NO-CODE",
             quote: "Construa fluxos complexos arrastando e soltando. Lógica condicional avançada sem escrever uma linha de código.",
-            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ff88f1788aed9a1d078758.png"
+            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffec766f3caf41ae5ee191.png"
         }
     ];
 
@@ -52,64 +50,38 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             {/* Feature Details Modal */}
             <FeaturePopupModal feature={selectedFeature} onClose={() => setSelectedFeature(null)} />
 
-            {/* HERO SECTION - Dark Mode with Volumetric Lighting (No Blur Blobs) */}
+            {/* HERO SECTION - Dark Mode with Volumetric Lighting */}
             <Section className="min-h-screen flex flex-col justify-center bg-deep-black pt-[100px] md:pt-[120px] relative overflow-hidden border-b border-gray-900">
                 {/* Volumetric Light Source (Radial Gradient) */}
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,_rgba(27,252,79,0.12),_transparent_50%)] pointer-events-none"></div>
                 <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
 
-                <Container className="text-center relative z-10 px-4 md:px-12">
+                <Container className="relative z-10">
                     <Reveal>
-                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.04em] mb-5 md:mb-6 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
-                            <span className="block text-white">Sua empresa inteira</span>
-                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">dentro de um único lugar.</span>
-                        </h1>
-                        <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light font-space px-2 text-balance">
-                            Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.
-                        </p>
-
-                        {/* Interactive Demo - Browser Mockup */}
-                        <div className="max-w-5xl mx-auto mb-8 md:mb-12">
-                            <div className="relative shadow-2xl rounded-xl overflow-hidden">
-                                {/* Browser Header - Dark Mode */}
-                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-4 py-3 flex items-center gap-3">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full bg-[#FF5F56] opacity-50"></div>
-                                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] opacity-50"></div>
-                                        <div className="w-3 h-3 rounded-full bg-[#27C93F] opacity-50"></div>
-                                    </div>
-                                    <div className="flex-1 flex justify-center">
-                                        <div className="bg-gray-900 rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-800 shadow-sm">
-                                            app.usefunnels.io/dashboard
-                                        </div>
-                                    </div>
-                                    <div className="w-16"></div>
-                                </div>
-
-                                <div className="relative aspect-video bg-black">
-                                    <iframe
-                                        src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
-                                        loading="lazy"
-                                        title="FUNNELS Demo Interativa"
-                                        allow="clipboard-write"
-                                        frameBorder="0"
-                                        allowFullScreen
-                                        className="w-full h-full"
-                                    ></iframe>
-                                </div>
-
-                                {/* Bottom Glow */}
-                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
-                            </div>
+                        <div className="text-center max-w-5xl mx-auto mb-8 md:mb-12">
+                            <TechBadge>O SISTEMA OPERACIONAL DE CRESCIMENTO</TechBadge>
+                            <h1 className="text-[40px] leading-[1.1] sm:text-[50px] md:text-[64px] lg:text-[80px] font-bold font-space mb-6 tracking-tight text-white">
+                                Marketing e Vendas <br />
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green via-emerald-400 to-teal-500 animate-pulse-slow">
+                                    Inteligentes.
+                                </span>
+                            </h1>
+                            <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto text-balance">
+                                Fluxos automatizados que funcionam 24/7 sem você mover um dedo. Tudo integrado nativamente.
+                            </p>
                         </div>
 
-                        <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center mb-10 md:mb-16 px-2">
-                            <Button className="w-full sm:w-auto min-w-[200px] shadow-[0_0_30px_rgba(27,252,79,0.2)] py-4 hover:shadow-[0_0_50px_rgba(27,252,79,0.4)] border border-neon-green/50 hover:border-neon-green transition-all duration-300" onClick={scrollToPricing}>Começar Agora</Button>
-                            <Button variant="outline" className="w-full sm:w-auto min-w-[200px] py-4" onClick={onBookDemo}>Agendar Demo</Button>
+                        {/* Dark Mode Carousel - "Lead Scoring" Style */}
+                        <div className="relative z-10 max-w-5xl mx-auto">
+                            <AICarousel />
+                        </div>
+
+                        <div className="flex justify-center mt-12">
+                            <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={onBookDemo}>Agendar Demo</Button>
                         </div>
 
                         {/* 3D Depth Stats Bar - Refined for Clarity & Mobile */}
-                        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-xs font-mono text-gray-400 uppercase tracking-widest border-t border-white/10 bg-white/[0.03] backdrop-blur-md pt-6 pb-6 max-w-4xl mx-auto rounded-sm border-x border-b border-b-white/5 shadow-2xl">
+                        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-xs font-mono text-gray-400 uppercase tracking-widest border-t border-white/10 bg-white/[0.03] backdrop-blur-md pt-6 pb-6 max-w-4xl mx-auto rounded-sm border-x border-b border-b-white/5 shadow-2xl mt-16">
                             <span className="flex items-center gap-3 hover:text-white transition-colors group cursor-default">
                                 <span className="text-neon-green font-bold opacity-80 group-hover:opacity-100">///</span>
                                 Setup em 48h
@@ -125,8 +97,6 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                 Suporte 24/7
                             </span>
                         </div>
-
-
                     </Reveal>
                 </Container>
             </Section>
@@ -134,10 +104,10 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             {/* PARTNERS - Infinite Carousel */}
             <InfiniteLogoCarousel logos={CLIENT_LOGOS} />
 
-            {/* INTEGRATION HERO - Singularity (Correct Component) */}
+            {/* INTEGRATION HERO - Singularity */}
             <IntegrationHero onBookDemo={onBookDemo} />
 
-            {/* 1. AI BENEFITS - DARK MODE (Exact Match to Screenshot 2) */}
+            {/* 1. AI BENEFITS - DARK MODE */}
             <Section className="bg-[#050505] text-white border-y border-gray-900 py-24 md:py-32 relative overflow-hidden">
                 <div className="absolute inset-0 bg-grid-pattern-dark opacity-[0.05] pointer-events-none"></div>
                 <Container>
@@ -151,12 +121,13 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                 Fluxos automatizados que funcionam 24/7 sem você mover um dedo. Tudo integrado nativamente.
                             </p>
                         </div>
-
-                        {/* Dark Mode Carousel - "Lead Scoring" Style */}
+                        {/* Reusing AICarousel here if intended, or just keeping the structure as it was previously valid. Assuming content here was correct before my bad edit. */}
+                        {/* NOTE: In the previous valid file, there was another instance of AICarousel here? Or was it something else?
+                             Looking at the file history, line 125 had <AICarousel />. I will keep it consistent.
+                          */}
                         <div className="relative z-10 max-w-5xl mx-auto">
                             <AICarousel />
                         </div>
-
                         <div className="flex justify-center mt-12">
                             <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={onBookDemo}>Agendar Demo</Button>
                         </div>
@@ -164,22 +135,10 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 </Container>
             </Section>
 
-            {/* A ERA DOS AGENTES - BENTO GRID MODERN LAYOUT */}
-            <Section className="bg-deep-black py-20 md:py-32 relative overflow-hidden">
-                <div className="absolute inset-0 bg-grid-pattern-dark opacity-[0.03] pointer-events-none"></div>
-                <div className="text-center max-w-3xl mx-auto mb-16 px-4">
-                    <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">Inteligência Artificial</span>
-                    <h2 className="text-4xl md:text-6xl font-bold font-space mb-4 tracking-tight text-white leading-none">
-                        A Era dos Agentes.
-                    </h2>
-                    <p className="text-gray-400 text-lg leading-relaxed">
-                        Não apenas ferramentas. Inteligência que trabalha por você 24/7.
-                    </p>
-                </div>
-                <BentoGrid />
-            </Section>
+            {/* A ERA DOS AGENTES - CLASSIC CAROUSEL REVERTED */}
+            <AgentsShowcase items={CAROUSEL_ITEMS} />
 
-            {/* FEATURE CARDS - Secondary Grid (REFINED DESIGN) */}
+            {/* FEATURE CARDS - Secondary Grid */}
             <Section id="features-grid" className="bg-light-gray py-16 md:py-[120px]">
                 <Container>
                     <div className="text-center mb-16">
@@ -223,8 +182,6 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                     </div>
                 </Container>
             </Section>
-
-
 
             {/* TESTIMONIALS - Clean Grid */}
             <Section className="py-16 md:py-[120px] bg-white">
