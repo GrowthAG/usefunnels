@@ -99,9 +99,6 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             {/* PARTNERS - Infinite Carousel with headline */}
             <InfiniteLogoCarousel logos={CLIENT_LOGOS} />
 
-            {/* INTEGRATION HUB - Solar System Visual */}
-            <IntegrationHero onBookDemo={onBookDemo} />
-
             {/* FEATURES TABS - CORE FUNCTIONALITY */}
             <Section id="recursos" className="py-16 md:py-[120px] bg-white">
                 <Container>
@@ -208,100 +205,9 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 </Container>
             </Section>
 
-            {/* ROI COMPARISON SECTION - LIGHT MODE SASS */}
-            <Section className="bg-gray-50 py-24 md:py-[140px] relative border-y border-gray-200 overflow-hidden">
-                <Container>
-                    <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-                        {/* LEFT: Copy & Economy Card */}
-                        <div className="flex flex-col order-1 lg:order-1 relative z-10 items-center text-center lg:items-start lg:text-left">
-                            <Reveal className="flex flex-col items-center lg:items-start">
-                                <div className="bg-green-50/50 border border-green-100 px-3 py-1 rounded-sm mb-6 w-fit">
-                                    <span className="text-[10px] md:text-xs font-mono font-bold uppercase tracking-widest text-[#03FC3B]">Consolidação</span>
-                                </div>
-                                <h2 className="text-4xl md:text-5xl lg:text-7xl font-bold font-space mb-6 text-deep-black tracking-tighter leading-[1] text-balance">
-                                    Pare de acumular <br className="hidden lg:block" />ferramentas.
-                                    <span className="block text-[#03FC3B] mt-1">Comece a economizar de verdade.</span>
-                                </h2>
-                                <p className="text-gray-600 text-lg mb-10 font-medium leading-relaxed max-w-lg">
-                                    Centralize CRM, automação, WhatsApp, e-mail, páginas e IA em um único sistema.
-                                    <span className="block mt-2 text-deep-black font-bold">Economize até R$ 30.000/ano.</span>
-                                </p>
 
-                                {/* Economy Card - LIGHT MODE ADAPTATION */}
-                                <div className="bg-white rounded-sm p-8 border border-gray-200 shadow-2xl relative overflow-hidden group hover:border-gray-300 transition-all duration-500 max-w-md w-full">
-                                    <CornerBrackets className="text-gray-300 group-hover:text-saas-green transition-colors" />
-
-                                    <div className="flex justify-between items-center text-xs md:text-sm font-mono text-gray-500 mb-4 relative z-10">
-                                        <span>Economia anual estimada</span>
-                                    </div>
-                                    <div className="flex justify-between items-center relative z-10 border-t border-gray-100 pt-4 mt-2">
-                                        <span className="text-deep-black font-bold font-space">Total</span>
-                                        <div className="flex flex-col items-end">
-                                            <span className="text-saas-green text-3xl md:text-4xl font-bold drop-shadow-sm">+ R$ 35.000</span>
-                                            <span className="text-[10px] text-gray-400 uppercase tracking-widest font-mono">/ano</span>
-                                        </div>
-                                    </div>
-
-                                    {/* Subtle Green Glow Bottom */}
-                                    <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-saas-green to-transparent opacity-30"></div>
-                                </div>
-                            </Reveal>
-                        </div>
-
-                        {/* RIGHT: Visual Comparison (Before vs After) */}
-                        <div className="flex flex-col gap-6 order-2 lg:order-2 relative z-10">
-                            {/* BEFORE BLOCK - CHAOS */}
-                            <Reveal delay={100}>
-                                <div className="bg-white rounded-sm p-8 border border-red-100 shadow-lg relative group">
-                                    <div className="absolute top-4 left-4 text-[10px] font-mono font-bold text-red-500 uppercase tracking-widest bg-red-50 px-2 py-0.5 rounded-sm">[ CAOS ]</div>
-
-                                    {/* Logos in White Squares with Rotation for Chaos - Background is already white, so make squares gray-50 */}
-                                    <div className="mt-8 grid grid-cols-4 gap-4 animate-jitter">
-                                        {TOOLS_REPLACED.slice(0, 8).map((tool, i) => (
-                                            <div
-                                                key={i}
-                                                className={`w-16 h-16 bg-gray-50 rounded-sm flex items-center justify-center p-3 shadow-sm border border-gray-200 transform hover:scale-110 hover:z-10 hover:rotate-0 transition-transform duration-300 ${i % 2 === 0 ? 'rotate-3 translate-y-1' : '-rotate-2 -translate-y-1'}`}
-                                            >
-                                                <img src={tool.logo} alt="Tool" className="w-full h-full object-contain filter grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all" />
-                                            </div>
-                                        ))}
-                                    </div>
-
-                                    <p className="text-xs font-mono text-center text-red-500/80 mt-8 border-t border-gray-100 pt-4">
-                                        ⚠ Vários sistemas. Zero integração.
-                                    </p>
-                                </div>
-                            </Reveal>
-
-                            {/* AFTER BLOCK - ORDER (FUNNELS) - KEEP DARK FOR CONTRAST */}
-                            <Reveal delay={200}>
-                                <div className="bg-deep-black rounded-sm p-8 border border-neon-green/30 relative group shadow-2xl overflow-hidden">
-                                    <div className="absolute top-4 left-4 text-[10px] font-mono font-bold text-neon-green uppercase tracking-widest bg-neon-green/10 px-2 py-0.5 rounded-sm">[ FUNNELS ]</div>
-
-                                    <div className="mt-6 flex justify-center items-center py-8 relative">
-                                        {/* Logo Glow */}
-                                        <div className="absolute inset-0 bg-neon-green/10 blur-3xl rounded-full opacity-20"></div>
-                                        <img
-                                            src={ASSETS.logoWhite}
-                                            alt="FUNNELS"
-                                            className="h-10 md:h-14 w-auto object-contain relative z-10 drop-shadow-[0_0_8px_rgba(27,252,79,0.8)]"
-                                        />
-                                    </div>
-
-                                    <div className="mt-6 pt-4 border-t border-gray-800 flex justify-center">
-                                        <p className="text-xs font-mono text-neon-green flex items-center gap-2 uppercase tracking-wider">
-                                            <span className="w-1.5 h-1.5 bg-neon-green rounded-full animate-pulse"></span> Tudo em um único lugar.
-                                        </p>
-                                    </div>
-
-                                    {/* Neon Line Bottom */}
-                                    <div className="absolute bottom-0 left-0 w-full h-[2px] bg-neon-green shadow-[0_0_15px_#1bfc4f]"></div>
-                                </div>
-                            </Reveal>
-                        </div>
-                    </div>
-                </Container>
-            </Section>
+            {/* INTEGRATION HUB - Solar System Visual (replaces ROI Comparison) */}
+            <IntegrationHero onBookDemo={onBookDemo} />
 
             {/* PRICING - Premium Layout */}
             <Section className="bg-gray-50 relative py-16 md:py-[120px]" id="precos">
