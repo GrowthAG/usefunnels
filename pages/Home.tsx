@@ -63,7 +63,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
                 <Container className="text-center relative z-10 px-4 md:px-12">
                     <Reveal>
-                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[48px] md:text-[72px] lg:text-[90px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
+                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
                             <span className="block text-white">Sua empresa inteira</span>
                             <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">dentro de um único lugar.</span>
                         </h1>

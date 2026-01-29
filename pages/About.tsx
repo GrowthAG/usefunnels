@@ -17,8 +17,8 @@ export const About = () => (
                         Manifesto 2025
                     </div>
 
-                    {/* Headline - Same size as Home */}
-                    <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[48px] md:text-[72px] lg:text-[90px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
+                    {/* Headline - Reduced size */}
+                    <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.04em] mb-6 md:mb-8 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
                         <span className="block text-white">Complexidade drena lucro.</span>
                         <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">Unificação gera escala.</span>
                     </h1>
