@@ -3,18 +3,6 @@ import React, { useState, useEffect } from 'react';
 import { Container, Section, Reveal, Button, TechBadge, CornerBrackets } from '../components/ui';
 import { Pricing, PricingTable } from '../components/Pricing';
 
-// Tools that FUNNELS replaces with market prices
-const REPLACED_TOOLS = [
-    { name: 'CRM', price: 250 },
-    { name: 'E-mail Marketing', price: 150 },
-    { name: 'WhatsApp API', price: 200 },
-    { name: 'Landing Pages', price: 200 },
-    { name: 'Chatbot IA', price: 75 },
-    { name: 'Automação', price: 300 },
-    { name: 'Agendamento', price: 50 },
-    { name: 'Formulários', price: 100 },
-];
-
 // FUNNELS pricing tiers
 const FUNNELS_PLANS = [
     { name: 'Starter', price: 497, users: 3, contacts: 20000 },
@@ -57,32 +45,29 @@ interface PricingPageFullProps {
 
 export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, onCheckout }) => {
     const [openFaq, setOpenFaq] = useState<number | null>(null);
-    const [users, setUsers] = useState(3);
-    const [contacts, setContacts] = useState(20000);
 
-    // Calculate costs
-    const calculateToolsCost = () => {
-        let total = 0;
-        REPLACED_TOOLS.forEach(tool => {
-            total += tool.price;
-            if (tool.name === 'CRM') total += users * 50;
-            if (tool.name === 'E-mail Marketing') total += contacts * 0.003;
-            if (tool.name === 'Automação') total += contacts * 0.004;
-        });
-        return Math.round(total);
+    // Usage Calculator State - Growth plan (697) as default
+    const [selectedPlan, setSelectedPlan] = useState(1); // 0=Starter, 1=Growth, 2=Scale
+    const [emailsPerMonth, setEmailsPerMonth] = useState(10000);
+    const [whatsappMessages, setWhatsappMessages] = useState(1000);
+    const [aiActions, setAiActions] = useState(500);
+
+    // Cost rates (based on FUNNELS pricing)
+    const COST_RATES = {
+        emailPerUnit: 0.000675,        // R$ per email
+        whatsappFixed: 29,             // R$ fixed monthly
+        whatsappPerMessage: 0.008,     // R$ per message
+        aiPerAction: 0.02              // R$ per AI action (average)
     };
 
-    const getRecommendedPlan = () => {
-        if (users <= 3 && contacts <= 20000) return FUNNELS_PLANS[0];
-        if (users <= 5 && contacts <= 50000) return FUNNELS_PLANS[1];
-        return FUNNELS_PLANS[2];
-    };
-
-    const toolsCost = calculateToolsCost();
-    const recommendedPlan = getRecommendedPlan();
-    const monthlySavings = toolsCost - recommendedPlan.price;
-    const annualSavings = monthlySavings * 12;
-    const savingsPercent = Math.round((1 - recommendedPlan.price / toolsCost) * 100);
+    // Calculate variable costs
+    const emailCost = emailsPerMonth * COST_RATES.emailPerUnit;
+    const whatsappCost = whatsappMessages > 0
+        ? COST_RATES.whatsappFixed + (whatsappMessages * COST_RATES.whatsappPerMessage)
+        : 0;
+    const aiCost = aiActions * COST_RATES.aiPerAction;
+    const variableCost = emailCost + whatsappCost + aiCost;
+    const totalMonthlyCost = FUNNELS_PLANS[selectedPlan].price + variableCost;
 
     const formatCurrency = (value: number) => {
         return new Intl.NumberFormat('pt-BR', {
@@ -123,122 +108,187 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                 </Container>
             </Section>
 
-            {/* SAVINGS CALCULATOR - Minimalist Version */}
+            {/* USAGE CALCULATOR - Estimate Real Monthly Cost */}
             <Section className="bg-white py-16 md:py-24 border-y border-gray-100">
                 <Container>
                     <Reveal>
                         <div className="max-w-4xl mx-auto">
                             <div className="text-center mb-12">
                                 <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">
-                                    Calculadora
+                                    Calculadora de Uso
                                 </span>
                                 <h2 className="text-3xl md:text-4xl font-bold font-space mb-4 text-deep-black">
-                                    Quanto você vai economizar?
+                                    Estime seu custo mensal
                                 </h2>
                                 <p className="text-gray-500">
-                                    Calcule a economia ao consolidar suas ferramentas
+                                    Calcule o custo total baseado no seu uso real
                                 </p>
                             </div>
 
-                            <div className="grid md:grid-cols-2 gap-12 items-center">
-                                {/* Sliders */}
-                                <div className="space-y-8">
-                                    <div>
-                                        <div className="flex justify-between items-center mb-3">
-                                            <label className="text-sm font-medium text-gray-600">Usuários</label>
-                                            <span className="text-lg font-bold text-deep-black font-mono">{users}</span>
-                                        </div>
-                                        <input
-                                            type="range"
-                                            min="1"
-                                            max="15"
-                                            value={users}
-                                            onChange={(e) => setUsers(Number(e.target.value))}
-                                            className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
-                                        />
-                                        <div className="flex justify-between text-xs text-gray-400 mt-2">
-                                            <span>1</span>
-                                            <span>15+</span>
+                            <div className="grid md:grid-cols-2 gap-12 items-start">
+                                {/* Usage Inputs */}
+                                <div className="space-y-6">
+                                    {/* Plan Selector */}
+                                    <div className="bg-gray-50 p-4 rounded-sm border border-gray-200">
+                                        <label className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-3 block">
+                                            Plano Selecionado
+                                        </label>
+                                        <div className="flex gap-2">
+                                            {FUNNELS_PLANS.map((plan, idx) => (
+                                                <button
+                                                    key={plan.name}
+                                                    onClick={() => setSelectedPlan(idx)}
+                                                    className={`flex-1 py-3 px-4 rounded-sm text-sm font-bold transition-all ${selectedPlan === idx
+                                                        ? 'bg-deep-black text-white'
+                                                        : 'bg-white text-gray-500 border border-gray-200 hover:border-gray-300'
+                                                        }`}
+                                                >
+                                                    {plan.name}
+                                                </button>
+                                            ))}
                                         </div>
                                     </div>
 
+                                    {/* Email Usage */}
                                     <div>
                                         <div className="flex justify-between items-center mb-3">
-                                            <label className="text-sm font-medium text-gray-600">Contatos</label>
-                                            <span className="text-lg font-bold text-deep-black font-mono">{(contacts / 1000).toFixed(0)}k</span>
+                                            <label className="text-sm font-medium text-gray-600">E-mails enviados/mês</label>
+                                            <span className="text-lg font-bold text-deep-black font-mono">
+                                                {emailsPerMonth >= 1000 ? `${(emailsPerMonth / 1000).toFixed(0)}k` : emailsPerMonth}
+                                            </span>
                                         </div>
                                         <input
                                             type="range"
-                                            min="5000"
+                                            min="0"
                                             max="100000"
-                                            step="5000"
-                                            value={contacts}
-                                            onChange={(e) => setContacts(Number(e.target.value))}
+                                            step="1000"
+                                            value={emailsPerMonth}
+                                            onChange={(e) => setEmailsPerMonth(Number(e.target.value))}
                                             className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
                                         />
                                         <div className="flex justify-between text-xs text-gray-400 mt-2">
-                                            <span>5k</span>
+                                            <span>0</span>
                                             <span>100k</span>
                                         </div>
                                     </div>
 
-                                    <div className="pt-4 border-t border-gray-100">
-                                        <p className="text-xs text-gray-400 uppercase tracking-widest font-mono mb-3">
-                                            Ferramentas substituídas
-                                        </p>
-                                        <div className="flex flex-wrap gap-2">
-                                            {REPLACED_TOOLS.map((tool, idx) => (
-                                                <span
-                                                    key={idx}
-                                                    className="text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded"
-                                                >
-                                                    {tool.name}
-                                                </span>
-                                            ))}
+                                    {/* WhatsApp Usage */}
+                                    <div>
+                                        <div className="flex justify-between items-center mb-3">
+                                            <label className="text-sm font-medium text-gray-600">Conversas WhatsApp/mês</label>
+                                            <span className="text-lg font-bold text-deep-black font-mono">
+                                                {whatsappMessages >= 1000 ? `${(whatsappMessages / 1000).toFixed(1)}k` : whatsappMessages}
+                                            </span>
+                                        </div>
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="10000"
+                                            step="100"
+                                            value={whatsappMessages}
+                                            onChange={(e) => setWhatsappMessages(Number(e.target.value))}
+                                            className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                        />
+                                        <div className="flex justify-between text-xs text-gray-400 mt-2">
+                                            <span>0</span>
+                                            <span>10k</span>
+                                        </div>
+                                    </div>
+
+                                    {/* AI Usage */}
+                                    <div>
+                                        <div className="flex justify-between items-center mb-3">
+                                            <label className="text-sm font-medium text-gray-600">Ações de IA/mês</label>
+                                            <span className="text-lg font-bold text-deep-black font-mono">{aiActions}</span>
+                                        </div>
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="5000"
+                                            step="100"
+                                            value={aiActions}
+                                            onChange={(e) => setAiActions(Number(e.target.value))}
+                                            className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-neon-green"
+                                        />
+                                        <div className="flex justify-between text-xs text-gray-400 mt-2">
+                                            <span>0</span>
+                                            <span>5k</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Results */}
+                                {/* Cost Breakdown */}
                                 <div className="bg-gray-50 p-8 rounded-sm border border-gray-200">
+                                    <p className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-6">
+                                        Detalhamento de Custos
+                                    </p>
+
                                     <div className="space-y-4 mb-6">
+                                        {/* Base Plan */}
                                         <div className="flex justify-between items-center pb-4 border-b border-gray-200">
-                                            <span className="text-gray-500 text-sm">Ferramentas Separadas</span>
-                                            <span className="text-lg font-bold text-gray-400 line-through">
-                                                {formatCurrency(toolsCost)}/mês
-                                            </span>
-                                        </div>
-                                        <div className="flex justify-between items-center">
-                                            <div className="flex items-center gap-2">
-                                                <span className="text-gray-600 text-sm font-medium">FUNNELS</span>
-                                                <span className="text-[10px] font-bold text-neon-green bg-neon-green/10 px-2 py-0.5 rounded">
-                                                    {recommendedPlan.name}
-                                                </span>
+                                            <div>
+                                                <span className="text-gray-700 text-sm font-medium">Plano {FUNNELS_PLANS[selectedPlan].name}</span>
+                                                <p className="text-xs text-gray-400">até {FUNNELS_PLANS[selectedPlan].users} usuários</p>
                                             </div>
                                             <span className="text-lg font-bold text-deep-black">
-                                                {formatCurrency(recommendedPlan.price)}/mês
+                                                {formatCurrency(FUNNELS_PLANS[selectedPlan].price)}
                                             </span>
                                         </div>
+
+                                        {/* Variable Costs */}
+                                        {emailsPerMonth > 0 && (
+                                            <div className="flex justify-between items-center text-sm">
+                                                <span className="text-gray-500">E-mails ({emailsPerMonth.toLocaleString()})</span>
+                                                <span className="font-mono text-gray-600">
+                                                    + {formatCurrency(emailCost)}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {whatsappMessages > 0 && (
+                                            <div className="flex justify-between items-center text-sm">
+                                                <span className="text-gray-500">WhatsApp ({whatsappMessages.toLocaleString()} msgs)</span>
+                                                <span className="font-mono text-gray-600">
+                                                    + {formatCurrency(whatsappCost)}
+                                                </span>
+                                            </div>
+                                        )}
+
+                                        {aiActions > 0 && (
+                                            <div className="flex justify-between items-center text-sm">
+                                                <span className="text-gray-500">IA ({aiActions} ações)</span>
+                                                <span className="font-mono text-gray-600">
+                                                    + {formatCurrency(aiCost)}
+                                                </span>
+                                            </div>
+                                        )}
                                     </div>
 
-                                    <div className="bg-white p-6 rounded-sm border border-neon-green/20 text-center mb-6">
+                                    {/* Total */}
+                                    <div className="bg-white p-6 rounded-sm border border-gray-200 text-center mb-6">
                                         <p className="text-xs font-mono text-gray-400 uppercase tracking-widest mb-2">
-                                            Economia anual
+                                            Custo Mensal Estimado
                                         </p>
-                                        <p className="text-3xl font-bold text-neon-green font-space">
-                                            {formatCurrency(annualSavings)}
+                                        <p className="text-4xl font-bold text-deep-black font-space">
+                                            {formatCurrency(totalMonthlyCost)}
                                         </p>
-                                        <p className="text-sm text-gray-500 mt-1">
-                                            {savingsPercent}% de redução nos custos
-                                        </p>
+                                        {variableCost > 0 && (
+                                            <p className="text-xs text-gray-400 mt-2">
+                                                Base: {formatCurrency(FUNNELS_PLANS[selectedPlan].price)} + Uso: {formatCurrency(variableCost)}
+                                            </p>
+                                        )}
                                     </div>
 
                                     <Button
                                         className="w-full"
                                         onClick={onBookDemo}
                                     >
-                                        Começar Agora
+                                        Começar com {FUNNELS_PLANS[selectedPlan].name}
                                     </Button>
+
+                                    <p className="text-center text-xs text-gray-400 mt-4">
+                                        * Custos de uso são repassados do provedor, sem markup
+                                    </p>
                                 </div>
                             </div>
                         </div>
