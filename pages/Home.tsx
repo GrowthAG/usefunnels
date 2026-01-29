@@ -56,24 +56,49 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,_rgba(27,252,79,0.12),_transparent_50%)] pointer-events-none"></div>
                 <div className="absolute inset-0 bg-grid-pattern-dark opacity-30 pointer-events-none"></div>
 
-                <Container className="relative z-10">
+                <Container className="text-center relative z-10 px-4 md:px-12">
                     <Reveal>
-                        <div className="text-center max-w-5xl mx-auto mb-8 md:mb-12">
-                            <TechBadge>O SISTEMA OPERACIONAL DE CRESCIMENTO</TechBadge>
-                            <h1 className="text-[40px] leading-[1.1] sm:text-[50px] md:text-[64px] lg:text-[80px] font-bold font-space mb-6 tracking-tight text-white">
-                                Marketing e Vendas <br />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green via-emerald-400 to-teal-500 animate-pulse-slow">
-                                    Inteligentes.
-                                </span>
-                            </h1>
-                            <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto text-balance">
-                                Fluxos automatizados que funcionam 24/7 sem você mover um dedo. Tudo integrado nativamente.
-                            </p>
-                        </div>
+                        <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.04em] mb-5 md:mb-6 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
+                            <span className="block text-white">Sua empresa inteira</span>
+                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">dentro de um único lugar.</span>
+                        </h1>
+                        <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light font-space px-2 text-balance">
+                            Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.
+                        </p>
 
-                        {/* Dark Mode Carousel - "Lead Scoring" Style */}
-                        <div className="relative z-10 max-w-5xl mx-auto">
-                            <AICarousel />
+                        {/* Interactive Demo - Browser Mockup */}
+                        <div className="max-w-5xl mx-auto mb-8 md:mb-12">
+                            <div className="relative shadow-2xl rounded-xl overflow-hidden">
+                                {/* Browser Header - Dark Mode */}
+                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-4 py-3 flex items-center gap-3">
+                                    <div className="flex items-center gap-2">
+                                        <div className="w-3 h-3 rounded-full bg-[#FF5F56] opacity-50"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] opacity-50"></div>
+                                        <div className="w-3 h-3 rounded-full bg-[#27C93F] opacity-50"></div>
+                                    </div>
+                                    <div className="flex-1 flex justify-center">
+                                        <div className="bg-gray-900 rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-800 shadow-sm">
+                                            app.usefunnels.io/dashboard
+                                        </div>
+                                    </div>
+                                    <div className="w-16"></div>
+                                </div>
+
+                                <div className="relative aspect-video bg-black">
+                                    <iframe
+                                        src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
+                                        loading="lazy"
+                                        title="FUNNELS Demo Interativa"
+                                        allow="clipboard-write"
+                                        frameBorder="0"
+                                        allowFullScreen
+                                        className="w-full h-full"
+                                    ></iframe>
+                                </div>
+
+                                {/* Bottom Glow */}
+                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
+                            </div>
                         </div>
 
                         <div className="flex justify-center mt-12">
