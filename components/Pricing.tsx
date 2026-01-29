@@ -7,6 +7,9 @@ import { FEATURES } from '../constants';
 import { CostBreakdown } from './pricing/CostBreakdown';
 import { EnterpriseCostInfo } from './pricing/EnterpriseCostInfo';
 import { CompactPricingTable } from './pricing/CompactPricingTable';
+import { PricingFAQ } from './pricing/PricingFAQ';
+import { PricingAddons } from './pricing/PricingAddons';
+import { PricingSavingsCalculator } from './pricing/PricingSavingsCalculator';
 
 const commonCosts = [
     { label: "Fluxos de trabalho Premium", value: "$0.0105" },
@@ -391,6 +394,62 @@ export const Pricing = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; on
 
             {/* INTEGRATE COMPACT COMPARISON TABLE */}
             <CompactPricingTable />
+
+            {/* SAVINGS CALCULATOR */}
+            <PricingSavingsCalculator />
+
+            {/* ADD-ONS SECTION */}
+            <PricingAddons />
+
+            {/* FAQ SECTION */}
+            <PricingFAQ />
+
+            {/* FINAL CTA */}
+            <div className="mt-24 mb-16 text-center bg-gradient-to-r from-deep-black to-gray-900 text-white py-16 px-8 rounded-sm">
+                <h2 className="text-3xl md:text-4xl font-bold font-space mb-4">
+                    Pronto para Crescer com FUNNELS?
+                </h2>
+                <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">
+                    Junte-se a mais de 800 empresas que estão economizando tempo e dinheiro com nossa plataforma
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                        href="https://checkout.usefunnels.io/plano-growth-mensal"
+                        className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-neon-green text-deep-black font-bold rounded-sm hover:bg-opacity-90 transition-all uppercase tracking-wide text-sm"
+                    >
+                        Começar Agora
+                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                        </svg>
+                    </a>
+                    <button
+                        onClick={onBookDemo}
+                        className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-sm hover:bg-white hover:text-deep-black transition-all uppercase tracking-wide text-sm"
+                    >
+                        Agendar Demo Gratuita
+                    </button>
+                </div>
+                <div className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-400">
+                    <div className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-neon-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        Sem cartão de crédito
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-neon-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        Cancele quando quiser
+                    </div>
+                    <div className="flex items-center gap-2">
+                        <svg className="w-5 h-5 text-neon-green" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                        </svg>
+                        7 dias de garantia
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
