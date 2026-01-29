@@ -109,6 +109,55 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                 </Container>
             </Section>
 
+            {/* STATS GRID - Minimal Dark */}
+            <Section className="bg-deep-black py-12 md:py-16 border-t border-white/5">
+                <Container>
+                    <Reveal>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto text-center">
+                            {/* Stat 1 */}
+                            <div>
+                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                    R$ 35k
+                                </p>
+                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                    economia/ano
+                                </p>
+                            </div>
+
+                            {/* Stat 2 */}
+                            <div>
+                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                    80<span className="text-neon-green">%</span>
+                                </p>
+                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                    mais produtivo
+                                </p>
+                            </div>
+
+                            {/* Stat 3 */}
+                            <div>
+                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                    1
+                                </p>
+                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                    plataforma
+                                </p>
+                            </div>
+
+                            {/* Stat 4 */}
+                            <div>
+                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                    <span className="text-neon-green">&lt;</span>5 min
+                                </p>
+                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                    para começar
+                                </p>
+                            </div>
+                        </div>
+                    </Reveal>
+                </Container>
+            </Section>
+
             {/* PRICING CARDS */}
             <Section className="bg-gray-50 py-16 md:py-24">
                 <Container>
