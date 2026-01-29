@@ -87,69 +87,57 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
 
     return (
         <main className="pt-[80px] bg-white">
-            {/* HERO - Dark like other pages */}
-            <Section className="bg-deep-black py-16 md:py-24 relative overflow-hidden">
+            {/* HERO + STATS - Unified Compact Dark Section */}
+            <Section className="bg-deep-black py-12 md:py-16 relative overflow-hidden">
                 {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-b from-neon-green/5 via-transparent to-transparent pointer-events-none"></div>
 
-                <Container className="text-center relative z-10">
+                <Container className="relative z-10">
                     <Reveal>
-                        <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">
-                            Preços
-                        </span>
-                        <h1 className="text-4xl md:text-6xl font-bold font-space mb-6 tracking-tight text-white">
-                            Planos simples.<br />
-                            <span className="text-neon-green">Preços justos.</span>
-                        </h1>
-                        <p className="text-lg text-gray-400 max-w-xl mx-auto">
-                            Sem taxas escondidas, sem fidelidade.<br />
-                            Tudo incluído para você começar agora.
-                        </p>
-                    </Reveal>
-                </Container>
-            </Section>
+                        <div className="text-center mb-10 md:mb-12">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-3 block">
+                                Preços Transparentes
+                            </span>
+                            <h1 className="text-3xl md:text-5xl font-bold font-space mb-4 tracking-tight text-white">
+                                Escolha seu plano.<br />
+                                <span className="text-neon-green">Comece hoje.</span>
+                            </h1>
+                            <p className="text-base text-gray-400 max-w-md mx-auto">
+                                Sem taxas escondidas. Sem fidelidade. Cancele quando quiser.
+                            </p>
+                        </div>
 
-            {/* STATS GRID - Minimal Dark */}
-            <Section className="bg-deep-black py-12 md:py-16 border-t border-white/5">
-                <Container>
-                    <Reveal>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto text-center">
-                            {/* Stat 1 */}
+                        {/* Stats Grid - Inline */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-3xl mx-auto text-center pt-8 border-t border-white/10">
                             <div>
-                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                <p className="text-2xl md:text-3xl font-bold text-white font-space tracking-tight">
                                     R$ 35k
                                 </p>
-                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider font-mono mt-1">
                                     economia/ano
                                 </p>
                             </div>
-
-                            {/* Stat 2 */}
                             <div>
-                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                <p className="text-2xl md:text-3xl font-bold text-white font-space tracking-tight">
                                     80<span className="text-neon-green">%</span>
                                 </p>
-                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider font-mono mt-1">
                                     mais produtivo
                                 </p>
                             </div>
-
-                            {/* Stat 3 */}
                             <div>
-                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                <p className="text-2xl md:text-3xl font-bold text-white font-space tracking-tight">
                                     1
                                 </p>
-                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider font-mono mt-1">
                                     plataforma
                                 </p>
                             </div>
-
-                            {/* Stat 4 */}
                             <div>
-                                <p className="text-3xl md:text-5xl font-bold text-white font-space tracking-tight mb-2">
+                                <p className="text-2xl md:text-3xl font-bold text-white font-space tracking-tight">
                                     <span className="text-neon-green">&lt;</span>5 min
                                 </p>
-                                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-mono">
+                                <p className="text-[10px] md:text-xs text-gray-500 uppercase tracking-wider font-mono mt-1">
                                     para começar
                                 </p>
                             </div>
