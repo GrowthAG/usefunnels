@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { PricingPlan } from '../types';
-import { CornerBrackets } from './ui';
+import { CornerBrackets, Tooltip } from './ui';
 import { Link } from 'react-router-dom';
 import { FEATURES } from '../constants';
 
@@ -94,6 +94,18 @@ const plans: PricingPlan[] = [
 
 const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: () => void; onCheckout?: (url: string) => void }> = ({ plan, isAnnual, onBookDemo, onCheckout }) => {
     const [showCosts, setShowCosts] = useState(false);
+
+    // Tooltips para custos adicionais
+    const costTooltips: Record<string, string> = {
+        "Verificação de e-mail": "Validação para reduzir bounce e melhorar entregabilidade.",
+        "Envio de E-mail": "Custo por e-mail disparado na plataforma.",
+        "Fluxos Premium": "Cada execução é um passo/ação rodando dentro de uma automação.",
+        "Conteúdo de IA": "Custo por geração de texto com IA.",
+        "Fluxos de IA": "Cada execução é um passo/ação rodando dentro de uma automação.",
+        "Conversação IA": "Custo por mensagem trocada com o agente de IA.",
+        "Custo Fixo WhatsApp": "Cobrança mensal da Meta (pode variar por número/região).",
+        "Custo por msg": "Cobrança por conversa/mensagem conforme regras da Meta e categoria da conversa."
+    };
 
     // Helper to check if a feature matches a resource page
     const getFeatureLink = (featureText: string) => {
@@ -217,12 +229,18 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                                             </svg>
                                             WhatsApp Business API
                                         </div>
-                                        <div className="flex justify-between mb-1">
-                                            <span className="opacity-80">Custo Fixo:</span>
+                                        <div className="flex justify-between items-center mb-1">
+                                            <span className="opacity-80 flex items-center">
+                                                Custo Fixo:
+                                                <Tooltip content={costTooltips["Custo Fixo WhatsApp"]} />
+                                            </span>
                                             <span className="font-bold">{plan.additionalCosts.whatsapp.monthly}</span>
                                         </div>
-                                        <div className="flex justify-between">
-                                            <span className="opacity-80">Por Msg:</span>
+                                        <div className="flex justify-between items-center">
+                                            <span className="opacity-80 flex items-center">
+                                                Por Msg:
+                                                <Tooltip content={costTooltips["Custo por msg"]} />
+                                            </span>
                                             <span className="font-bold">{plan.additionalCosts.whatsapp.perMessage}</span>
                                         </div>
                                     </div>
@@ -230,7 +248,12 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                                 <ul className="space-y-2">
                                     {plan.additionalCosts.items.map((item, idx) => (
                                         <li key={idx} className="flex justify-between items-center">
-                                            <span className="opacity-90">{item.label}</span>
+                                            <span className="opacity-90 flex items-center">
+                                                {item.label}
+                                                {costTooltips[item.label] && (
+                                                    <Tooltip content={costTooltips[item.label]} />
+                                                )}
+                                            </span>
                                             <span className="font-bold text-neon-green">{item.value}</span>
                                         </li>
                                     ))}
@@ -286,6 +309,22 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
 /* --- NEW COMPARISON TABLE COMPONENT --- */
 export const PricingTable = () => {
+    // Mapa de tooltips para features
+    const tooltips: Record<string, string> = {
+        "Usuários": "Quantidade de pessoas da sua equipe com acesso ao sistema.",
+        "Contatos": "Quantidade de leads/clientes armazenados no CRM.",
+        "Pipelines de Venda": "Quadros/etapas do funil de vendas para organizar oportunidades.",
+        "Oportunidades": "Negócios em andamento no pipeline (leads em negociação).",
+        "WhatsApp Business API": "Integração oficial com a Meta para enviar e receber mensagens via WhatsApp com automações e templates.",
+        "Telefonia VoIP": "Chamadas e discador dentro do sistema. Pode exigir número e configuração conforme país.",
+        "Construtor de Fluxos": "Nível do builder de automações: Básico (essencial), Avançado (condições e ramificações), Premium (recursos completos), Custom (sob demanda).",
+        "Disparos de E-mail": "Envios automáticos e campanhas. Custos podem variar por volume.",
+        "Chatbot IA": "Bot que responde e qualifica leads automaticamente, com base no contexto da conversa.",
+        "IA Content Generator": "Geração de textos e mensagens com IA (ex: follow-ups, anúncios, respostas).",
+        "API de Integração": "Conecta o sistema com ferramentas externas (ex: ERP, apps, integrações personalizadas).",
+        "Whitelabel": "Personalização com sua marca (logo/domínio). Pode incluir configurações extras."
+    };
+
     const featuresList = [
         {
             category: "CRM & Vendas", items: [
@@ -362,7 +401,12 @@ export const PricingTable = () => {
                         </div>
                         {category.items.map((row, rowIdx) => (
                             <div key={rowIdx} className={`grid grid-cols-5 items-center border-b border-gray-100 hover:bg-gray-50 transition-colors ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
-                                <div className="p-4 text-sm font-medium text-gray-700">{row.name}</div>
+                                <div className="p-4 text-sm font-medium text-gray-700 flex items-center">
+                                    {row.name}
+                                    {tooltips[row.name] && (
+                                        <Tooltip content={tooltips[row.name]} />
+                                    )}
+                                </div>
                                 <div className="p-4 text-center border-l border-gray-100">{renderValue(row.starter)}</div>
                                 <div className="p-4 text-center border-l border-neon-green/10 bg-neon-green/5 font-bold h-full flex items-center justify-center relative">{renderValue(row.growth)}</div>
                                 <div className="p-4 text-center border-l border-gray-100">{renderValue(row.scale)}</div>
