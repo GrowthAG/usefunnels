@@ -141,10 +141,11 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                         <div className="text-center mb-16 max-w-4xl mx-auto">
                             <TechBadge className="bg-neon-green text-black mb-6 font-bold border-none mx-auto">AUTOMAÇÃO NATIVA</TechBadge>
                             <h2 className="text-5xl md:text-7xl font-bold font-space mb-6 tracking-tight text-balance leading-none">
-                                Capture. Nutra. Converta.
+                                Pare de perder leads.<br />
+                                <span className="text-white">Construa relacionamentos.</span>
                             </h2>
                             <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto text-balance">
-                                Fluxos automatizados que funcionam 24/7 sem você mover um dedo. Tudo integrado nativamente.
+                                A única plataforma que une captura, conversão e retenção em um piloto automático inteligente. Não é só software, é sua máquina de vendas.
                             </p>
                         </div>
                         {/* Reusing AICarousel here if intended, or just keeping the structure as it was previously valid. Assuming content here was correct before my bad edit. */}
@@ -154,8 +155,21 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                         <div className="relative z-10 max-w-5xl mx-auto">
                             <AICarousel />
                         </div>
-                        <div className="flex justify-center mt-12">
-                            <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={onBookDemo}>Agendar Demo</Button>
+                        <div className="flex justify-center mt-12 gap-4">
+                            <Button
+                                variant="primary"
+                                className="min-w-[200px] shadow-[0_0_20px_rgba(27,252,79,0.3)] hover:shadow-[0_0_40px_rgba(27,252,79,0.5)]"
+                                onClick={scrollToPricing}
+                            >
+                                Começar Agora
+                            </Button>
+                            <Button
+                                variant="outline"
+                                className="min-w-[200px] border-gray-700 hover:border-white text-gray-300 hover:text-white"
+                                onClick={onBookDemo}
+                            >
+                                Agendar Demo
+                            </Button>
                         </div>
                     </Reveal>
                 </Container>

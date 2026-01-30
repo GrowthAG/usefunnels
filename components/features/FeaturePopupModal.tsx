@@ -22,7 +22,7 @@ export const FeaturePopupModal: React.FC<{ feature: any; onClose: () => void }> 
                 </button>
 
                 {/* Left Side: Image / Visuals (Clean) */}
-                <div className="w-full lg:w-[65%] h-1/2 lg:h-full bg-white relative flex items-center justify-center p-4 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-800">
+                <div className="w-full lg:w-[65%] h-[350px] lg:h-full bg-white relative flex items-center justify-center p-4 lg:p-12 border-b lg:border-b-0 lg:border-r border-gray-800">
                     <div className="w-full h-full relative flex items-center justify-center">
                         <img
                             src={feature.detailImage}
@@ -35,22 +35,22 @@ export const FeaturePopupModal: React.FC<{ feature: any; onClose: () => void }> 
                 </div>
 
                 {/* Right Side: Content */}
-                <div className="w-full lg:w-[35%] h-1/2 lg:h-full p-8 lg:p-10 flex flex-col justify-center bg-[#050505] text-white relative overflow-y-auto border-l border-gray-900">
-                    <div>
+                <div className="w-full lg:w-[35%] h-[calc(100%-350px)] lg:h-full p-6 lg:p-10 flex flex-col bg-[#050505] text-white relative overflow-y-auto border-l border-gray-900">
+                    <div className="flex-grow">
                         {/* Title - No Icon Above */}
-                        <h3 className="text-3xl md:text-4xl font-bold font-space text-white mb-6 uppercase leading-none tracking-tight">{feature.title}</h3>
+                        <h3 className="text-2xl md:text-4xl font-bold font-space text-white mb-6 uppercase leading-none tracking-tight">{feature.title}</h3>
 
                         {/* Green Bar Description */}
-                        <div className="border-l-4 border-[#03FC3B] pl-6 mb-10">
-                            <p className="text-gray-400 font-medium text-base leading-relaxed">
+                        <div className="border-l-4 border-[#03FC3B] pl-4 lg:pl-6 mb-8 lg:mb-10">
+                            <p className="text-gray-400 font-medium text-sm md:text-base leading-relaxed">
                                 {feature.description}
                             </p>
                         </div>
 
                         <div className="space-y-8">
                             <div>
-                                <h4 className="font-mono text-[10px] md:text-xs font-bold text-[#03FC3B] uppercase tracking-widest mb-6">Recursos Principais</h4>
-                                <ul className="space-y-4">
+                                <h4 className="font-mono text-[10px] md:text-xs font-bold text-[#03FC3B] uppercase tracking-widest mb-4 lg:mb-6">Recursos Principais</h4>
+                                <ul className="space-y-3 lg:space-y-4">
                                     {feature.benefits.map((benefit: string, i: number) => (
                                         <li key={i} className="flex items-start gap-3 text-sm text-white font-medium">
                                             <span className="text-[#03FC3B] font-bold">✓</span>
@@ -62,12 +62,14 @@ export const FeaturePopupModal: React.FC<{ feature: any; onClose: () => void }> 
                         </div>
                     </div>
 
-                    <div className="mt-auto pt-10 border-t border-gray-900">
+                    <div className="mt-8 pt-8 border-t border-gray-900 sticky bottom-0 bg-[#050505] pb-4 lg:pb-0 z-10">
                         <Link
-                            to={`/recursos/${feature.id}`}
-                            className="w-full flex items-center justify-center gap-3 bg-white text-black font-bold font-space text-xs md:text-sm uppercase py-4 rounded-sm hover:bg-gray-200 transition-colors group tracking-wider"
+                            to="/"
+                            state={{ targetId: 'pricing-plans' }}
+                            onClick={onClose}
+                            className="w-full flex items-center justify-center gap-3 bg-neon-green text-deep-black font-bold font-space text-xs md:text-sm uppercase py-4 rounded-sm hover:bg-white hover:scale-[1.02] transition-all group tracking-wider shadow-lg"
                         >
-                            Ver Todos Detalhes
+                            Começar Agora
                             <span className="group-hover:translate-x-1 transition-transform">→</span>
                         </Link>
                     </div>
