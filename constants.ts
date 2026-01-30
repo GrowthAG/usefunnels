@@ -162,178 +162,364 @@ export const TOOLS_REPLACED: ToolReplacement[] = [
 export const BLOG_POSTS = [
     {
         id: 1,
-        slug: "escalar-vendas-com-ia-2025",
-        title: "Como escalar sua operação de vendas com IA em 2025",
-        category: "Growth",
+        slug: "funnels-vs-hubspot-comparativo-2026",
+        title: "Funnels vs HubSpot: Comparativo Completo para 2026",
+        category: "Comparativo",
         image: ASSETS.screenshots.dashboard2,
-        excerpt: "Descubra como empresas estão triplicando o faturamento usando automação inteligente para qualificar leads e agendar reuniões.",
-        date: "12 Mar, 2025",
-        readTime: "5 min",
-        author: "Giulliano Alves",
+        excerpt: "Comparamos Funnels e HubSpot em funcionalidades, preço, suporte e facilidade. Descubra qual CRM é melhor para sua empresa brasileira em 2026.",
+        date: "30 Jan, 2026",
+        readTime: "12 min",
+        author: "Time Funnels",
+        featured: true,
+        keywords: ["alternativa ao hubspot", "hubspot é caro", "hubspot alternativa brasileira", "hubspot vs funnels", "crm mais barato que hubspot"],
         content: `
-            <p>O cenário de vendas mudou drasticamente. Cold call morreu? Não, mas evoluiu. A era de discar manualmente para 100 leads e falar com 3 acabou.</p>
-            <h3>A Revolução dos Agentes de IA</h3>
-            <p>Empresas que utilizam agentes de IA para o primeiro contato viram um aumento de 400% na taxa de resposta. Por quê? Velocidade.</p>
-            <p>Seu lead preenche um formulário às 23h. Sua equipe dorme. Seu concorrente, que usa o FUNNELS, responde em 10 segundos via WhatsApp, qualifica o lead e agenda a reunião para a manhã seguinte.</p>
-            <h3>O Funil Infalível</h3>
-            <ol>
-                <li><strong>Captura:</strong> Ads direcionam para uma Landing Page de alta conversão.</li>
-                <li><strong>Engajamento:</strong> O lead recebe um "Oi" personalizado no WhatsApp instantaneamente.</li>
-                <li><strong>Qualificação:</strong> A IA pergunta sobre orçamento e urgência.</li>
-                <li><strong>Agendamento:</strong> Se qualificado, o link da agenda é enviado.</li>
-            </ol>
-            <p>Isso não é futuro. É o padrão de 2025.</p>
+            <p>Se você está avaliando ferramentas de CRM e automação de marketing, provavelmente já considerou o HubSpot. É uma das plataformas mais conhecidas do mercado — e por boas razões.</p>
+            <p>Mas será que é a melhor escolha para <strong>empresas brasileiras</strong> em 2026?</p>
+            
+            <h2>TL;DR — Resumo Rápido</h2>
+            <table>
+                <thead>
+                    <tr><th>Critério</th><th>Funnels</th><th>HubSpot</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Preço inicial</strong></td><td>R$ 497/mês</td><td>R$ 800+/mês (Starter)</td></tr>
+                    <tr><td><strong>Custo para 50k contatos</strong></td><td>R$ 697/mês</td><td>R$ 4.000+/mês</td></tr>
+                    <tr><td><strong>WhatsApp nativo</strong></td><td>Sim (API Oficial)</td><td>Não (precisa de integração)</td></tr>
+                    <tr><td><strong>Suporte em português</strong></td><td>100% Brasil</td><td>Limitado</td></tr>
+                    <tr><td><strong>CRM completo</strong></td><td>Incluso</td><td>Incluso</td></tr>
+                    <tr><td><strong>Email marketing</strong></td><td>Incluso</td><td>Incluso</td></tr>
+                    <tr><td><strong>Landing pages</strong></td><td>Incluso</td><td>Só no Professional</td></tr>
+                    <tr><td><strong>Automação avançada</strong></td><td>Incluso</td><td>Só no Professional</td></tr>
+                    <tr><td><strong>IA nativa</strong></td><td>Sim</td><td>Limitado</td></tr>
+                    <tr><td><strong>Setup</strong></td><td>Minutos</td><td>Dias/Semanas</td></tr>
+                </tbody>
+            </table>
+            <p><strong>Veredicto:</strong> O HubSpot é uma ferramenta robusta e madura, ideal para empresas que precisam de um ecossistema enterprise com muitas integrações. Já o Funnels entrega funcionalidades equivalentes (e algumas superiores, como WhatsApp e IA) por uma fração do preço, com suporte 100% brasileiro.</p>
+            
+            <h2>Para Quem é Cada Ferramenta</h2>
+            <h3>HubSpot é ideal para:</h3>
+            <ul>
+                <li>Empresas com budget de marketing acima de R$ 10.000/mês em ferramentas</li>
+                <li>Operações que já usam várias ferramentas do ecossistema HubSpot</li>
+                <li>Times com profissionais certificados em HubSpot</li>
+                <li>Multinacionais com operações em vários países</li>
+            </ul>
+            
+            <h3>Funnels é ideal para:</h3>
+            <ul>
+                <li>Empresas brasileiras que precisam de WhatsApp integrado</li>
+                <li>Operações que querem consolidar várias ferramentas em uma</li>
+                <li>Times que precisam de suporte rápido em português</li>
+                <li>Agências que querem oferecer CRM white-label para clientes</li>
+            </ul>
+            
+            <h2>Comparativo de Preços: A Realidade</h2>
+            <h3>Cenário: Empresa Pequena (10k contatos, 3 usuários)</h3>
+            <table>
+                <thead>
+                    <tr><th>Item</th><th>Funnels</th><th>HubSpot</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Plano base</td><td>R$ 497/mês (Starter)</td><td>R$ 800/mês (Starter)</td></tr>
+                    <tr><td>Automação</td><td>Incluso</td><td>+R$ 3.200/mês (upgrade Pro)</td></tr>
+                    <tr><td>Landing pages</td><td>Incluso</td><td>+R$ 3.200/mês (upgrade Pro)</td></tr>
+                    <tr><td>WhatsApp</td><td>Incluso (+uso)</td><td>+R$ 500/mês (terceiro)</td></tr>
+                    <tr><td><strong>Total mensal</strong></td><td><strong>~R$ 600</strong></td><td><strong>~R$ 4.500</strong></td></tr>
+                    <tr><td><strong>Total anual</strong></td><td><strong>~R$ 7.200</strong></td><td><strong>~R$ 54.000</strong></td></tr>
+                </tbody>
+            </table>
+            <p><strong>Economia com Funnels: R$ 46.800/ano (87%)</strong></p>
+            
+            <h2>Cases Reais: Empresas que Migraram</h2>
+            <h3>RevHackers: +340% em Reuniões Agendadas</h3>
+            <blockquote>
+                <p>"Usávamos HubSpot há 2 anos, mas o custo estava insustentável e precisávamos de WhatsApp integrado. Com Funnels, implementamos um funil de nutrição agressivo com sequências de email + WhatsApp que triplicou nosso volume de reuniões agendadas."</p>
+                <cite>— Time RevHackers</cite>
+            </blockquote>
+            <p><strong>Resultados:</strong></p>
+            <ul>
+                <li>+340% em reuniões agendadas via inbound</li>
+                <li>Redução de 78% no custo de ferramentas</li>
+                <li>Setup completo em 5 dias (vs 3 meses no HubSpot)</li>
+                <li>ROI positivo no primeiro mês</li>
+            </ul>
+            
+            <h2>Conclusão</h2>
+            <p>O HubSpot é uma ferramenta excelente que dominou o mercado por bons motivos. Porém, em 2026, empresas brasileiras têm necessidades específicas que o HubSpot não atende bem: <strong>WhatsApp nativo, suporte local, preço em real e simplicidade</strong>.</p>
+            <p>Se isso descreve sua situação, Funnels provavelmente é a escolha certa.</p>
         `
     },
     {
         id: 2,
-        slug: "fim-dos-crms-tradicionais",
-        title: "O fim dos CRMs tradicionais: O futuro é integrado",
-        category: "Tecnologia",
+        slug: "funnels-vs-rd-station-comparativo-2026",
+        title: "Funnels vs RD Station: Qual Escolher em 2026?",
+        category: "Comparativo",
         image: ASSETS.screenshots.crm,
-        excerpt: "Por que manter dados em silos está matando sua taxa de conversão e como a unificação de dados resolve isso.",
-        date: "08 Mar, 2025",
-        readTime: "7 min",
-        author: "Equipe Funnels",
+        excerpt: "Comparativo completo entre Funnels e RD Station. Analisamos preço, funcionalidades, CRM, automação e WhatsApp para ajudar sua decisão.",
+        date: "30 Jan, 2026",
+        readTime: "14 min",
+        author: "Time Funnels",
+        featured: true,
+        keywords: ["alternativa ao rd station", "rd station é bom", "rd station preço", "rd station vs funnels", "automação de marketing brasil"],
         content: `
-            <p>Você tem um software para e-mail, outro para CRM, outro para agendamento e outro para WhatsApp. O resultado? O caos.</p>
-            <h3>O Custo da Desconexão</h3>
-            <p>Estudos mostram que empresas perdem até 30% da receita anual por ineficiência na gestão de dados. Quando seu vendedor não sabe que o lead acabou de abrir um e-mail de marketing, ele perde o timing perfeito da ligação.</p>
-            <h3>A Abordagem All-in-One</h3>
-            <p>Imagine um "Sistema Operacional de Crescimento". Onde cada clique, resposta e agendamento vive no mesmo banco de dados.</p>
+            <p>O RD Station é, sem dúvida, a ferramenta de automação de marketing mais conhecida no Brasil. Com mais de 40.000 clientes, se tornou sinônimo de inbound marketing no país.</p>
+            <p>Mas em 2026, o cenário mudou. Empresas precisam de mais do que "só" automação de marketing. Precisam de <strong>CRM robusto, WhatsApp integrado e inteligência artificial</strong> — tudo em um lugar só.</p>
+            
+            <h2>TL;DR — Resumo Rápido</h2>
+            <table>
+                <thead>
+                    <tr><th>Critério</th><th>Funnels</th><th>RD Light</th><th>RD Basic</th><th>RD Pro</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Preço</strong></td><td>R$ 497/mês</td><td>R$ 50/mês</td><td>R$ 599/mês</td><td>R$ 1.389/mês</td></tr>
+                    <tr><td><strong>Contatos inclusos</strong></td><td>20k-75k</td><td>1.000</td><td>5.000</td><td>20.000</td></tr>
+                    <tr><td><strong>CRM completo</strong></td><td>Sim (nativo)</td><td>Básico</td><td>Básico</td><td>Básico</td></tr>
+                    <tr><td><strong>WhatsApp nativo</strong></td><td>Sim (API Oficial)</td><td>Não</td><td>Não</td><td>Não</td></tr>
+                    <tr><td><strong>IA nativa</strong></td><td>Sim</td><td>Não</td><td>Não</td><td>Não</td></tr>
+                </tbody>
+            </table>
+            
+            <h2>O Elefante na Sala: O CRM do RD Station</h2>
+            <p>Vamos ser diretos: o <strong>RD Station CRM é básico</strong>.</p>
+            <p>Ele foi criado como complemento ao RD Marketing, não como solução completa. Funciona para operações de vendas muito simples, times pequenos (1-3 vendedores) e ciclos de venda curtos.</p>
+            <p><strong>Não funciona para:</strong></p>
+            <ul>
+                <li>Múltiplos pipelines</li>
+                <li>Vendas consultivas/complexas</li>
+                <li>Times maiores</li>
+                <li>Integração real marketing-vendas</li>
+            </ul>
+            <p>É por isso que a maioria das empresas usando RD Station acaba contratando <strong>outro CRM</strong> (Pipedrive, Moskit, HubSpot CRM). No Funnels, CRM e Marketing são a <strong>mesma coisa</strong>.</p>
+            
+            <h2>WhatsApp: A Maior Lacuna</h2>
+            <p>Esta é a <strong>maior lacuna</strong> do RD Station em 2026. WhatsApp é o canal mais importante para vendas no Brasil, e o RD simplesmente não tem.</p>
+            <p>No Funnels, WhatsApp é cidadão de primeira classe:</p>
+            <ul>
+                <li>Automações que enviam WhatsApp automaticamente</li>
+                <li>Chatbot com IA atendendo 24/7</li>
+                <li>Todo histórico de conversas no CRM</li>
+                <li>Disparo em massa para base segmentada</li>
+            </ul>
+            
+            <h2>Comparativo de Preços</h2>
+            <h3>Cenário: Empresa média (20.000 contatos)</h3>
+            <table>
+                <thead>
+                    <tr><th>Item</th><th>Funnels</th><th>RD Station</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Plano base</td><td>R$ 497 (Starter - 20k inclusos)</td><td>R$ 1.389 (Pro)</td></tr>
+                    <tr><td>CRM</td><td>Incluso</td><td>Limitado</td></tr>
+                    <tr><td>WhatsApp</td><td>Incluso (+uso)</td><td>+R$ 500 (terceiro)</td></tr>
+                    <tr><td><strong>Total</strong></td><td><strong>~R$ 600/mês</strong></td><td><strong>~R$ 1.900/mês</strong></td></tr>
+                </tbody>
+            </table>
+            <p><strong>Economia com Funnels: R$ 15.600/ano (68%)</strong></p>
+            
+            <h2>Caso Real: RevHackers</h2>
+            <p>A RevHackers usava RD Station para marketing e Pipedrive para vendas. O desafio: <strong>informações fragmentadas</strong> e <strong>nenhum WhatsApp integrado</strong>.</p>
+            <blockquote>
+                <p>"No RD, a gente nutria o lead e passava para vendas sem contexto. No Funnels, o vendedor abre o lead e vê tudo: emails abertos, páginas visitadas, conversas de WhatsApp. A conversão em reunião disparou."</p>
+                <cite>— RevHackers</cite>
+            </blockquote>
+            <p><strong>Resultados:</strong> +340% em reuniões agendadas, economia de R$ 2.100/mês em ferramentas.</p>
+            
+            <h2>Conclusão</h2>
+            <p>O RD Station construiu o mercado de automação de marketing no Brasil. Mas o mercado evoluiu. Em 2026, empresas precisam de plataformas que unifiquem marketing, vendas e comunicação.</p>
+            <p>O Funnels representa essa evolução: <strong>tudo que o RD Station faz bem</strong>, mais <strong>CRM completo</strong>, mais <strong>WhatsApp nativo</strong>, mais <strong>IA aplicada</strong>. Por um preço competitivo.</p>
         `
     },
     {
         id: 3,
-        slug: "automacao-whatsapp-guia-definitivo",
-        title: "Automação de WhatsApp: Guia Definitivo",
-        category: "Automação",
-        image: ASSETS.screenshots.crmMobile,
-        excerpt: "Como configurar fluxos que vendem 24/7 sem risco de bloqueio, utilizando a API oficial.",
-        date: "01 Mar, 2025",
-        readTime: "10 min",
-        author: "Tech Team",
+        slug: "funnels-vs-activecampaign-comparativo-2026",
+        title: "Funnels vs ActiveCampaign: Comparativo Completo 2026",
+        category: "Comparativo",
+        image: ASSETS.screenshots.emailMarketing,
+        excerpt: "ActiveCampaign ou Funnels? Comparamos automação, CRM, preço e suporte para ajudar você a escolher a melhor ferramenta para sua empresa brasileira.",
+        date: "30 Jan, 2026",
+        readTime: "11 min",
+        author: "Time Funnels",
+        featured: true,
+        keywords: ["alternativa ao activecampaign", "activecampaign em português", "activecampaign preço em reais", "ferramenta de email marketing brasileira"],
         content: `
-            <p>WhatsApp não é mais apenas um app de mensagens. É o canal de vendas mais poderoso do Brasil.</p>
-            <h3>O Perigo das Automações Clandestinas</h3>
-            <p>Usar ferramentas não oficiais é pedir para ser banido. O FUNNELS utiliza a API Oficial da Meta (Business API), garantindo segurança e escala.</p>
-            <h3>Estratégias de Recuperação</h3>
-            <p>Carrinho abandonado? Reunião perdida? Boleto não pago? Uma mensagem automática no WhatsApp recupera até 60% dessas perdas.</p>
+            <p>O ActiveCampaign é reconhecido mundialmente como uma das ferramentas de automação de marketing mais poderosas do mercado. Sua engine de automação é referência na indústria.</p>
+            <p>Mas para empresas brasileiras, existem desafios práticos: <strong>preço em dólar, suporte em inglês, e ausência de WhatsApp nativo</strong>.</p>
+            
+            <h2>TL;DR — Resumo Rápido</h2>
+            <table>
+                <thead>
+                    <tr><th>Critério</th><th>Funnels</th><th>AC Lite</th><th>AC Plus</th><th>AC Pro</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Preço (10k contatos)</strong></td><td>R$ 497/mês</td><td>~R$ 450/mês</td><td>~R$ 900/mês</td><td>~R$ 1.800/mês</td></tr>
+                    <tr><td><strong>Moeda</strong></td><td>BRL</td><td>USD</td><td>USD</td><td>USD</td></tr>
+                    <tr><td><strong>CRM completo</strong></td><td>Sim</td><td>Não</td><td>Sim</td><td>Sim</td></tr>
+                    <tr><td><strong>WhatsApp nativo</strong></td><td>Sim</td><td>Não</td><td>Não</td><td>Não</td></tr>
+                    <tr><td><strong>Landing pages</strong></td><td>Incluso</td><td>Não</td><td>Não</td><td>Incluso</td></tr>
+                    <tr><td><strong>IA nativa</strong></td><td>Sim</td><td>Não</td><td>Não</td><td>Básica</td></tr>
+                    <tr><td><strong>Suporte PT-BR</strong></td><td>100%</td><td>Não</td><td>Não</td><td>Não</td></tr>
+                </tbody>
+            </table>
+            
+            <h2>O Problema do Dólar</h2>
+            <p>O ActiveCampaign cobra em <strong>dólar americano</strong>. Para empresas brasileiras, isso significa:</p>
+            <ul>
+                <li><strong>Imprevisibilidade:</strong> Sua conta varia com o câmbio</li>
+                <li><strong>Custo real maior:</strong> Taxas de conversão + IOF</li>
+                <li><strong>Planejamento difícil:</strong> Budget de marketing oscila</li>
+            </ul>
+            <p>O Funnels cobra em <strong>reais</strong>, com preço fixo.</p>
+            
+            <h2>WhatsApp: A Grande Diferença</h2>
+            <p>O ActiveCampaign simplesmente <strong>não tem WhatsApp</strong>. Você precisa:</p>
+            <ol>
+                <li>Contratar uma ferramenta terceira (Twilio, Take, etc.)</li>
+                <li>Configurar integrações via Zapier ou API</li>
+                <li>Pagar por dois sistemas separados</li>
+                <li>Gerenciar dados em lugares diferentes</li>
+            </ol>
+            <p>No Funnels, WhatsApp é integrado nativamente — crie automações que combinam email + WhatsApp em um único fluxo.</p>
+            
+            <h2>Comparativo de Preços</h2>
+            <h3>Cenário: 50.000 contatos</h3>
+            <table>
+                <thead>
+                    <tr><th>Item</th><th>Funnels</th><th>ActiveCampaign</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Plano base</td><td>R$ 697 (Growth)</td><td>$386 (~R$ 1.930)*</td></tr>
+                    <tr><td>CRM</td><td>Completo</td><td>Avançado</td></tr>
+                    <tr><td>Landing pages</td><td>Incluso</td><td>Incluso</td></tr>
+                    <tr><td>WhatsApp</td><td>Incluso (+uso)</td><td>+R$ 800 (terceiro)</td></tr>
+                    <tr><td><strong>Total real</strong></td><td><strong>~R$ 900</strong></td><td><strong>~R$ 2.800</strong></td></tr>
+                </tbody>
+            </table>
+            <p><strong>Economia com Funnels: R$ 22.800/ano (68%)</strong></p>
+            <p><small>*Considerando dólar a R$ 5,00. Varia.</small></p>
+            
+            <h2>Suporte e Documentação</h2>
+            <table>
+                <thead>
+                    <tr><th>Aspecto</th><th>Funnels</th><th>ActiveCampaign</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Idioma do suporte</td><td><strong>Português (Brasil)</strong></td><td>Inglês</td></tr>
+                    <tr><td>Tempo de resposta</td><td>&lt; 4 horas</td><td>24 horas</td></tr>
+                    <tr><td>Base de conhecimento</td><td>PT-BR completa</td><td>Inglês (PT parcial)</td></tr>
+                    <tr><td>Onboarding</td><td>Incluso em português</td><td>Em inglês</td></tr>
+                </tbody>
+            </table>
+            
+            <h2>Conclusão</h2>
+            <p>O ActiveCampaign tem uma engine de automação excelente. Para empresas que precisam apenas de automação de email complexa e não se importam com cobrança em dólar ou suporte em inglês, continua sendo uma opção válida.</p>
+            <p>Mas para <strong>empresas brasileiras</strong> em 2026:</p>
+            <ul>
+                <li><strong>WhatsApp é obrigatório</strong> — e o ActiveCampaign não tem</li>
+                <li><strong>Preço em reais</strong> dá previsibilidade — e o ActiveCampaign cobra em dólar</li>
+                <li><strong>Suporte local</strong> acelera resolução — e o ActiveCampaign é em inglês</li>
+            </ul>
+            <p>O Funnels oferece automação poderosa (comparável para 95% dos casos), mais CRM completo, mais WhatsApp nativo, mais suporte brasileiro.</p>
         `
     },
     {
         id: 4,
-        slug: "white-label-agencias",
-        title: "Por que o White-Label é o segredo das grandes agências",
-        category: "Negócios",
-        image: ASSETS.screenshots.marketplace,
-        excerpt: "Pare de vender horas. Comece a vender sua própria tecnologia e aumente o LTV dos seus clientes.",
-        date: "25 Fev, 2025",
-        readTime: "6 min",
-        author: "Giulliano Alves",
-        content: `
-            <p>Sua agência faz o marketing, gera leads, mas o cliente usa o software de outra pessoa para gerenciar. Quem detém o poder? O software.</p>
-            <h3>Tornando-se Indispensável</h3>
-            <p>Quando o cliente usa O SEU CRM, com a SUA marca, cancelar o contrato com você significa perder toda a inteligência comercial dele.</p>
-            <p>O Churn cai para quase zero. O LTV explode. E você ganha receita recorrente de software (SaaS) além do fee de serviço.</p>
-        `
-    },
-    {
-        id: 5,
-        slug: "landing-pages-alta-conversao",
-        title: "Anatomia de uma Landing Page que converte 40%",
-        category: "Design",
-        image: ASSETS.screenshots.websites,
-        excerpt: "Elementos essenciais que não podem faltar na sua página de captura se você quer ROI positivo.",
-        date: "20 Fev, 2025",
-        readTime: "8 min",
-        author: "Design Team",
-        content: `
-            <p>Conversão não é mágica, é ciência. Analisamos milhões de visitas em páginas do FUNNELS e encontramos os padrões.</p>
-            <h3>O Dobra Superior (Above the Fold)</h3>
-            <p>Você tem 3 segundos. Headline clara, subtítulo de benefício e um CTA contrastante. Sem menus de navegação para distrair.</p>
-            <h3>Prova Social</h3>
-            <p>Depoimentos em vídeo e logos de clientes aumentam a confiança instantaneamente.</p>
-        `
-    },
-    {
-        id: 6,
-        slug: "email-marketing-nutricao",
-        title: "Nutrição de Leads: Do Frio ao Comprador",
-        category: "Marketing",
-        image: ASSETS.screenshots.emailMarketing,
-        excerpt: "Aprenda a criar sequências de e-mail que educam e vendem no piloto automático.",
-        date: "15 Fev, 2025",
-        readTime: "5 min",
-        author: "Equipe Funnels",
-        content: `
-            <p>A maioria dos leads não está pronta para comprar agora. Se você só tenta vender, você perde 90% do mercado.</p>
-            <h3>A Regra 80/20</h3>
-            <p>80% de conteúdo de valor, 20% de oferta. Ensine seu lead a resolver problemas pequenos, e ele confiará em você para resolver os grandes (pagando).</p>
-        `
-    },
-    {
-        id: 7,
-        slug: "metricas-que-importam",
-        title: "Métricas de Vaidade vs. Métricas de Receita",
-        category: "Data",
+        slug: "case-revhackers-340-reunioes-agendadas",
+        title: "Como a RevHackers Aumentou 340% as Reuniões Agendadas com Funnels",
+        category: "Case de Sucesso",
         image: ASSETS.screenshots.analytics,
-        excerpt: "Pare de olhar para likes e impressões. Foque no CAC, LTV e Taxa de Conversão.",
-        date: "10 Fev, 2025",
-        readTime: "4 min",
-        author: "Data Science",
+        excerpt: "Descubra como a RevHackers triplicou o número de reuniões agendadas usando Funnels para criar um funil de vendas com nutrição agressiva e agendamento automatizado.",
+        date: "30 Jan, 2026",
+        readTime: "8 min",
+        author: "Time Funnels",
+        featured: true,
+        keywords: ["case de sucesso crm", "automação de vendas b2b", "como aumentar reuniões agendadas", "funil de vendas inbound"],
         content: `
-            <p>Likes não pagam contas. Você precisa saber quanto custa colocar um cliente para dentro e quanto ele deixa no caixa.</p>
-            <h3>CAC (Custo de Aquisição de Cliente)</h3>
-            <p>Se você gasta R$ 100 em ads para fazer uma venda de R$ 50, você tem um problema. O FUNNELS rastreia a origem de cada venda até o anúncio exato.</p>
-        `
-    },
-    {
-        id: 8,
-        slug: "chatbots-humanizados",
-        title: "Chatbots que parecem humanos: Como configurar",
-        category: "IA",
-        image: ASSETS.screenshots.forms,
-        excerpt: "Boas práticas para criar fluxos de conversa naturais que engajam e convertem.",
-        date: "05 Fev, 2025",
-        readTime: "6 min",
-        author: "Tech Team",
-        content: `
-            <p>Ninguém gosta de falar com um robô burro. "Digite 1 para financeiro". Isso frustra.</p>
-            <h3>IA Conversacional</h3>
-            <p>Use IA para entender a intenção, não apenas palavras-chave exatas. Deixe a conversa fluir naturalmente e só peça dados quando necessário.</p>
-        `
-    },
-    {
-        id: 9,
-        slug: "gestao-de-equipe-vendas",
-        title: "Gerenciando equipes de vendas remotas",
-        category: "Liderança",
-        image: ASSETS.screenshots.dashboard2,
-        excerpt: "Como manter a produtividade e o alinhamento mesmo com o time distribuído.",
-        date: "01 Fev, 2025",
-        readTime: "7 min",
-        author: "Giulliano Alves",
-        content: `
-            <p>Vendas remotas exigem visibilidade. Você não pode ver se o vendedor está no telefone, mas pode ver o CRM.</p>
-            <h3>Transparência Radical</h3>
-            <p>Dashboards compartilhados mostram quem está performando e quem precisa de ajuda. Gravação de chamadas permite coaching assíncrono.</p>
-        `
-    },
-    {
-        id: 10,
-        slug: "futuro-do-saas",
-        title: "O Futuro do SaaS: Consolidação e IA",
-        category: "Tendências",
-        image: ASSETS.screenshots.aiBuilder,
-        excerpt: "Para onde o mercado de software está indo e como se preparar para a próxima década.",
-        date: "28 Jan, 2025",
-        readTime: "5 min",
-        author: "Equipe Funnels",
-        content: `
-            <p>A era de contratar 50 softwares diferentes acabou. A fadiga de assinatura é real.</p>
-            <h3>A Consolidação</h3>
-            <p>Plataformas que fazem tudo (como o FUNNELS) estão engolindo soluções de nicho. O cliente quer simplicidade e preço justo.</p>
+            <p>A RevHackers é uma empresa especializada em growth e vendas B2B. Eles ajudam startups e scale-ups a estruturar operações comerciais de alta performance.</p>
+            <p>Irônico, não? Uma empresa que ensina outras a vender tinha um problema com suas próprias ferramentas de vendas.</p>
+            
+            <h2>Snapshot</h2>
+            <table>
+                <tbody>
+                    <tr><td><strong>Empresa</strong></td><td>RevHackers</td></tr>
+                    <tr><td><strong>Segmento</strong></td><td>Consultoria de Growth e Vendas B2B</td></tr>
+                    <tr><td><strong>Desafio</strong></td><td>Converter leads inbound em reuniões agendadas</td></tr>
+                    <tr><td><strong>Resultado principal</strong></td><td>+340% em reuniões agendadas</td></tr>
+                    <tr><td><strong>Tempo para resultado</strong></td><td>45 dias</td></tr>
+                </tbody>
+            </table>
+            
+            <h2>O Desafio: Muito Lead, Pouca Reunião</h2>
+            <p>A RevHackers tinha um problema que muitas empresas B2B conhecem bem: <strong>gerava leads, mas não convertia em reuniões</strong>.</p>
+            
+            <h3>A situação antes do Funnels:</h3>
+            <p><strong>Stack de ferramentas:</strong></p>
+            <ul>
+                <li>RD Station para automação de marketing</li>
+                <li>Pipedrive para CRM</li>
+                <li>Calendly para agendamento</li>
+                <li>WhatsApp Web para comunicação (manual)</li>
+                <li>Zapier para conectar tudo</li>
+            </ul>
+            
+            <h3>Os problemas:</h3>
+            <table>
+                <thead>
+                    <tr><th>Problema</th><th>Impacto</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Dados fragmentados</td><td>SDR não via histórico de marketing</td></tr>
+                    <tr><td>WhatsApp manual</td><td>Demorava para responder, sem automação</td></tr>
+                    <tr><td>Tempo de resposta</td><td>4-6 horas em média</td></tr>
+                    <tr><td>Custo alto</td><td>R$ 2.800/mês em ferramentas</td></tr>
+                </tbody>
+            </table>
+            
+            <blockquote>
+                <p>"A gente ensinava nossos clientes a fazer automação de vendas, mas nossa própria operação era manual. Era constrangedor."</p>
+                <cite>— Time RevHackers</cite>
+            </blockquote>
+            
+            <h2>A Solução: Funil de Vendas Integrado + Nutrição Agressiva</h2>
+            <p>A estratégia foi construir um <strong>funil de vendas totalmente automatizado</strong> com <strong>nutrição multicanal agressiva</strong>.</p>
+            
+            <h3>Os 4 pilares da estratégia:</h3>
+            <ol>
+                <li><strong>Qualificação Automática com IA:</strong> Classificação automática em HOT, WARM ou COLD</li>
+                <li><strong>Nutrição Multicanal Agressiva:</strong> WhatsApp em 2 min + Email + Follow-ups automáticos</li>
+                <li><strong>WhatsApp como Canal Principal:</strong> 95% de abertura vs 28% do email</li>
+                <li><strong>Agendamento Sem Fricção:</strong> Lead agenda direto no WhatsApp</li>
+            </ol>
+            
+            <h2>Os Resultados</h2>
+            <table>
+                <thead>
+                    <tr><th>Métrica</th><th>Antes</th><th>Depois</th><th>Variação</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Reuniões agendadas/mês</strong></td><td>35</td><td><strong>154</strong></td><td><strong>+340%</strong></td></tr>
+                    <tr><td>Taxa lead → reunião</td><td>7%</td><td>31%</td><td>+343%</td></tr>
+                    <tr><td>Tempo para primeiro contato</td><td>4-6h</td><td>2 min</td><td>-98%</td></tr>
+                    <tr><td>Taxa de resposta (WhatsApp)</td><td>N/A</td><td>45%</td><td>—</td></tr>
+                    <tr><td>No-show em reuniões</td><td>25%</td><td>8%</td><td>-68%</td></tr>
+                    <tr><td>Custo de ferramentas</td><td>R$ 2.800</td><td>R$ 697</td><td>-75%</td></tr>
+                </tbody>
+            </table>
+            
+            <h3>Economia anual: R$ 25.344</h3>
+            
+            <h2>O Que Fez a Diferença</h2>
+            <blockquote>
+                <p>"Email tem 12% de abertura. WhatsApp tem 95%. Quando você automatiza WhatsApp com a mesma inteligência que automatiza email, o resultado multiplica."</p>
+            </blockquote>
+            <blockquote>
+                <p>"Antes, o SDR abria o Pipedrive e via só o deal. Não sabia que emails o lead abriu, que páginas visitou. Agora tudo está numa tela só. Contexto é poder."</p>
+            </blockquote>
+            <blockquote>
+                <p>"Lead que entra às 22h é respondido às 22h pelo chatbot. Às 8h da manhã, quando o SDR chega, já tem reunião agendada."</p>
+            </blockquote>
+            
+            <h2>Quer Resultados Similares?</h2>
+            <p>A RevHackers triplicou reuniões agendadas em 45 dias. A estratégia deles pode ser adaptada para sua operação.</p>
         `
     }
 ];

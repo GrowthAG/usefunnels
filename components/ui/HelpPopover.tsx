@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 export interface HelpContent {
     title: string;
@@ -174,11 +175,11 @@ export const HelpPopover: React.FC<HelpPopoverProps> = ({ content, className = '
                 </svg>
             </button>
 
-            {isOpen && (
-                <>
+            {isOpen && createPortal(
+                <React.Fragment>
                     {isMobile ? (
                         /* Mobile: Bottom Sheet */
-                        <>
+                        <React.Fragment>
                             <div className="fixed inset-0 bg-black/50 z-[200] animate-fade-in" onClick={() => setIsOpen(false)} />
                             <div
                                 ref={popoverRef}
@@ -215,7 +216,7 @@ export const HelpPopover: React.FC<HelpPopoverProps> = ({ content, className = '
                                     </div>
                                 </div>
                             </div>
-                        </>
+                        </React.Fragment>
                     ) : (
                         /* Desktop: Floating Popover */
                         <div
@@ -249,10 +250,8 @@ export const HelpPopover: React.FC<HelpPopoverProps> = ({ content, className = '
                             </div>
                         </div>
                     )}
-                </>
-            )}
 
-            <style jsx>{`
+                    <style jsx>{`
                 @keyframes fade-in {
                     from {
                         opacity: 0;
@@ -279,6 +278,9 @@ export const HelpPopover: React.FC<HelpPopoverProps> = ({ content, className = '
                     animation: slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
                 }
             `}</style>
+                </React.Fragment>,
+                document.body
+            )}
         </>
     );
 };
