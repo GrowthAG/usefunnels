@@ -66,7 +66,7 @@ export const Footer = () => {
                         <ul className="space-y-3 md:space-y-4 text-sm text-gray-400 font-mono">
                             <li><Link to="/sobre" className="hover:text-white hover:translate-x-1 transition-all inline-block">Sobre Nós</Link></li>
                             <li><Link to="/parceiros" className="hover:text-white hover:translate-x-1 transition-all inline-block">Parceiros</Link></li>
-                            <li><a href="https://usefunnels.io/blog" target="_blank" rel="noopener noreferrer" className="hover:text-white hover:translate-x-1 transition-all inline-block">Blog</a></li>
+                            <li><Link to="/blog" className="hover:text-white hover:translate-x-1 transition-all inline-block">Blog</Link></li>
                         </ul>
                     </div>
 

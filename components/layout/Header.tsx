@@ -26,7 +26,7 @@ export const Header = ({ onBookDemo }: { onBookDemo: () => void }) => {
         { name: "Home", path: "/", external: false },
         { name: "Sobre", path: "/sobre", external: false },
         { name: "Parceiros", path: "/parceiros", external: false },
-        { name: "Blog", path: "https://usefunnels.io/blog", external: true },
+        { name: "Blog", path: "/blog", external: false },
         { name: "Preços", path: "/precos", external: false },
     ];
 
