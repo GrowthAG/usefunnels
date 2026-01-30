@@ -87,7 +87,7 @@ const plans: PricingPlan[] = [
         linkMonthly: "/enterprise",
         linkAnnual: "/enterprise",
         recommendedBadge: "Ideal para: Grandes Corporações",
-        features: ["Usuários ilimitados", "Contatos ilimitados", "Whitelabel", "Suporte 24/7"],
+        features: ["15+ usuários (personalizado)", "100k+ contatos (sob medida)", "Whitelabel completo", "Suporte 24/7 dedicado"],
         isEnterpriseWhite: true
     }
 ];
@@ -171,7 +171,10 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
     // Card Styling Logic
     let cardStyleClasses = "";
-    if (plan.isPopular) {
+    if (plan.isPopular && plan.isDark) {
+        // Growth - dark card with green accent
+        cardStyleClasses = "bg-deep-black border-2 border-neon-green shadow-[0_0_30px_rgba(27,252,79,0.15)] text-white relative";
+    } else if (plan.isPopular) {
         cardStyleClasses = "bg-white border-2 border-neon-green shadow-[0_0_30px_rgba(27,252,79,0.15)] relative";
     } else if (plan.isEnterpriseWhite) {
         cardStyleClasses = "bg-white border border-gray-200 shadow-sm";
@@ -434,8 +437,8 @@ export const PricingTable = () => {
     const featuresList = [
         {
             category: "CRM & Vendas", items: [
-                { name: "Usuários", starter: "3", growth: "5", scale: "10", enterprise: "Ilimitado" },
-                { name: "Contatos", starter: "20.000", growth: "50.000", scale: "75.000", enterprise: "Ilimitado" },
+                { name: "Usuários", starter: "3", growth: "5", scale: "10", enterprise: "15+" },
+                { name: "Contatos", starter: "20.000", growth: "50.000", scale: "75.000", enterprise: "100k+" },
                 { name: "Pipelines de Venda", starter: "3", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
                 { name: "Oportunidades", starter: "Ilimitado", growth: "Ilimitado", scale: "Ilimitado", enterprise: "Ilimitado" },
             ]
