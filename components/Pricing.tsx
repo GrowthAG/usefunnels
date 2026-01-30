@@ -53,7 +53,7 @@ const plans: PricingPlan[] = [
         linkMonthly: "https://checkout.usefunnels.io/plano-growth-mensal",
         linkAnnual: "https://checkout.usefunnels.io/plano-growth-anual",
         recommendedBadge: "Ideal para: E-commerce e Agências",
-        features: ["5 usuários", "50.000 contatos", "WhatsApp Business", "Chat Bots IA", "Tudo do Starter +"],
+        features: ["5 usuários", "50.000 contatos", "WhatsApp Business", "Automações avançadas", "Tudo do Starter +"],
         isPopular: true,
         isDark: true,
         additionalCosts: {
@@ -71,7 +71,7 @@ const plans: PricingPlan[] = [
         linkMonthly: "#",
         linkAnnual: "#",
         recommendedBadge: "Ideal para: Empresas Médias",
-        features: ["10 usuários", "75.000 contatos", "WhatsApp API + VoIP", "Suporte prioritário", "Tudo do Growth +"],
+        features: ["10 usuários", "75.000 contatos", "WhatsApp API + VoIP", "Chatbot + IA", "Tudo do Growth +"],
         additionalCosts: {
             label: "Ver custos adicionais",
             whatsapp: whatsappCosts,
@@ -456,8 +456,8 @@ export const PricingTable = () => {
             category: "Automação & IA", items: [
                 { name: "Construtor de Fluxos", starter: "Básico", growth: "Avançado", scale: "Premium", enterprise: "Custom" },
                 { name: "Disparos de E-mail", starter: true, growth: true, scale: true, enterprise: true },
-                { name: "Chatbot IA", starter: false, growth: true, scale: true, enterprise: true },
-                { name: "IA Content Generator", starter: false, growth: true, scale: true, enterprise: true },
+                { name: "Chatbot IA", starter: false, growth: false, scale: true, enterprise: true },
+                { name: "IA Content Generator", starter: false, growth: false, scale: true, enterprise: true },
             ]
         },
         {
