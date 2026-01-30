@@ -4,6 +4,7 @@ import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-d
 import { Header, Footer } from './components/layout';
 import { Home, About, Partners, Enterprise, Blog, BlogPost, FeaturePage, Legal, PricingPageFull } from './pages';
 import { Modal } from './components/ui';
+import { CheckoutModal } from './components/checkout';
 
 // Scroll To Top Component
 const ScrollToTop = () => {
@@ -57,9 +58,13 @@ const App = () => {
     const [isPartnerModalOpen, setIsPartnerModalOpen] = useState(false);
     const [isCheckoutModalOpen, setIsCheckoutModalOpen] = useState(false);
     const [checkoutUrl, setCheckoutUrl] = useState('');
+    const [checkoutPlanName, setCheckoutPlanName] = useState('scale');
+    const [checkoutIsAnnual, setCheckoutIsAnnual] = useState(false);
 
-    const handleCheckout = (url: string) => {
+    const handleCheckout = (url: string, planName?: string, isAnnual?: boolean) => {
         setCheckoutUrl(url);
+        setCheckoutPlanName(planName || 'scale');
+        setCheckoutIsAnnual(isAnnual || false);
         setIsCheckoutModalOpen(true);
     };
 
@@ -118,35 +123,14 @@ const App = () => {
                     </div>
                 </Modal>
 
-                {/* Checkout Modal */}
-                <Modal isOpen={isCheckoutModalOpen} onClose={() => setIsCheckoutModalOpen(false)}>
-                    <div className="bg-white rounded-sm overflow-hidden flex flex-col h-[90vh] md:h-[85vh] w-full max-w-6xl">
-                        <div className="bg-gray-50 p-4 border-b border-gray-200 flex justify-between items-center flex-shrink-0">
-                            <div className="flex items-center gap-2">
-                                <span className="font-mono text-xs font-bold uppercase tracking-widest text-deep-black">Checkout Seguro</span>
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1BFC4F" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                </svg>
-                            </div>
-                            <button onClick={() => setIsCheckoutModalOpen(false)} className="text-gray-400 hover:text-deep-black transition-colors">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                                </svg>
-                            </button>
-                        </div>
-                        <div className="flex-grow w-full overflow-hidden relative bg-white">
-                            <div className="absolute inset-0 flex items-center justify-center z-0">
-                                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-neon-green"></div>
-                            </div>
-                            <iframe
-                                src={checkoutUrl}
-                                style={{ width: '100%', height: '100%', border: 'none', position: 'relative', zIndex: 10 }}
-                                title="Checkout"
-                            ></iframe>
-                        </div>
-                    </div>
-                </Modal>
+                {/* Premium Checkout Modal with Bridge Page */}
+                <CheckoutModal
+                    isOpen={isCheckoutModalOpen}
+                    onClose={() => setIsCheckoutModalOpen(false)}
+                    checkoutUrl={checkoutUrl}
+                    planName={checkoutPlanName}
+                    isAnnual={checkoutIsAnnual}
+                />
             </div>
         </Router>
     );

@@ -71,7 +71,6 @@ const plans: PricingPlan[] = [
         linkAnnual: "#",
         recommendedBadge: "Ideal para: Empresas Médias",
         features: ["10 usuários", "75.000 contatos", "WhatsApp API + VoIP", "Suporte prioritário", "Tudo do Growth +"],
-        isDark: true,
         additionalCosts: {
             label: "Ver custos adicionais",
             whatsapp: whatsappCosts,
@@ -92,7 +91,7 @@ const plans: PricingPlan[] = [
     }
 ];
 
-const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: () => void; onCheckout?: (url: string) => void }> = ({ plan, isAnnual, onBookDemo, onCheckout }) => {
+const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: () => void; onCheckout?: (url: string, planName?: string, isAnnual?: boolean) => void }> = ({ plan, isAnnual, onBookDemo, onCheckout }) => {
     const [showCosts, setShowCosts] = useState(false);
 
     // Help content para custos adicionais
@@ -163,7 +162,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
         if (link === '#' || link.includes('enterprise')) {
             onBookDemo();
         } else if (onCheckout) {
-            onCheckout(link);
+            onCheckout(link, plan.name.toLowerCase(), isAnnual);
         } else {
             window.location.href = link;
         }
@@ -294,7 +293,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                                                     <HelpPopover content={costHelpContent[item.label]} />
                                                 )}
                                             </span>
-                                            <span className="font-bold text-neon-green">{item.value}</span>
+                                            <span className="font-bold text-emerald-600">{item.value}</span>
                                         </li>
                                     ))}
                                 </ul>
@@ -526,7 +525,7 @@ export const PricingTable = () => {
     );
 };
 
-export const Pricing = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onCheckout?: (url: string) => void }) => {
+export const Pricing = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onCheckout?: (url: string, planName?: string, isAnnual?: boolean) => void }) => {
     const [isAnnual, setIsAnnual] = useState(false);
 
     return (
