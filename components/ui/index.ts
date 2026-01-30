@@ -6,3 +6,4 @@ export * from './Modal';
 export * from './Reveal';
 export * from './CornerBrackets';
 export * from './Tooltip';
+export * from './HelpPopover';

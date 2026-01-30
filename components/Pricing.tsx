@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { PricingPlan } from '../types';
-import { CornerBrackets, Tooltip } from './ui';
+import { CornerBrackets, HelpPopover, HelpContent } from './ui';
 import { Link } from 'react-router-dom';
 import { FEATURES } from '../constants';
 
@@ -95,16 +95,56 @@ const plans: PricingPlan[] = [
 const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: () => void; onCheckout?: (url: string) => void }> = ({ plan, isAnnual, onBookDemo, onCheckout }) => {
     const [showCosts, setShowCosts] = useState(false);
 
-    // Tooltips para custos adicionais
-    const costTooltips: Record<string, string> = {
-        "Verificação de e-mail": "Validação para reduzir bounce e melhorar entregabilidade.",
-        "Envio de E-mail": "Custo por e-mail disparado na plataforma.",
-        "Fluxos Premium": "Cada execução é um passo/ação rodando dentro de uma automação.",
-        "Conteúdo de IA": "Custo por geração de texto com IA.",
-        "Fluxos de IA": "Cada execução é um passo/ação rodando dentro de uma automação.",
-        "Conversação IA": "Custo por mensagem trocada com o agente de IA.",
-        "Custo Fixo WhatsApp": "Cobrança mensal da Meta (pode variar por número/região).",
-        "Custo por msg": "Cobrança por conversa/mensagem conforme regras da Meta e categoria da conversa."
+    // Help content para custos adicionais
+    const costHelpContent: Record<string, HelpContent> = {
+        "Verificação de e-mail": {
+            title: "Verificação de E-mail",
+            whatIs: "Validação técnica de endereços antes do envio.",
+            whyMatters: "Reduz bounces e protege sua reputação de remetente, aumentando a entregabilidade.",
+            example: "1.000 verificações = R$ 13,10/mês. Valida se o e-mail existe antes de disparar campanha."
+        },
+        "Envio de E-mail": {
+            title: "Envio de E-mail",
+            whatIs: "Custo por cada e-mail disparado pela plataforma.",
+            whyMatters: "Permite campanhas ilimitadas pagando apenas pelo que usar, sem taxas fixas absurdas.",
+            example: "10.000 envios = R$ 34/mês. Muito mais barato que ferramentas tradicionais."
+        },
+        "Fluxos Premium": {
+            title: "Fluxos Premium",
+            whatIs: "Automações avançadas com lógica condicional e integrações complexas.",
+            whyMatters: "Automação sofisticada que economiza horas de trabalho manual da equipe.",
+            example: "100 execuções = R$ 5,25/mês. Uma execução = um passo/ação dentro do fluxo."
+        },
+        "Conteúdo de IA": {
+            title: "Conteúdo de IA",
+            whatIs: "Geração de textos, e-mails e posts usando GPT-4.",
+            whyMatters: "Cria conteúdo profissional em segundos, economizando tempo de copywriting.",
+            example: "30 gerações = R$ 14,18/mês. Gera follow-ups, respostas, anúncios automaticamente."
+        },
+        "Fluxos de IA": {
+            title: "Fluxos de IA",
+            whatIs: "Automações que usam IA para tomar decisões (classificação, roteamento).",
+            whyMatters: "Inteligência artificial decide a melhor ação baseada no contexto, qualificando leads automaticamente.",
+            example: "50 execuções = R$ 7,88/mês. IA classifica leads e direciona para vendedor certo."
+        },
+        "Conversação IA": {
+            title: "Conversação IA",
+            whatIs: "Mensagens processadas pelo chatbot com IA conversacional.",
+            whyMatters: "Atende e qualifica leads 24/7 sem intervenção humana, aumentando conversão.",
+            example: "100 mensagens = R$ 10,50/mês. Bot responde perguntas e agenda reuniões sozinho."
+        },
+        "Custo Fixo WhatsApp": {
+            title: "Custo Fixo WhatsApp",
+            whatIs: "Taxa mensal cobrada pela Meta para uso da API oficial do WhatsApp Business.",
+            whyMatters: "Necessário para enviar mensagens via WhatsApp de forma profissional e escalável.",
+            example: "R$ 145/mês (tarifa Meta). Varia por número e região, cobrado pela Meta direto."
+        },
+        "Custo por msg": {
+            title: "Custo por Mensagem WhatsApp",
+            whatIs: "Cobrança da Meta por cada conversa iniciada no WhatsApp Business API.",
+            whyMatters: "Modelo de cobrança oficial da Meta baseado em categorias de conversa (marketing, serviço, etc).",
+            example: "5.000 msgs = R$ 200/mês. Cobrado pela Meta conforme tipo de conversa e país."
+        }
     };
 
     // Helper to check if a feature matches a resource page
@@ -232,14 +272,14 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                                         <div className="flex justify-between items-center mb-1">
                                             <span className="opacity-80 flex items-center">
                                                 Custo Fixo:
-                                                <Tooltip content={costTooltips["Custo Fixo WhatsApp"]} />
+                                                <HelpPopover content={costHelpContent["Custo Fixo WhatsApp"]} />
                                             </span>
                                             <span className="font-bold">{plan.additionalCosts.whatsapp.monthly}</span>
                                         </div>
                                         <div className="flex justify-between items-center">
                                             <span className="opacity-80 flex items-center">
                                                 Por Msg:
-                                                <Tooltip content={costTooltips["Custo por msg"]} />
+                                                <HelpPopover content={costHelpContent["Custo por msg"]} />
                                             </span>
                                             <span className="font-bold">{plan.additionalCosts.whatsapp.perMessage}</span>
                                         </div>
@@ -250,8 +290,8 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                                         <li key={idx} className="flex justify-between items-center">
                                             <span className="opacity-90 flex items-center">
                                                 {item.label}
-                                                {costTooltips[item.label] && (
-                                                    <Tooltip content={costTooltips[item.label]} />
+                                                {costHelpContent[item.label] && (
+                                                    <HelpPopover content={costHelpContent[item.label]} />
                                                 )}
                                             </span>
                                             <span className="font-bold text-neon-green">{item.value}</span>
@@ -309,20 +349,86 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
 /* --- NEW COMPARISON TABLE COMPONENT --- */
 export const PricingTable = () => {
-    // Mapa de tooltips para features
-    const tooltips: Record<string, string> = {
-        "Usuários": "Quantidade de pessoas da sua equipe com acesso ao sistema.",
-        "Contatos": "Quantidade de leads/clientes armazenados no CRM.",
-        "Pipelines de Venda": "Quadros/etapas do funil de vendas para organizar oportunidades.",
-        "Oportunidades": "Negócios em andamento no pipeline (leads em negociação).",
-        "WhatsApp Business API": "Integração oficial com a Meta para enviar e receber mensagens via WhatsApp com automações e templates.",
-        "Telefonia VoIP": "Chamadas e discador dentro do sistema. Pode exigir número e configuração conforme país.",
-        "Construtor de Fluxos": "Nível do builder de automações: Básico (essencial), Avançado (condições e ramificações), Premium (recursos completos), Custom (sob demanda).",
-        "Disparos de E-mail": "Envios automáticos e campanhas. Custos podem variar por volume.",
-        "Chatbot IA": "Bot que responde e qualifica leads automaticamente, com base no contexto da conversa.",
-        "IA Content Generator": "Geração de textos e mensagens com IA (ex: follow-ups, anúncios, respostas).",
-        "API de Integração": "Conecta o sistema com ferramentas externas (ex: ERP, apps, integrações personalizadas).",
-        "Whitelabel": "Personalização com sua marca (logo/domínio). Pode incluir configurações extras."
+    // Rich help content para features da tabela comparativa
+    const helpContent: Record<string, HelpContent> = {
+        "Usuários": {
+            title: "Usuários",
+            whatIs: "Número de pessoas da sua equipe que podem acessar o sistema simultaneamente.",
+            whyMatters: "Cada usuário tem login próprio e permissões personalizadas para acessar pipelines, leads e campanhas.",
+            example: "3 usuários = vendedor, gerente e marketing podem trabalhar juntos no sistema."
+        },
+        "Contatos": {
+            title: "Contatos",
+            whatIs: "Quantidade máxima de leads e clientes que podem ser armazenados no CRM.",
+            whyMatters: "Todos os dados ficam centralizados: histórico de conversas, negociações e informações relevantes.",
+            example: "20.000 contatos = sua base completa de prospects e clientes com todas interações registradas."
+        },
+        "Pipelines de Venda": {
+            title: "Pipelines de Venda",
+            whatIs: "Quadros visuais tipo Kanban para organizar etapas do funil de vendas.",
+            whyMatters: "Visualize todo o processo comercial, identifique gargalos e acompanhe performance em tempo real.",
+            example: "Pipeline B2B: Prospecção → Qualificação → Proposta → Negociação → Fechamento."
+        },
+        "Oportunidades": {
+            title: "Oportunidades",
+            whatIs: "Negócios em andamento dentro dos pipelines (cards individuais com valor e etapa).",
+            whyMatters: "Acompanhe cada negociação, valor estimado, probabilidade de fechamento e próximos passos.",
+            example: "Oportunidade: \"Venda XYZ Ltda\" - R$ 50k - 80% probabilidade - etapa Proposta Enviada."
+        },
+        "WhatsApp Business API": {
+            title: "WhatsApp Business API",
+            whatIs: "Integração oficial da Meta para enviar/receber mensagens profissionais no WhatsApp.",
+            whyMatters: "Automações, múltiplos atendentes, templates aprovados e integração com CRM para atendimento escalável.",
+            example: "Envie confirmações automáticas, notificações de pedido e atenda clientes direto no sistema."
+        },
+        "Telefonia VoIP": {
+            title: "Telefonia VoIP",
+            whatIs: "Sistema de chamadas integrado ao CRM sem necessidade de telefone físico.",
+            whyMatters: "Discador automático, gravação de ligações, histórico completo e relatórios de performance.",
+            example: "Vendedor liga para lead direto da plataforma, tudo fica registrado no histórico do contato."
+        },
+        "Construtor de Fluxos": {
+            title: "Construtor de Fluxos",
+            whatIs: "Editor visual para criar automações de marketing e vendas sem código.",
+            whyMatters: "Níveis: Básico (gatilhos simples), Avançado (condições IF/ELSE), Premium (loops e integrações), Custom (personalizado).",
+            example: "Fluxo Avançado: Se lead abriu e-mail 3x → enviar WhatsApp → se responder → atribuir vendedor."
+        },
+        "Disparos de E-mail": {
+            title: "Disparos de E-mail",
+            whatIs: "Envio automático de campanhas e sequências de e-mails personalizados.",
+            whyMatters: "Nutrição de leads, follow-ups automáticos e campanhas segmentadas com tracking de abertura/clique.",
+            example: "Sequência: E-mail 1 (dia 0) → E-mail 2 (dia 3 se não abriu) → E-mail 3 (dia 7)."
+        },
+        "Chatbot IA": {
+            title: "Chatbot IA",
+            whatIs: "Assistente virtual com inteligência artificial que atende e qualifica leads automaticamente.",
+            whyMatters: "Funciona 24/7 sem intervenção humana, entende contexto e responde perguntas complexas naturalmente.",
+            example: "Bot qualifica lead: identifica interesse, coleta dados, agenda reunião e envia para vendedor."
+        },
+        "IA Content Generator": {
+            title: "IA Content Generator",
+            whatIs: "Gerador de textos profissionais usando GPT-4 para marketing e vendas.",
+            whyMatters: "Crie e-mails, posts, anúncios e respostas personalizadas em segundos mantendo tom de voz consistente.",
+            example: "Gera follow-up personalizado baseado no histórico: 'Oi João, sobre nossa conversa de ontem...'"
+        },
+        "API de Integração": {
+            title: "API de Integração",
+            whatIs: "Interface de programação para conectar o sistema com ferramentas externas.",
+            whyMatters: "Integre com ERP, e-commerce, apps personalizados e crie fluxos customizados entre sistemas.",
+            example: "Integração com Shopify: pedido novo → cria lead no CRM → envia e-mail boas-vindas."
+        },
+        "Whitelabel": {
+            title: "Whitelabel",
+            whatIs: "Personalização completa da plataforma com sua marca, logo e domínio próprio.",
+            whyMatters: "Revenda a solução como sua ou mantenha identidade visual 100% alinhada com sua empresa.",
+            example: "Login em 'app.suaempresa.com' com seu logo, cores e nome da marca no lugar de Funnels."
+        },
+        "Custo WhatsApp": {
+            title: "Tarifa Meta WhatsApp",
+            whatIs: "Taxa oficial cobrada pela Meta para uso da API do WhatsApp Business.",
+            whyMatters: "Custo fixo mensal + variável por conversa, estabelecido pela Meta e não pela Funnels.",
+            example: "R$ 145/mês fixo + R$ 0,04/msg. Planos maiores absorvem parte dessa tarifa."
+        }
     };
 
     const featuresList = [
@@ -403,8 +509,8 @@ export const PricingTable = () => {
                             <div key={rowIdx} className={`grid grid-cols-5 items-center border-b border-gray-100 hover:bg-gray-50 transition-colors ${rowIdx % 2 === 0 ? 'bg-white' : 'bg-gray-50/50'}`}>
                                 <div className="p-4 text-sm font-medium text-gray-700 flex items-center">
                                     {row.name}
-                                    {tooltips[row.name] && (
-                                        <Tooltip content={tooltips[row.name]} />
+                                    {helpContent[row.name] && (
+                                        <HelpPopover content={helpContent[row.name]} />
                                     )}
                                 </div>
                                 <div className="p-4 text-center border-l border-gray-100">{renderValue(row.starter)}</div>
