@@ -68,20 +68,20 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
                         {/* Interactive Demo - Browser Mockup */}
                         <div className="max-w-5xl mx-auto mb-8 md:mb-12">
-                            <div className="relative shadow-2xl rounded-xl overflow-hidden">
+                            <div className="relative shadow-2xl rounded-lg overflow-hidden border border-gray-800/50">
                                 {/* Browser Header - Dark Mode */}
-                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-4 py-3 flex items-center gap-3">
-                                    <div className="flex items-center gap-2">
-                                        <div className="w-3 h-3 rounded-full bg-[#FF5F56] opacity-50"></div>
-                                        <div className="w-3 h-3 rounded-full bg-[#FFBD2E] opacity-50"></div>
-                                        <div className="w-3 h-3 rounded-full bg-[#27C93F] opacity-50"></div>
+                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-3 py-2 flex items-center gap-2">
+                                    <div className="flex items-center gap-1.5">
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
+                                        <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
                                     </div>
                                     <div className="flex-1 flex justify-center">
-                                        <div className="bg-gray-900 rounded-md px-4 py-1.5 text-xs text-gray-500 font-mono w-full max-w-md text-center border border-gray-800 shadow-sm">
+                                        <div className="bg-gray-900 rounded-md px-3 py-1 text-[10px] text-gray-400 font-mono w-full max-w-sm text-center border border-gray-800">
                                             app.usefunnels.io/dashboard
                                         </div>
                                     </div>
-                                    <div className="w-16"></div>
+                                    <div className="w-12"></div>
                                 </div>
 
                                 <div className="relative aspect-video bg-black">
