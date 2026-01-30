@@ -55,6 +55,7 @@ const plans: PricingPlan[] = [
         recommendedBadge: "Ideal para: E-commerce e Agências",
         features: ["5 usuários", "50.000 contatos", "WhatsApp Business", "Chat Bots IA", "Tudo do Starter +"],
         isPopular: true,
+        isDark: true,
         additionalCosts: {
             label: "Ver custos adicionais",
             whatsapp: whatsappCosts,
@@ -87,7 +88,7 @@ const plans: PricingPlan[] = [
         linkAnnual: "/enterprise",
         recommendedBadge: "Ideal para: Grandes Corporações",
         features: ["Usuários ilimitados", "Contatos ilimitados", "Whitelabel", "Suporte 24/7"],
-        isEnterprise: true
+        isEnterpriseWhite: true
     }
 ];
 
@@ -172,8 +173,8 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
     let cardStyleClasses = "";
     if (plan.isPopular) {
         cardStyleClasses = "bg-white border-2 border-neon-green shadow-[0_0_30px_rgba(27,252,79,0.15)] relative";
-    } else if (plan.isEnterprise) {
-        cardStyleClasses = "bg-gradient-to-b from-[#1a1a1a] to-black border border-gray-700 text-white shadow-xl";
+    } else if (plan.isEnterpriseWhite) {
+        cardStyleClasses = "bg-white border border-gray-200 shadow-sm";
     } else if (plan.isDark) {
         cardStyleClasses = "bg-deep-black border border-gray-800 text-white shadow-lg";
     } else {
@@ -191,14 +192,14 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
             )}
 
             {/* Badge for Enterprise */}
-            {plan.isEnterprise && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 text-gray-200 border border-gray-600 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg whitespace-nowrap z-20">
+            {plan.isEnterpriseWhite && (
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gray-800 text-white border border-gray-600 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest shadow-lg whitespace-nowrap z-20">
                     Exclusivo
                 </div>
             )}
 
             {/* Corner Brackets for Standard Plans */}
-            {!plan.isDark && !plan.isPopular && !plan.isEnterprise && <CornerBrackets className="opacity-0 group-hover:opacity-100 transition-opacity" />}
+            {!plan.isDark && !plan.isPopular && !plan.isEnterpriseWhite && <CornerBrackets className="opacity-0 group-hover:opacity-100 transition-opacity" />}
 
             {/* Spotlight Effect for Popular */}
             {plan.isPopular && (
@@ -207,27 +208,27 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
             {/* Header Section: Fixed Height for Alignment */}
             <div className="mb-6 text-center h-[80px] flex flex-col justify-center relative z-10">
-                <h3 className={`text-2xl font-bold font-space mb-2 ${plan.isDark || plan.isEnterprise ? 'text-white' : 'text-deep-black'}`}>
+                <h3 className={`text-2xl font-bold font-space mb-2 ${plan.isDark ? 'text-white' : 'text-deep-black'}`}>
                     {plan.name}
                 </h3>
-                <p className={`text-sm font-medium ${plan.isDark || plan.isEnterprise ? 'text-gray-400' : 'text-gray-500'}`}>
+                <p className={`text-sm font-medium ${plan.isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                     {plan.subtitle}
                 </p>
             </div>
 
             {/* Price Section: Fixed Height */}
-            <div className={`pb-6 mb-6 border-b ${plan.isDark || plan.isEnterprise ? 'border-gray-800' : 'border-gray-100'} text-center flex-shrink-0 h-[100px] flex flex-col justify-center relative z-10`}>
+            <div className={`pb-6 mb-6 border-b ${plan.isDark ? 'border-gray-800' : 'border-gray-100'} text-center flex-shrink-0 h-[100px] flex flex-col justify-center relative z-10`}>
                 <div className="flex items-end justify-center gap-1">
-                    <span className={`text-4xl lg:text-5xl font-bold font-space tracking-tighter ${plan.isDark || plan.isEnterprise ? 'text-white' : 'text-deep-black'}`}>
-                        {plan.isEnterprise ? 'Custom' : `R$ ${isAnnual ? plan.annualPrice : plan.monthlyPrice}`}
+                    <span className={`text-4xl lg:text-5xl font-bold font-space tracking-tighter ${plan.isDark ? 'text-white' : 'text-deep-black'}`}>
+                        {plan.isEnterpriseWhite ? 'Custom' : `R$ ${isAnnual ? plan.annualPrice : plan.monthlyPrice}`}
                     </span>
-                    {!plan.isEnterprise && (
-                        <span className={`text-sm font-bold mb-2 ${plan.isDark || plan.isEnterprise ? 'text-gray-400' : 'text-gray-500'}`}>
+                    {!plan.isEnterpriseWhite && (
+                        <span className={`text-sm font-bold mb-2 ${plan.isDark ? 'text-gray-400' : 'text-gray-500'}`}>
                             /{isAnnual ? 'ano' : 'mês'}
                         </span>
                     )}
                 </div>
-                {isAnnual && !plan.isEnterprise && (
+                {isAnnual && !plan.isEnterpriseWhite && (
                     <div className="mt-2 text-xs font-bold text-neon-green bg-neon-green/10 px-2 py-1 rounded-full inline-block mx-auto">
                         {plan.annualSavings}
                     </div>
@@ -236,7 +237,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
             {/* Recommended Badge */}
             <div className={`text-center text-xs font-bold py-2 rounded-lg mb-6 relative z-10 ${plan.isPopular ? 'bg-deep-black text-white border border-gray-800' :
-                plan.isDark || plan.isEnterprise ? 'bg-white/10 text-neon-green' : 'bg-gray-50 text-gray-500'
+                plan.isDark ? 'bg-white/10 text-neon-green' : 'bg-gray-50 text-gray-500'
                 }`}>
                 {plan.recommendedBadge}
             </div>
@@ -247,7 +248,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                     <div>
                         <button
                             onClick={() => setShowCosts(!showCosts)}
-                            className={`w-full flex items-center justify-between p-3 text-xs font-bold border rounded-sm transition-colors ${plan.isDark || plan.isEnterprise ? 'bg-gray-900 border-gray-700 text-gray-300 hover:bg-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
+                            className={`w-full flex items-center justify-between p-3 text-xs font-bold border rounded-sm transition-colors ${plan.isDark ? 'bg-gray-900 border-gray-700 text-gray-300 hover:bg-gray-800' : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
                                 }`}
                         >
                             <span>{plan.additionalCosts.label}</span>
@@ -258,10 +259,10 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
 
                         {/* Dropdown Content */}
                         <div className={`absolute left-0 right-0 z-50 mt-2 overflow-hidden transition-all duration-300 ease-in-out shadow-2xl rounded-sm ${showCosts ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible -translate-y-2 pointer-events-none'}`}>
-                            <div className={`border p-4 text-xs text-left shadow-xl ${plan.isDark || plan.isEnterprise ? 'bg-[#151515] border-gray-700 text-gray-200' : 'bg-white border-gray-200 text-gray-700'
+                            <div className={`border p-4 text-xs text-left shadow-xl ${plan.isDark ? 'bg-[#151515] border-gray-700 text-gray-200' : 'bg-white border-gray-200 text-gray-700'
                                 }`}>
                                 {plan.additionalCosts.whatsapp && (
-                                    <div className={`mb-3 pb-3 border-b ${plan.isDark || plan.isEnterprise ? 'border-gray-700' : 'border-gray-200'}`}>
+                                    <div className={`mb-3 pb-3 border-b ${plan.isDark ? 'border-gray-700' : 'border-gray-200'}`}>
                                         <div className="flex items-center gap-2 font-bold mb-2 text-sm">
                                             <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" className="text-[#25D366]">
                                                 <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -311,7 +312,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                     {plan.features.map((feature, idx) => {
                         const linkId = getFeatureLink(feature);
                         return (
-                            <li key={idx} className={`flex items-start gap-3 text-sm font-medium text-left ${plan.isDark || plan.isEnterprise ? 'text-gray-300' : 'text-gray-600'}`}>
+                            <li key={idx} className={`flex items-start gap-3 text-sm font-medium text-left ${plan.isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                                 <svg className="w-5 h-5 text-neon-green flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                                 </svg>
@@ -335,11 +336,11 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                     onClick={handleCtaClick}
                     className={`block w-full text-center py-4 rounded-sm font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer ${plan.isPopular ? 'bg-deep-black text-neon-green hover:bg-opacity-90 hover:shadow-lg hover:scale-[1.02]' :
                         plan.isDark ? 'bg-neon-green text-deep-black hover:bg-white' :
-                            plan.isEnterprise ? 'bg-white text-deep-black hover:bg-neon-green' :
+                            plan.isEnterpriseWhite ? 'bg-deep-black text-white hover:bg-neon-green hover:text-deep-black' :
                                 'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
                         }`}
                 >
-                    {plan.isEnterprise ? 'Falar com Vendas' : 'Começar Agora'}
+                    {plan.isEnterpriseWhite ? 'Falar com Vendas' : 'Começar Agora'}
                 </a>
             </div>
         </div>
