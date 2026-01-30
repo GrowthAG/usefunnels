@@ -59,8 +59,8 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 <Container className="text-center relative z-10 px-4 md:px-12">
                     <Reveal>
                         <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.04em] mb-5 md:mb-6 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
-                            <span className="block text-white">Sua empresa inteira</span>
-                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">dentro de um único lugar.</span>
+                            <span className="block text-white">Pare de pagar por</span>
+                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">15 ferramentas diferentes.</span>
                         </h1>
                         <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light font-space px-2 text-balance">
                             Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.
@@ -101,7 +101,8 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                             </div>
                         </div>
 
-                        <div className="flex justify-center mt-12">
+                        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
+                            <Button variant="primary" className="min-w-[200px]" onClick={scrollToPricing}>Ver Preços</Button>
                             <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={onBookDemo}>Agendar Demo</Button>
                         </div>
 
@@ -212,7 +213,32 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             <Section className="py-16 md:py-[120px] bg-white">
                 <Container>
                     <Reveal>
-                        <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 md:mb-20 font-space tracking-tight text-deep-black text-balance">Resultados Reais.</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 md:mb-6 font-space tracking-tight text-deep-black text-balance">+2.847 empresas crescendo com a Funnels</h2>
+                        <p className="text-center text-gray-600 mb-8 md:mb-12 text-sm md:text-base max-w-2xl mx-auto">
+                            De startups a empresas com +100 funcionários. Veja o que quem já migrou tem a dizer:
+                        </p>
+
+                        {/* Trust Badges */}
+                        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 mb-12 md:mb-16 pb-8 border-b border-gray-100">
+                            <div className="flex items-center gap-3 text-gray-600">
+                                <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                </svg>
+                                <span className="text-xs md:text-sm font-medium">Certificado ISO 27001</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-gray-600">
+                                <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                                </svg>
+                                <span className="text-xs md:text-sm font-medium">99,9% Uptime SLA</span>
+                            </div>
+                            <div className="flex items-center gap-3 text-gray-600">
+                                <svg className="w-6 h-6 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+                                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                </svg>
+                                <span className="text-xs md:text-sm font-medium">4.8/5 (247 avaliações)</span>
+                            </div>
+                        </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
                             {TESTIMONIALS.map((t, i) => (
                                 <div key={i} className="bg-white p-6 md:p-8 rounded-sm border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-gray-200 transition-all duration-500 relative group">

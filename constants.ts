@@ -111,25 +111,25 @@ export const TESTIMONIALS: Testimonial[] = [
     {
         name: "Fábio",
         company: "BLDN Digital",
-        quote: "Automação inteligente que gera novas oportunidades todos os dias. A implementação foi incrivelmente rápida.",
+        quote: "Implementamos em 48 horas. As automações geraram 127 leads qualificados no primeiro mês sem nenhum esforço manual.",
         image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc97c03e1ce865d98b941e.png"
     },
     {
         name: "Daniel Lestinge",
         company: "BlueForecasts",
-        quote: "Resultados acelerados com o FUNNELS. Conseguimos triplicar nosso alcance em menos de 3 meses.",
+        quote: "Cancelei HubSpot (R$ 1.200/mês), Mailchimp (R$ 400/mês) e RD Station (R$ 800/mês). Economizo R$ 2.400/mês com resultado melhor.",
         image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc981c8da17338918c617c.png"
     },
     {
         name: "Yves Mariano",
         company: "Wysion",
-        quote: "Totalmente integrado e eficiente. Substituímos 5 ferramentas diferentes apenas pelo FUNNELS.",
+        quote: "Substituímos 5 ferramentas por uma. O melhor: a equipe aprendeu a usar em menos de 1 semana sem treinamento complexo.",
         image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc984a3e1ce8a0628ba669.png"
     },
     {
         name: "Amanda Aguiar",
         company: "Lindoya",
-        quote: "O FUNNELS transformou nosso gerenciamento de leads. A equipe de vendas nunca foi tão produtiva.",
+        quote: "Nossa taxa de conversão aumentou 43% em 60 dias. O chatbot IA qualifica leads 24/7 e minha equipe foca só em fechar.",
         image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68dc986e8da173cd2a8c691b.png"
     }
 ];

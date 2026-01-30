@@ -213,21 +213,21 @@ export const PricingSavingsCalculator: React.FC = () => {
                         Comece hoje mesmo com nosso plano Growth e substitua múltiplas ferramentas por uma única plataforma
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a
-                            href="#"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-neon-green text-deep-black font-bold rounded-sm hover:bg-opacity-90 transition-all uppercase tracking-wide text-sm"
+                        <button
+                            onClick={() => document.getElementById('pricing-plans')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-neon-green text-deep-black font-bold rounded-sm hover:bg-opacity-90 transition-all uppercase tracking-wide text-sm min-w-[200px]"
                         >
                             Começar Agora
                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
-                        </a>
-                        <a
-                            href="#"
-                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-sm hover:bg-white hover:text-deep-black transition-all uppercase tracking-wide text-sm"
+                        </button>
+                        <button
+                            onClick={() => document.getElementById('pricing-plans')?.scrollIntoView({ behavior: 'smooth' })}
+                            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-sm hover:bg-white hover:text-deep-black transition-all uppercase tracking-wide text-sm min-w-[200px]"
                         >
-                            Agendar Demo
-                        </a>
+                            Ver Planos
+                        </button>
                     </div>
                 </div>
             </div>

@@ -147,7 +147,7 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
             </Section>
 
             {/* PRICING CARDS */}
-            <Section className="bg-gray-50 py-16 md:py-24">
+            <Section id="pricing-plans" className="bg-gray-50 py-16 md:py-24">
                 <Container>
                     <Reveal>
                         <Pricing onBookDemo={onBookDemo} onCheckout={onCheckout} />
