@@ -27,12 +27,25 @@ export interface Testimonial {
   company: string;
   quote: string;
   image: string;
+  video?: string; // Optional video URL
+  role?: string; // Optional role/title
+  result?: string; // Optional quantifiable result badge (e.g., "Economizou R$ 28k/ano")
 }
 
 export interface Feature {
+  id?: string;
   title: string;
+  subtitle?: string;
   icon: string;
   highlight?: boolean;
+  description?: string;
+  detailImage?: string;
+  longDescription?: string;
+  benefits?: string[];
+  howItWorks?: { step: string; title: string; description: string }[];
+  useCases?: { title: string; description: string }[];
+  whoIsItFor?: string[];
+  faq?: { question: string; answer: string }[];
 }
 
 export interface ToolReplacement {

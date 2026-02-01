@@ -1,46 +1,22 @@
 
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
-import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsShowcase } from '../components/features';
+import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsEraSection } from '../components/features';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
-export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
+export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onCheckout?: (url: string, planName?: string, isAnnual?: boolean) => void }) => {
+    const navigate = useNavigate();
     // Modal State for Features
     const [selectedFeature, setSelectedFeature] = useState<typeof FEATURES[0] | null>(null);
+    // Video Testimonial Modal State
+    const [videoUrl, setVideoUrl] = useState<string | null>(null);
+    const [demoLoaded, setDemoLoaded] = useState(false);
 
-    const CAROUSEL_ITEMS = [
-        {
-            id: 'agentes',
-            title: "Agentes Autônomos",
-            subtitle: "FORÇA DE TRABALHO DIGITAL",
-            label: "FUNNELS AI",
-            quote: "Crie agentes que trabalham 24/7. Eles qualificam leads, agendam reuniões e fecham vendas enquanto sua equipe dorme.",
-            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/697b726cf7a877358425c7d1.png"
-        },
-        {
-            id: 'marketplace',
-            title: "App Marketplace",
-            subtitle: "TEMPLATES ENTERPRISE",
-            label: "ECOSYSTEM",
-            quote: "Acesse centenas de templates validados. Instale funis completos de alta conversão com apenas um clique.",
-            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68e871be35e86931aef8f921.png"
-        },
-        {
-            id: 'logic',
-            title: "Logic Builder",
-            subtitle: "AUTOMAÇÃO VISUAL",
-            label: "NO-CODE",
-            quote: "Construa fluxos complexos arrastando e soltando. Lógica condicional avançada sem escrever uma linha de código.",
-            image: "https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/68ffec766f3caf41ae5ee191.png"
-        }
-    ];
+
 
     const scrollToPricing = () => {
-        const pricingSection = document.getElementById('precos');
-        if (pricingSection) {
-            pricingSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        navigate('/precos', { state: { targetId: 'pricing-plans' } });
     };
 
     return (
@@ -59,8 +35,8 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 <Container className="text-center relative z-10 px-4 md:px-12">
                     <Reveal>
                         <h1 className="text-white text-[28px] xs:text-[32px] sm:text-[40px] md:text-[56px] lg:text-[64px] font-bold tracking-[-0.04em] mb-5 md:mb-6 leading-[1.1] md:leading-[0.95] font-space drop-shadow-2xl flex flex-col items-center">
-                            <span className="block text-white">Pare de pagar por</span>
-                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">15 ferramentas diferentes.</span>
+                            <span className="block text-white">Sua empresa inteira</span>
+                            <span className="block text-neon-green drop-shadow-[0_0_15px_rgba(27,252,79,0.3)]">dentro de um único lugar.</span>
                         </h1>
                         <p className="text-sm sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed font-light font-space px-2 text-balance">
                             Automatize marketing, CRM e atendimento em um só lugar e reduza seus custos de software em até 80%.
@@ -68,61 +44,49 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
                         {/* Interactive Demo - Browser Mockup */}
                         <div className="max-w-5xl mx-auto mb-8 md:mb-12">
-                            <div className="relative shadow-2xl rounded-lg overflow-hidden border border-gray-800/50">
-                                {/* Browser Header - Dark Mode */}
-                                <div className="bg-[#1a1a1a] border-b border-gray-800 px-3 py-2 flex items-center gap-2">
+                            <div className="relative shadow-2xl rounded-lg overflow-hidden border border-[#222]">
+                                {/* Browser Header - Dark Mode (Restored) */}
+                                <div className="bg-[#111] border-b border-[#222] px-3 py-2 flex items-center gap-2">
                                     <div className="flex items-center gap-1.5">
                                         <div className="w-2.5 h-2.5 rounded-full bg-[#FF5F56]"></div>
                                         <div className="w-2.5 h-2.5 rounded-full bg-[#FFBD2E]"></div>
                                         <div className="w-2.5 h-2.5 rounded-full bg-[#27C93F]"></div>
                                     </div>
                                     <div className="flex-1 flex justify-center">
-                                        <div className="bg-gray-900 rounded-md px-3 py-1 text-[10px] text-gray-400 font-mono w-full max-w-sm text-center border border-gray-800">
+                                        <div className="bg-[#000] rounded-md px-3 py-1 text-[10px] text-gray-500 font-mono w-full max-w-sm text-center border border-[#222]">
                                             app.usefunnels.io/dashboard
                                         </div>
                                     </div>
                                     <div className="w-12"></div>
                                 </div>
 
-                                <div className="relative aspect-video bg-black">
+
+                                <div className="relative aspect-video bg-black group cursor-pointer overflow-hidden">
                                     <iframe
                                         src="https://app.supademo.com/embed/cm1qijo7401trspgck35m6mcw?embed_v=2"
-                                        loading="lazy"
+                                        loading="eager"
                                         title="FUNNELS Demo Interativa"
                                         allow="clipboard-write"
                                         frameBorder="0"
                                         allowFullScreen
-                                        className="w-full h-full"
+                                        className="w-full h-full animate-fade-in"
                                     ></iframe>
                                 </div>
 
-                                {/* Bottom Glow */}
-                                <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
+                                {/* Bottom Glow Removed */}
                             </div>
                         </div>
 
                         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
-                            <Button variant="primary" className="min-w-[200px]" onClick={scrollToPricing}>Ver Preços</Button>
-                            <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={onBookDemo}>Agendar Demo</Button>
+                            <Button variant="primary" className="min-w-[200px]" onClick={scrollToPricing}>
+                                Começar Teste Grátis
+                            </Button>
+                            <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={scrollToPricing}>
+                                Ver Preços
+                            </Button>
                         </div>
 
-                        {/* 3D Depth Stats Bar - Refined for Clarity & Mobile */}
-                        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 text-xs font-mono text-gray-400 uppercase tracking-widest border-t border-white/10 bg-white/[0.03] backdrop-blur-md pt-6 pb-6 max-w-4xl mx-auto rounded-sm border-x border-b border-b-white/5 shadow-2xl mt-16">
-                            <span className="flex items-center gap-3 hover:text-white transition-colors group cursor-default">
-                                <span className="text-neon-green font-bold opacity-80 group-hover:opacity-100">///</span>
-                                Setup em 48h
-                            </span>
-                            <span className="hidden md:block w-px h-3 bg-gray-700"></span>
-                            <span className="flex items-center gap-3 hover:text-white transition-colors group cursor-default">
-                                <span className="text-neon-green font-bold opacity-80 group-hover:opacity-100">///</span>
-                                Risco Zero
-                            </span>
-                            <span className="hidden md:block w-px h-3 bg-gray-700"></span>
-                            <span className="flex items-center gap-3 hover:text-white transition-colors group cursor-default">
-                                <span className="text-neon-green font-bold opacity-80 group-hover:opacity-100">///</span>
-                                Suporte 24/7
-                            </span>
-                        </div>
+                        {/* Stats Bar Removed */}
                     </Reveal>
                 </Container>
             </Section>
@@ -139,13 +103,15 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 <Container>
                     <Reveal>
                         <div className="text-center mb-16 max-w-4xl mx-auto">
-                            <TechBadge className="bg-neon-green text-black mb-6 font-bold border-none mx-auto">AUTOMAÇÃO NATIVA</TechBadge>
-                            <h2 className="text-5xl md:text-7xl font-bold font-space mb-6 tracking-tight text-balance leading-none">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-6 block">
+                                Automação Nativa
+                            </span>
+                            <h2 className="text-3xl md:text-5xl font-bold font-space mb-6 tracking-tight text-balance leading-tight text-white">
                                 Pare de perder leads.<br />
-                                <span className="text-white">Construa relacionamentos.</span>
+                                Construa relacionamentos.
                             </h2>
-                            <p className="text-gray-400 text-lg md:text-xl font-light max-w-2xl mx-auto text-balance">
-                                A única plataforma que une captura, conversão e retenção em um piloto automático inteligente. Não é só software, é sua máquina de vendas.
+                            <p className="text-gray-400 text-sm md:text-base font-light max-w-2xl mx-auto text-balance leading-relaxed">
+                                A única plataforma que une captura, conversão e retenção em um piloto automático inteligente.
                             </p>
                         </div>
                         {/* Reusing AICarousel here if intended, or just keeping the structure as it was previously valid. Assuming content here was correct before my bad edit. */}
@@ -161,22 +127,22 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                 className="min-w-[200px] shadow-[0_0_20px_rgba(27,252,79,0.3)] hover:shadow-[0_0_40px_rgba(27,252,79,0.5)]"
                                 onClick={scrollToPricing}
                             >
-                                Começar Agora
+                                Começar Teste Grátis
                             </Button>
                             <Button
                                 variant="outline"
                                 className="min-w-[200px] border-gray-700 hover:border-white text-gray-300 hover:text-white"
-                                onClick={onBookDemo}
+                                onClick={scrollToPricing}
                             >
-                                Agendar Demo
+                                Ver Preços
                             </Button>
                         </div>
                     </Reveal>
                 </Container>
             </Section>
 
-            {/* A ERA DOS AGENTES - CLASSIC CAROUSEL REVERTED */}
-            <AgentsShowcase items={CAROUSEL_ITEMS} />
+            {/* A ERA DOS AGENTES - NEW DESIGN (White BG, 3 Pillars) */}
+            <AgentsEraSection />
 
             {/* FEATURE CARDS - Secondary Grid */}
             <Section id="features-grid" className="bg-light-gray py-16 md:py-[120px]">
@@ -227,7 +193,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
             <Section className="py-16 md:py-[120px] bg-white">
                 <Container>
                     <Reveal>
-                        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 md:mb-6 font-space tracking-tight text-deep-black text-balance">+2.847 empresas crescendo com a Funnels</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-center mb-4 md:mb-6 font-space tracking-tight text-deep-black text-balance">+800 empresas crescendo com a Funnels</h2>
                         <p className="text-center text-gray-600 mb-8 md:mb-12 text-sm md:text-base max-w-2xl mx-auto">
                             De startups a empresas com +100 funcionários. Veja o que quem já migrou tem a dizer:
                         </p>
@@ -258,17 +224,51 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                 <div key={i} className="bg-white p-6 md:p-8 rounded-sm border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-gray-200 transition-all duration-500 relative group">
                                     <CornerBrackets className="text-gray-200 group-hover:text-neon-green transition-colors" />
                                     <div>
-                                        <div className="flex gap-1 mb-4 md:mb-6">
-                                            {[1, 2, 3, 4, 5].map(star => <span key={star} className="text-yellow-400 text-xs">★</span>)}
+                                        <div className="flex items-center justify-between mb-4 md:mb-6">
+                                            <div className="flex gap-1">
+                                                {[1, 2, 3, 4, 5].map(star => <span key={star} className="text-yellow-400 text-xs">★</span>)}
+                                            </div>
+                                            {t.result && (
+                                                <span className="px-2 py-1 bg-neon-green/10 text-neon-green text-[9px] font-bold font-mono uppercase rounded border border-neon-green/20">
+                                                    {t.result}
+                                                </span>
+                                            )}
                                         </div>
-                                        <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-medium text-balance">"{t.quote}"</p>
+                                        <p className="text-gray-600 font-sans text-sm leading-loose mb-6 font-normal text-balance tracking-wide">"{t.quote}"</p>
                                     </div>
-                                    <div className="flex items-center gap-4 border-t border-gray-50 pt-6">
-                                        <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-md" />
-                                        <div>
-                                            <h4 className="font-bold text-sm leading-tight font-space">{t.name}</h4>
-                                            <p className="text-xs text-gray-400 font-mono mt-0.5">{t.company}</p>
+                                    <div className="border-t border-gray-50 pt-6">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="relative">
+                                                <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-md" />
+                                                {t.video && (
+                                                    <button
+                                                        onClick={() => setVideoUrl(t.video!)}
+                                                        className="absolute -bottom-1 -right-1 w-5 h-5 bg-neon-green rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                                                        aria-label="Assistir depoimento em vídeo"
+                                                    >
+                                                        <svg className="w-2.5 h-2.5 text-deep-black ml-0.5" fill="currentColor" viewBox="0 0 16 16">
+                                                            <path d="M3 2v12l10-6z" />
+                                                        </svg>
+                                                    </button>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-sm leading-tight font-space">{t.name}</h4>
+                                                {t.role && <p className="text-xs text-gray-500 mt-0.5">{t.role}</p>}
+                                                <p className="text-xs text-gray-400 font-mono mt-0.5">{t.company}</p>
+                                            </div>
                                         </div>
+                                        {t.video && (
+                                            <button
+                                                onClick={() => setVideoUrl(t.video!)}
+                                                className="w-full py-2 px-3 bg-gray-50 hover:bg-neon-green/10 border border-gray-200 hover:border-neon-green rounded-sm text-xs font-bold text-gray-600 hover:text-neon-green transition-all flex items-center justify-center gap-2"
+                                            >
+                                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16">
+                                                    <path d="M3 2v12l10-6z" />
+                                                </svg>
+                                                Assistir Depoimento
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             ))}
@@ -277,11 +277,57 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 </Container>
             </Section>
 
+            {/* Video Testimonial Modal */}
+            {videoUrl && (
+                <div
+                    className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in"
+                    onClick={() => setVideoUrl(null)}
+                >
+                    <div
+                        className="relative w-full max-w-4xl bg-deep-black rounded-2xl overflow-hidden shadow-2xl"
+                        style={{ animation: 'modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Header */}
+                        <div className="bg-deep-black border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
+                                <span className="font-mono text-xs uppercase tracking-widest text-gray-400">
+                                    Depoimento em Vídeo
+                                </span>
+                            </div>
+                            <button
+                                onClick={() => setVideoUrl(null)}
+                                className="text-gray-400 hover:text-white transition-colors p-1"
+                                aria-label="Fechar vídeo"
+                            >
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Video Player */}
+                        <div className="relative aspect-video bg-black">
+                            <video
+                                src={videoUrl}
+                                controls
+                                autoPlay
+                                className="w-full h-full"
+                                playsInline
+                            />
+                        </div>
+
+                        {/* Bottom Glow */}
+                        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
+                    </div>
+                </div>
+            )}
+
             {/* FINAL CTA - 3D Lighting Effect */}
             <Section className="bg-deep-black text-white text-center py-20 md:py-32 relative overflow-hidden">
                 <div className="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
-                {/* Clean Volumetric Glow - No Blur Blobs */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-[radial-gradient(circle_at_center,_rgba(27,252,79,0.1),_transparent_70%)] pointer-events-none"></div>
 
                 <Container className="relative z-10 px-4">
                     <Reveal>
@@ -292,7 +338,7 @@ export const Home = ({ onBookDemo }: { onBookDemo: () => void }) => {
                                 <span className="text-neon-green">Comece a escalar.</span>
                             </h2>
                         </div>
-                        <Button variant="primary" className="!text-lg md:!text-xl !px-10 md:!px-16 !py-5 md:!py-6 mb-8 md:mb-12 shadow-[0_0_40px_rgba(27,252,79,0.3)] hover:shadow-[0_0_60px_rgba(27,252,79,0.5)] scale-100 hover:scale-105 w-full md:w-auto transition-transform" onClick={scrollToPricing}>Começar Agora</Button>
+                        <Button variant="primary" className="!text-base !px-8 md:!px-10 !py-3 md:!py-4 mb-8 md:mb-12 shadow-[0_0_40px_rgba(27,252,79,0.3)] hover:shadow-[0_0_60px_rgba(27,252,79,0.5)] scale-100 hover:scale-105 w-full md:w-auto transition-transform" onClick={scrollToPricing}>Começar Agora</Button>
                         <div className="flex flex-col md:flex-row justify-center gap-4 md:gap-8 text-[10px] md:text-xs text-gray-500 font-mono uppercase tracking-widest">
                             <span className="flex items-center justify-center gap-2">[+] Acesso Imediato</span>
                             <span className="flex items-center justify-center gap-2">[-] Sem fidelidade</span>

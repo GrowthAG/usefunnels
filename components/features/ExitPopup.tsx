@@ -33,13 +33,13 @@ export const ExitPopup: React.FC<{ onBookDemo: () => void }> = ({ onBookDemo }) 
                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                 </button>
                 <div className="text-center">
-                    <span className="inline-block px-3 py-1 bg-neon-green text-black text-xs font-bold font-mono uppercase mb-4 border border-black">[ SYSTEM_ALERT ]</span>
-                    <h3 className="text-3xl font-bold font-space mb-4">Você está deixando dinheiro na mesa.</h3>
-                    <p className="text-gray-600 mb-8 leading-relaxed">Não vá embora sem ver como o <strong>FUNNELS</strong> pode economizar mais de <strong>R$ 30.000/ano</strong> na sua operação.</p>
+                    <span className="inline-block px-3 py-1 bg-neon-green text-black text-xs font-bold font-mono uppercase mb-4 border border-black">[ ÚLTIMA CHANCE ]</span>
+                    <h3 className="text-3xl font-bold font-space mb-4">Pronto para Reduzir Custos de Software em 68%?</h3>
+                    <p className="text-gray-600 mb-8 leading-relaxed">Veja em 5 minutos como empresas similares economizam <strong>R$ 28.400/ano</strong> consolidando ferramentas.</p>
                     <Button variant="primary" className="w-full !py-4 shadow-xl" onClick={() => { setIsOpen(false); onBookDemo(); }}>
                         Ver Demonstração Rápida
                     </Button>
-                    <p className="mt-4 text-xs text-gray-400 cursor-pointer hover:text-black" onClick={() => setIsOpen(false)}>[x] Fechar e continuar pagando caro</p>
+                    <p className="mt-4 text-xs text-gray-400 cursor-pointer hover:text-black" onClick={() => setIsOpen(false)}>Não, obrigado</p>
                 </div>
             </div>
         </div>

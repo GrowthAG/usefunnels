@@ -1,7 +1,9 @@
 
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Container, Section, Reveal, Button, TechBadge, CornerBrackets } from '../components/ui';
 import { Pricing } from '../components/Pricing';
+import { TESTIMONIALS } from '../constants';
 
 // FUNNELS pricing tiers with feature availability
 const FUNNELS_PLANS = [
@@ -35,16 +37,69 @@ const FAQ_ITEMS = [
     {
         question: "Como funciona a migração?",
         answer: "Migração gratuita assistida. Importamos contatos, pipelines e automações."
+    },
+    {
+        question: "Posso migrar do HubSpot/RD Station/ActiveCampaign?",
+        answer: "Sim! Fazemos a migração completa dos seus dados. Importamos contatos, campanhas, pipelines e automações. Equipe dedicada te ajuda em todo o processo, sem custo adicional."
+    },
+    {
+        question: "O que acontece se eu precisar de mais contatos?",
+        answer: "Você pode fazer upgrade de plano a qualquer momento. O ajuste é proporcional ao tempo restante do mês. Sem taxa de alteração."
+    },
+    {
+        question: "Quanto tempo leva a implementação?",
+        answer: "A maioria dos clientes está operando em 48-72h. Casos complexos com migrações de múltiplas ferramentas podem levar até 2 semanas com acompanhamento dedicado."
+    },
+    {
+        question: "Vou perder meus dados se cancelar?",
+        answer: "Não. Você pode exportar todos os seus dados (contatos, conversas, relatórios) a qualquer momento. Após cancelamento, seus dados ficam disponíveis por 30 dias para download."
     }
 ];
 
 interface PricingPageFullProps {
     onBookDemo: () => void;
-    onCheckout?: (url: string) => void;
+    onCheckout?: (url: string, planName?: string, isAnnual?: boolean) => void;
 }
 
 export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, onCheckout }) => {
+    const location = useLocation();
     const [openFaq, setOpenFaq] = useState<number | null>(null);
+    const [videoUrl, setVideoUrl] = useState<string | null>(null);
+    const [viewingCount, setViewingCount] = useState<number>(0);
+
+    // Simulate live viewers count (subtle urgency)
+    useEffect(() => {
+        const min = 8;
+        const max = 15;
+        const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
+        setViewingCount(randomCount);
+
+        // Vary count slightly every 30 seconds
+        const interval = setInterval(() => {
+            const variation = Math.random() > 0.5 ? 1 : -1;
+            setViewingCount(prev => Math.max(min, Math.min(max, prev + variation)));
+        }, 30000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    // Handle scroll from navigation state
+    useEffect(() => {
+        if (location.state && location.state.targetId) {
+            const element = document.getElementById(location.state.targetId);
+            if (element) {
+                // Determine offset based on screen size (header height)
+                const headerOffset = window.innerWidth < 768 ? 60 : 80;
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+            }
+        }
+    }, [location]);
 
     // Usage Calculator State - Growth plan (697) as default
     const [selectedPlan, setSelectedPlan] = useState(1); // 0=Starter, 1=Growth, 2=Scale
@@ -87,6 +142,16 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
 
     return (
         <main className="pt-[80px] bg-white">
+            {/* Live Viewers Badge - Fixed Bottom Left */}
+            <div className="fixed bottom-4 left-4 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-lg z-50 animate-fade-in">
+                <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                    <span className="text-xs text-gray-600">
+                        <strong className="text-gray-900">{viewingCount}</strong> pessoas vendo preços agora
+                    </span>
+                </div>
+            </div>
+
             {/* HERO + STATS - Unified Compact Dark Section */}
             <Section className="bg-deep-black py-12 md:py-16 relative overflow-hidden">
                 {/* Gradient overlay */}
@@ -358,6 +423,181 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
                     </Reveal>
                 </Container>
             </Section>
+
+            {/* WHY MIGRATE NOW - Minimalist */}
+            <Section className="bg-white py-16 md:py-20 border-t border-gray-100">
+                <Container>
+                    <Reveal>
+                        <div className="text-center mb-12">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">
+                                Por que agora
+                            </span>
+                            <h2 className="text-2xl md:text-3xl font-bold font-space text-deep-black mb-4">
+                                3 razões para migrar hoje
+                            </h2>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                            {/* Reason 1 - Savings */}
+                            <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-gray-300 transition-all group">
+                                <div className="flex items-baseline gap-2 mb-3">
+                                    <span className="font-mono text-xs text-neon-green font-bold">01</span>
+                                    <div className="h-px flex-grow bg-gray-100" />
+                                </div>
+                                <h3 className="text-lg font-bold font-space text-deep-black mb-2">
+                                    Economize até R$ 28.400/ano
+                                </h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">
+                                    Substitua HubSpot, RD Station e Mailchimp por uma plataforma completa. Economia média de 68%.
+                                </p>
+                            </div>
+
+                            {/* Reason 2 - Speed */}
+                            <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-gray-300 transition-all group">
+                                <div className="flex items-baseline gap-2 mb-3">
+                                    <span className="font-mono text-xs text-neon-green font-bold">02</span>
+                                    <div className="h-px flex-grow bg-gray-100" />
+                                </div>
+                                <h3 className="text-lg font-bold font-space text-deep-black mb-2">
+                                    Operacional em 48 horas
+                                </h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">
+                                    Migração assistida gratuita. Importamos seus dados e você foca no negócio.
+                                </p>
+                            </div>
+
+                            {/* Reason 3 - Flexibility */}
+                            <div className="bg-white p-6 rounded-sm border border-gray-200 hover:border-gray-300 transition-all group">
+                                <div className="flex items-baseline gap-2 mb-3">
+                                    <span className="font-mono text-xs text-neon-green font-bold">03</span>
+                                    <div className="h-px flex-grow bg-gray-100" />
+                                </div>
+                                <h3 className="text-lg font-bold font-space text-deep-black mb-2">
+                                    Zero risco, sem fidelidade
+                                </h3>
+                                <p className="text-gray-600 text-sm leading-relaxed">
+                                    7 dias de garantia incondicional. Cancele quando quiser, sem multas.
+                                </p>
+                            </div>
+                        </div>
+                    </Reveal>
+                </Container>
+            </Section>
+
+            {/* TESTIMONIALS SECTION */}
+            <Section className="bg-gray-50 py-16 md:py-24 border-t border-gray-100">
+                <Container>
+                    <Reveal>
+                        <div className="text-center mb-12">
+                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-4 block">
+                                Prova Social
+                            </span>
+                            <h2 className="text-3xl md:text-4xl font-bold font-space text-deep-black mb-4">
+                                Empresas que já migraram
+                            </h2>
+                            <p className="text-gray-600 max-w-2xl mx-auto">
+                                Veja o que clientes reais têm a dizer sobre a mudança para o Funnels
+                            </p>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+                            {TESTIMONIALS.map((t, i) => (
+                                <div key={i} className="bg-white p-6 md:p-8 rounded-sm border border-gray-100 flex flex-col justify-between hover:shadow-2xl hover:border-gray-200 transition-all duration-500 relative group">
+                                    <CornerBrackets className="text-gray-200 group-hover:text-neon-green transition-colors" />
+                                    <div>
+                                        <div className="flex gap-1 mb-4 md:mb-6">
+                                            {[1, 2, 3, 4, 5].map(star => <span key={star} className="text-yellow-400 text-xs">★</span>)}
+                                        </div>
+                                        <p className="text-gray-700 text-xs md:text-sm leading-relaxed mb-6 font-medium text-balance">"{t.quote}"</p>
+                                    </div>
+                                    <div className="border-t border-gray-50 pt-6">
+                                        <div className="flex items-center gap-4 mb-4">
+                                            <div className="relative">
+                                                <img src={t.image} alt={t.name} className="w-10 h-10 rounded-full object-cover border-2 border-white shadow-md" />
+                                                {t.video && (
+                                                    <button
+                                                        onClick={() => setVideoUrl(t.video!)}
+                                                        className="absolute -bottom-1 -right-1 w-5 h-5 bg-neon-green rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+                                                        aria-label="Assistir depoimento em vídeo"
+                                                    >
+                                                        <svg className="w-2.5 h-2.5 text-deep-black ml-0.5" fill="currentColor" viewBox="0 0 16 16">
+                                                            <path d="M3 2v12l10-6z" />
+                                                        </svg>
+                                                    </button>
+                                                )}
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-sm leading-tight font-space">{t.name}</h4>
+                                                {t.role && <p className="text-xs text-gray-500 mt-0.5">{t.role}</p>}
+                                                <p className="text-xs text-gray-400 font-mono mt-0.5">{t.company}</p>
+                                            </div>
+                                        </div>
+                                        {t.video && (
+                                            <button
+                                                onClick={() => setVideoUrl(t.video!)}
+                                                className="w-full py-2 px-3 bg-gray-50 hover:bg-neon-green/10 border border-gray-200 hover:border-neon-green rounded-sm text-xs font-bold text-gray-600 hover:text-neon-green transition-all flex items-center justify-center gap-2"
+                                            >
+                                                <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16">
+                                                    <path d="M3 2v12l10-6z" />
+                                                </svg>
+                                                Assistir Depoimento
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    </Reveal>
+                </Container>
+            </Section>
+
+            {/* Video Testimonial Modal */}
+            {videoUrl && (
+                <div
+                    className="fixed inset-0 z-[300] flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm animate-fade-in"
+                    onClick={() => setVideoUrl(null)}
+                >
+                    <div
+                        className="relative w-full max-w-4xl bg-deep-black rounded-2xl overflow-hidden shadow-2xl"
+                        style={{ animation: 'modalEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1)' }}
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* Header */}
+                        <div className="bg-deep-black border-b border-gray-800 px-6 py-4 flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                                <div className="w-2 h-2 bg-neon-green rounded-full animate-pulse" />
+                                <span className="font-mono text-xs uppercase tracking-widest text-gray-400">
+                                    Depoimento em Vídeo
+                                </span>
+                            </div>
+                            <button
+                                onClick={() => setVideoUrl(null)}
+                                className="text-gray-400 hover:text-white transition-colors p-1"
+                                aria-label="Fechar vídeo"
+                            >
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <line x1="18" y1="6" x2="6" y2="18" />
+                                    <line x1="6" y1="6" x2="18" y2="18" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {/* Video Player */}
+                        <div className="relative aspect-video bg-black">
+                            <video
+                                src={videoUrl}
+                                controls
+                                autoPlay
+                                className="w-full h-full"
+                                playsInline
+                            />
+                        </div>
+
+                        {/* Bottom Glow */}
+                        <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[80%] h-40 bg-neon-green opacity-10 blur-[100px] pointer-events-none"></div>
+                    </div>
+                </div>
+            )}
 
             {/* FAQ SECTION - Minimalist */}
             <Section className="bg-white py-16 md:py-24 border-t border-gray-100">

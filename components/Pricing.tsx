@@ -52,7 +52,7 @@ const plans: PricingPlan[] = [
         annualSavings: "Economize R$ 1.394/ano",
         linkMonthly: "https://checkout.usefunnels.io/plano-growth-mensal",
         linkAnnual: "https://checkout.usefunnels.io/plano-growth-anual",
-        recommendedBadge: "Ideal para: E-commerce e Agências",
+        recommendedBadge: "Escolha de 68% dos clientes",
         features: ["5 usuários", "50.000 contatos", "WhatsApp Business", "Automações avançadas", "Tudo do Starter +"],
         isPopular: true,
         isDark: true,
@@ -68,8 +68,8 @@ const plans: PricingPlan[] = [
         monthlyPrice: "997",
         annualPrice: "9.970",
         annualSavings: "Economize R$ 1.994/ano",
-        linkMonthly: "#",
-        linkAnnual: "#",
+        linkMonthly: "https://checkout.usefunnels.io/plano-scale-mensal",
+        linkAnnual: "https://checkout.usefunnels.io/plano-scale-anual",
         recommendedBadge: "Ideal para: Empresas Médias",
         features: ["10 usuários", "75.000 contatos", "WhatsApp API + VoIP", "Chatbot + IA", "Tudo do Growth +"],
         additionalCosts: {
@@ -337,13 +337,14 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                 <a
                     href={isAnnual ? plan.linkAnnual : plan.linkMonthly}
                     onClick={handleCtaClick}
-                    className={`block w-full text-center py-4 rounded-sm font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer ${plan.isPopular ? 'bg-deep-black text-neon-green hover:bg-opacity-90 hover:shadow-lg hover:scale-[1.02]' :
+                    className={`block w-full text-center py-4 rounded-sm font-bold uppercase tracking-wide transition-all duration-300 cursor-pointer ${plan.isPopular ? 'bg-neon-green text-deep-black hover:bg-white hover:scale-[1.02] hover:shadow-lg' :
                         plan.isDark ? 'bg-neon-green text-deep-black hover:bg-white' :
                             plan.isEnterpriseWhite ? 'bg-deep-black text-white hover:bg-neon-green hover:text-deep-black' :
                                 'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
                         }`}
                 >
-                    {plan.isEnterpriseWhite ? 'Falar com Vendas' : 'Começar Agora'}
+                    <span className="block">{plan.isEnterpriseWhite ? 'Falar com Vendas' : 'Iniciar Teste Grátis'}</span>
+                    {!plan.isEnterpriseWhite && <span className="block text-[10px] font-normal mt-1 opacity-80">Sem cartão de crédito</span>}
                 </a>
             </div>
         </div>
@@ -380,9 +381,9 @@ export const PricingTable = () => {
         },
         "WhatsApp Business API": {
             title: "WhatsApp Business API",
-            whatIs: "Integração oficial da Meta para enviar/receber mensagens profissionais no WhatsApp.",
-            whyMatters: "Automações, múltiplos atendentes, templates aprovados e integração com CRM para atendimento escalável.",
-            example: "Envie confirmações automáticas, notificações de pedido e atenda clientes direto no sistema."
+            whatIs: "Envie confirmações automáticas, lembretes de agendamento e suporte 24/7 via WhatsApp sem risco de bloqueio.",
+            whyMatters: "Reduza no-show em 40% e aumente satisfação com comunicação instantânea no canal preferido do cliente.",
+            example: "Cliente agenda > recebe confirmação no Zap > lembrete 1h antes > taxa de comparecimento +65%"
         },
         "Telefonia VoIP": {
             title: "Telefonia VoIP",
@@ -392,9 +393,9 @@ export const PricingTable = () => {
         },
         "Construtor de Fluxos": {
             title: "Construtor de Fluxos",
-            whatIs: "Editor visual para criar automações de marketing e vendas sem código.",
-            whyMatters: "Níveis: Básico (gatilhos simples), Avançado (condições IF/ELSE), Premium (loops e integrações), Custom (personalizado).",
-            example: "Fluxo Avançado: Se lead abriu e-mail 3x → enviar WhatsApp → se responder → atribuir vendedor."
+            whatIs: "Qualifique leads e agende reuniões enquanto você dorme com automações visuais drag-and-drop.",
+            whyMatters: "Transforme tarefas repetitivas em fluxos automáticos. Zero código. Economia de 15h/semana por vendedor.",
+            example: "Lead baixa material > recebe série de e-mails > abre 3x > WhatsApp automático > responde > vendedor notificado"
         },
         "Disparos de E-mail": {
             title: "Disparos de E-mail",
@@ -404,9 +405,9 @@ export const PricingTable = () => {
         },
         "Chatbot IA": {
             title: "Chatbot IA",
-            whatIs: "Assistente virtual com inteligência artificial que atende e qualifica leads automaticamente.",
-            whyMatters: "Funciona 24/7 sem intervenção humana, entende contexto e responde perguntas complexas naturalmente.",
-            example: "Bot qualifica lead: identifica interesse, coleta dados, agenda reunião e envia para vendedor."
+            whatIs: "Nunca mais perca um lead por falta de follow-up. IA atende, qualifica e agenda 24/7 automaticamente.",
+            whyMatters: "Aumenta conversão em 40% atendendo leads fora do horário comercial. Vendedores focam só em fechar negócios.",
+            example: "3h da manhã: Lead pergunta sobre produto > IA responde > qualifica orçamento > agenda demo > notifica vendedor"
         },
         "IA Content Generator": {
             title: "IA Content Generator",
@@ -431,6 +432,30 @@ export const PricingTable = () => {
             whatIs: "Taxa oficial cobrada pela Meta para uso da API do WhatsApp Business.",
             whyMatters: "Custo fixo mensal + variável por conversa, estabelecido pela Meta e não pela Funnels.",
             example: "R$ 145/mês fixo + R$ 0,04/msg. Planos maiores absorvem parte dessa tarifa."
+        },
+        "E-mail Marketing": {
+            title: "E-mail Marketing",
+            whatIs: "Sistema completo para criação e envio de campanhas de e-mail.",
+            whyMatters: "Substitui ferramentas como Mailchimp e ActiveCampaign. Inclui editor visual, templates e entregabilidade premium.",
+            example: "Envie newsletters, promoções e comunicados para toda sua base com um clique."
+        },
+        "Chat Widget": {
+            title: "Chat Widget",
+            whatIs: "Bolinha de chat instalável no seu site para capturar visitantes.",
+            whyMatters: "Diferente de chats comuns, ele captura o contato logo no início e permite continuar a conversa via SMS/WhatsApp se o visitante sair do site.",
+            example: "Visitante manda 'Oi' no site → recebe resposta automática no WhatsApp."
+        },
+        "Suporte via Chat": {
+            title: "Suporte via Chat",
+            whatIs: "Acesso direto à nossa equipe de especialistas brasileiros.",
+            whyMatters: "Tenha ajuda rápida para resolver dúvidas técnicas ou de estratégia sem travar sua operação.",
+            example: "Dúvidas sobre como criar uma automação? Chame no chat e resolvemos em minutos."
+        },
+        "Onboarding": {
+            title: "Onboarding & Implementação",
+            whatIs: "Processo de boas-vindas e configuração inicial da sua conta.",
+            whyMatters: "Garante que você comece do jeito certo, com domínios conectados, dados importados e equipe treinada.",
+            example: "Call de 1h com especialista para configurar seu primeiro funil e pipeline."
         }
     };
 

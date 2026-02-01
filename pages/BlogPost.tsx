@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Container, Section, Button, TechBadge } from '../components/ui';
-import { BLOG_POSTS } from '../constants';
+import { BLOG_POSTS } from '../components/data/blogPosts';
 import {
     ArrowLeft,
     Calendar,
@@ -18,19 +18,19 @@ import {
 // Social icons as SVGs (lucide deprecated these)
 const FacebookIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px]">
-        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
     </svg>
 );
 
 const TwitterIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px]">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
     </svg>
 );
 
 const LinkedinIcon = () => (
     <svg viewBox="0 0 24 24" fill="currentColor" className="w-[18px] h-[18px]">
-        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /><rect width="4" height="12" x="2" y="9" /><circle cx="4" cy="4" r="2" />
     </svg>
 );
 
@@ -161,20 +161,20 @@ const NewsletterSignup: React.FC = () => {
     const [email, setEmail] = useState('');
 
     return (
-        <div className="bg-gradient-to-br from-deep-black via-gray-900 to-deep-black rounded-2xl p-8 md:p-10 border border-gray-800 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-neon-green/10 via-emerald-50 to-green-50 rounded-2xl p-8 md:p-10 border border-neon-green/30 relative overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-neon-green to-transparent" />
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon-green/10 rounded-full blur-3xl" />
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon-green/20 rounded-full blur-3xl" />
 
             <div className="relative text-center">
-                <div className="inline-flex items-center gap-2 bg-neon-green/20 text-neon-green px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider mb-4">
+                <div className="inline-flex items-center gap-2 bg-deep-black text-white px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider mb-4">
                     <BookOpen size={14} />
                     Newsletter
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold font-space text-white mb-3">
+                <h3 className="text-2xl md:text-3xl font-bold font-space text-deep-black mb-3 tracking-normal md:tracking-tight">
                     Receba insights de growth toda semana
                 </h3>
-                <p className="text-gray-400 mb-6 max-w-lg mx-auto">
+                <p className="text-gray-700 mb-6 max-w-lg mx-auto leading-relaxed">
                     Estratégias de automação, vendas e CRM direto no seu email. Sem spam.
                 </p>
 
@@ -184,17 +184,17 @@ const NewsletterSignup: React.FC = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="seu@email.com"
-                        className="flex-grow px-5 py-3.5 rounded-lg bg-white/10 border border-white/20 text-white placeholder-gray-500 focus:outline-none focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all"
+                        className="flex-grow px-5 py-3.5 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
                     />
                     <button
                         type="submit"
-                        className="px-6 py-3.5 bg-neon-green text-deep-black font-bold font-space uppercase tracking-wider text-sm rounded-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(27,252,79,0.4)] hover:-translate-y-0.5"
+                        className="px-6 py-3.5 bg-deep-black text-white font-bold font-space uppercase tracking-wider text-sm rounded-lg transition-all duration-300 hover:bg-gray-800 hover:-translate-y-0.5"
                     >
                         Inscrever
                     </button>
                 </form>
 
-                <p className="text-xs text-gray-500 mt-4">
+                <p className="text-xs text-gray-600 mt-4 font-medium">
                     +2.500 profissionais de growth já assinam
                 </p>
             </div>
@@ -247,6 +247,10 @@ export const BlogPost = () => {
                 .replace(/\s+/g, '-');
             return `<h${level}${attrs} id="${id}">${text}</h${level}>`;
         });
+
+        // Wrap tables in responsive container
+        content = content.replace(/<table/gi, '<div class="overflow-x-auto my-8 rounded-lg border border-gray-100 shadow-sm"><table');
+        content = content.replace(/<\/table>/gi, '</table></div>');
 
         return content;
     }, [post?.content]);
@@ -307,13 +311,19 @@ export const BlogPost = () => {
                 style={{ width: `${progress * 100}%` }}
             />
 
+            {/* Reading Progress Percentage - Desktop Only */}
+            <div className="fixed top-20 right-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-mono text-gray-600 shadow-lg z-[100] hidden md:block">
+                {Math.round(progress * 100)}%
+            </div>
+
             {/* Hero Section */}
             <div className="relative h-[450px] md:h-[550px] w-full overflow-hidden">
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/80 to-deep-black/40 z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-deep-black via-deep-black/70 to-deep-black/30 z-10" />
                 <img
                     src={post.image}
                     alt={post.title}
+                    loading="eager"
                     className="w-full h-full object-cover absolute inset-0 z-0 scale-105"
                 />
 
@@ -328,7 +338,7 @@ export const BlogPost = () => {
                         </div>
 
                         {/* Title */}
-                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-space text-white max-w-4xl leading-[1.1] mb-8 text-balance">
+                        <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-space text-white max-w-4xl leading-[1.15] md:leading-[1.1] mb-8 text-balance tracking-normal md:tracking-tight">
                             {post.title}
                         </h1>
 
@@ -366,11 +376,20 @@ export const BlogPost = () => {
                             {/* Back Button */}
                             <Link
                                 to="/blog"
-                                className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-green transition-colors mb-8 font-mono text-sm uppercase tracking-wider group"
+                                className="inline-flex items-center gap-2 text-gray-400 hover:text-neon-green transition-colors mb-4 font-mono text-sm uppercase tracking-wider group"
                             >
                                 <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
                                 Voltar para o Blog
                             </Link>
+
+                            {/* Breadcrumb */}
+                            <nav className="flex items-center gap-2 text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
+                                <Link to="/" className="hover:text-neon-green transition-colors">Home</Link>
+                                <span>/</span>
+                                <Link to="/blog" className="hover:text-neon-green transition-colors">Blog</Link>
+                                <span>/</span>
+                                <span className="text-gray-700 font-medium">{post.category}</span>
+                            </nav>
 
                             {/* Excerpt/Lead */}
                             <div className="mb-10 relative">
@@ -387,7 +406,7 @@ export const BlogPost = () => {
                                 prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b prose-h2:border-gray-100
                                 prose-h3:text-xl prose-h3:md:text-2xl prose-h3:mt-8 prose-h3:mb-4
                                 prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
-                                prose-a:text-neon-green prose-a:no-underline prose-a:font-medium hover:prose-a:underline
+                                prose-a:text-deep-black prose-a:font-bold prose-a:no-underline prose-a:border-b-2 prose-a:border-neon-green/50 hover:prose-a:border-neon-green hover:prose-a:text-deep-black prose-a:transition-colors
                                 prose-strong:text-deep-black prose-strong:font-semibold
                                 prose-ul:my-6 prose-ul:space-y-2
                                 prose-li:text-gray-600 prose-li:leading-relaxed
@@ -442,8 +461,8 @@ export const BlogPost = () => {
                             )}
                         </div>
 
-                        {/* Sidebar */}
-                        <aside className="lg:w-72 flex-shrink-0">
+                        {/* Sidebar - Desktop Only */}
+                        <aside className="hidden lg:block lg:w-72 flex-shrink-0">
                             <div className="lg:sticky lg:top-24 space-y-8">
                                 {/* Table of Contents */}
                                 {tocItems.length > 0 && (
@@ -505,6 +524,7 @@ export const BlogPost = () => {
                                         <img
                                             src={related.image}
                                             alt={related.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />

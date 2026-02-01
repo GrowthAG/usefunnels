@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, TechBadge } from '../components/ui';
-import { BLOG_POSTS } from '../constants';
+import { BLOG_POSTS } from '../components/data/blogPosts';
 import { ArrowRight, Clock, Calendar, Search, Filter, BookOpen } from 'lucide-react';
 
 // Get unique categories from posts
@@ -42,16 +42,16 @@ export const Blog = () => {
                     <div className="max-w-3xl mx-auto text-center">
                         <div className="inline-flex items-center gap-2 bg-deep-black text-white px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider mb-6">
                             <BookOpen size={14} />
-                            Blog & Recursos
+                            Blog & Updates
                         </div>
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space mb-6 text-balance text-deep-black tracking-tight leading-[1.1]">
-                            Estratégias de Growth,<br />
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-emerald-500">
-                                Vendas e Automação
+                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-space mb-6 text-balance text-deep-black tracking-normal md:tracking-tight leading-[1.15] md:leading-[1.1]">
+                            Conteúdo para Escalar<br />
+                            <span className="text-neon-green">
+                                Sua Operação
                             </span>
                         </h1>
-                        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto text-balance leading-relaxed">
-                            Conteúdo prático para escalar sua operação comercial. Sem teoria vazia.
+                        <p className="text-gray-600 text-base md:text-lg lg:text-xl max-w-2xl mx-auto text-balance leading-relaxed tracking-normal">
+                            Estratégias de vendas, automação e growth. Sem teoria, só prática.
                         </p>
                     </div>
 
@@ -103,7 +103,7 @@ export const Blog = () => {
                 <section className="py-12 md:py-16 bg-white">
                     <Container>
                         <div className="flex items-center gap-3 mb-8">
-                            <TechBadge className="bg-neon-green text-deep-black border-none">Em Destaque</TechBadge>
+                            <TechBadge className="bg-neon-green text-deep-black border-none">🔥 Mais Lido</TechBadge>
                         </div>
 
                         <Link
@@ -116,6 +116,7 @@ export const Blog = () => {
                                     <img
                                         src={featuredPost.image}
                                         alt={featuredPost.title}
+                                        loading="lazy"
                                         className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-gray-900/80 lg:block hidden" />
@@ -131,11 +132,11 @@ export const Blog = () => {
                                             {featuredPost.category}
                                         </span>
 
-                                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-space text-white mb-4 leading-tight group-hover:text-neon-green transition-colors">
+                                        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold font-space text-white mb-4 leading-snug tracking-normal md:tracking-tight group-hover:text-neon-green transition-colors">
                                             {featuredPost.title}
                                         </h2>
 
-                                        <p className="text-gray-400 mb-6 leading-relaxed line-clamp-3">
+                                        <p className="text-gray-400 mb-6 leading-relaxed line-clamp-3 group-hover:text-gray-300 transition-colors">
                                             {featuredPost.excerpt}
                                         </p>
 
@@ -185,17 +186,19 @@ export const Blog = () => {
                             <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
                                 <Search className="w-8 h-8 text-gray-400" />
                             </div>
-                            <h3 className="text-xl font-bold font-space text-deep-black mb-2">
-                                Nenhum artigo encontrado
+                            <h3 className="text-xl font-bold font-space text-deep-black mb-2 tracking-normal">
+                                Nenhum resultado encontrado
                             </h3>
-                            <p className="text-gray-500 mb-6">
-                                Tente ajustar sua busca ou filtros
+                            <p className="text-gray-500 mb-6 max-w-md mx-auto leading-relaxed">
+                                Não encontramos artigos com esses filtros.<br />
+                                Tente buscar por outros termos ou explore nossos artigos mais recentes.
                             </p>
                             <button
                                 onClick={() => { setSearchQuery(''); setSelectedCategory('Todos'); }}
-                                className="text-neon-green font-bold hover:underline"
+                                className="inline-flex items-center gap-2 bg-neon-green text-deep-black px-6 py-3 rounded-lg font-bold font-space uppercase tracking-wider text-sm transition-all hover:shadow-lg"
                             >
-                                Limpar filtros
+                                Limpar Filtros
+                                <ArrowRight size={14} />
                             </button>
                         </div>
                     ) : (
@@ -211,6 +214,7 @@ export const Blog = () => {
                                         <img
                                             src={post.image}
                                             alt={post.title}
+                                            loading="lazy"
                                             className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -235,7 +239,7 @@ export const Blog = () => {
                                         </div>
 
                                         {/* Title */}
-                                        <h3 className="text-xl font-bold font-space mb-3 leading-tight group-hover:text-neon-green transition-colors text-deep-black line-clamp-2">
+                                        <h3 className="text-xl font-bold font-space mb-3 leading-snug tracking-normal group-hover:text-deep-black transition-colors text-deep-black line-clamp-2 underline decoration-transparent group-hover:decoration-neon-green decoration-2 underline-offset-4">
                                             {post.title}
                                         </h3>
 
@@ -245,9 +249,9 @@ export const Blog = () => {
                                         </p>
 
                                         {/* CTA */}
-                                        <div className="flex items-center gap-2 text-xs font-bold text-deep-black uppercase pt-4 border-t border-gray-100 group-hover:text-neon-green transition-colors">
+                                        <div className="flex items-center gap-2 text-xs font-bold text-deep-black uppercase pt-4 border-t border-gray-100 group-hover:border-neon-green transition-colors">
                                             Ler Artigo
-                                            <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform" />
+                                            <ArrowRight size={14} className="transform group-hover:translate-x-1 transition-transform text-neon-green" />
                                         </div>
                                     </div>
 
@@ -268,11 +272,21 @@ export const Blog = () => {
                             <BookOpen size={14} />
                             Newsletter
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold font-space mb-4 text-deep-black">
-                            Receba conteúdo exclusivo
+                        <h2 className="text-3xl md:text-4xl font-bold font-space mb-4 text-deep-black tracking-normal md:tracking-tight">
+                            Não perca nenhum conteúdo
                         </h2>
-                        <p className="text-gray-600 mb-8 max-w-xl mx-auto">
-                            Estratégias de growth e automação direto no seu email toda semana. Sem spam, só conteúdo relevante.
+                        <div className="flex items-center justify-center gap-3 mb-6">
+                            <div className="flex -space-x-2">
+                                {[1, 2, 3, 4].map((i) => (
+                                    <div key={i} className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 border-2 border-white" />
+                                ))}
+                            </div>
+                            <p className="text-sm text-gray-600">
+                                <strong className="text-deep-black">+2.500 profissionais</strong> já recebem
+                            </p>
+                        </div>
+                        <p className="text-gray-600 mb-8 max-w-xl mx-auto leading-relaxed">
+                            Receba estratégias validadas de growth, automação e vendas toda semana.
                         </p>
 
                         <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
@@ -285,12 +299,12 @@ export const Blog = () => {
                                 type="submit"
                                 className="px-8 py-3.5 bg-deep-black text-white font-bold font-space uppercase tracking-wider text-sm rounded-xl transition-all duration-300 hover:bg-gray-800 hover:-translate-y-0.5"
                             >
-                                Inscrever
+                                Receber Insights
                             </button>
                         </form>
 
                         <p className="text-xs text-gray-400 mt-4">
-                            +2.500 profissionais já assinam
+                            Cancele quando quiser. Sem spam.
                         </p>
                     </div>
                 </Container>
