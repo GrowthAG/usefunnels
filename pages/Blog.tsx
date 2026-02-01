@@ -289,11 +289,18 @@ export const Blog = () => {
                             Receba estratégias validadas de growth, automação e vendas toda semana.
                         </p>
 
-                        <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                        <form className="flex flex-col gap-3 max-w-md mx-auto">
+                            <input
+                                type="text"
+                                placeholder="Seu nome"
+                                required
+                                className="px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
+                            />
                             <input
                                 type="email"
                                 placeholder="seu@email.com"
-                                className="flex-grow px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
+                                required
+                                className="px-5 py-3.5 rounded-xl border border-gray-200 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
                             />
                             <button
                                 type="submit"

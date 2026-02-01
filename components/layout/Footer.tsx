@@ -79,6 +79,43 @@ export const Footer = () => {
                     </div>
                 </div>
 
+                {/* Newsletter Section */}
+                <div className="border-t border-gray-900 pt-12 pb-8 mb-8">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <h3 className="text-xl md:text-2xl font-bold text-white mb-2 font-space">
+                                Fique por Dentro das Novidades
+                            </h3>
+                            <p className="text-gray-400 text-sm leading-relaxed">
+                                Estratégias de growth, automação e cases de sucesso direto no seu email. Toda semana.
+                            </p>
+                        </div>
+                        <form className="w-full max-w-md lg:ml-auto">
+                            <div className="flex flex-col gap-3">
+                                <input
+                                    type="text"
+                                    placeholder="Seu nome"
+                                    required
+                                    className="px-4 py-3 text-sm bg-gray-900 border border-gray-700 rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-neon-green transition-all"
+                                />
+                                <input
+                                    type="email"
+                                    placeholder="seu@email.com"
+                                    required
+                                    className="px-4 py-3 text-sm bg-gray-900 border border-gray-700 rounded-sm text-white placeholder-gray-500 focus:outline-none focus:border-neon-green transition-all"
+                                />
+                                <button
+                                    type="submit"
+                                    className="px-6 py-3 bg-neon-green text-deep-black font-bold font-space uppercase tracking-wider text-sm rounded-sm transition-all duration-300 hover:bg-neon-green/90 hover:-translate-y-0.5"
+                                >
+                                    Inscrever
+                                </button>
+                            </div>
+                            <p className="text-[10px] text-gray-500 mt-3">Cancele quando quiser. Sem spam.</p>
+                        </form>
+                    </div>
+                </div>
+
                 <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-600 font-mono text-center md:text-left">
                     <p>&copy; {new Date().getFullYear()} FUNNELS. Brasil.</p>
                     <div className="flex gap-4">

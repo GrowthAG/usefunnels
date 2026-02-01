@@ -158,6 +158,7 @@ const ScrollToTop: React.FC<{ show: boolean }> = ({ show }) => {
 // ============================================
 
 const NewsletterSignup: React.FC = () => {
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
 
     return (
@@ -178,13 +179,20 @@ const NewsletterSignup: React.FC = () => {
                     Estratégias de automação, vendas e CRM direto no seu email. Sem spam.
                 </p>
 
-                <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+                <form className="flex flex-col gap-3 max-w-md mx-auto">
+                    <input
+                        type="text"
+                        placeholder="Seu nome"
+                        required
+                        className="px-5 py-3.5 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
+                    />
                     <input
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="seu@email.com"
-                        className="flex-grow px-5 py-3.5 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
+                        required
+                        className="px-5 py-3.5 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
                     />
                     <button
                         type="submit"
@@ -345,9 +353,11 @@ export const BlogPost = () => {
                         {/* Meta Info */}
                         <div className="flex flex-wrap items-center gap-6 text-gray-300 text-sm font-mono">
                             <div className="flex items-center gap-2">
-                                <div className="w-8 h-8 rounded-full bg-neon-green/20 flex items-center justify-center">
-                                    <User size={14} className="text-neon-green" />
-                                </div>
+                                <img
+                                    src="https://storage.googleapis.com/msgsndr/S7HEFAz97UKuC8NLHMmI/media/691a5368c656aa71361faa04.jpg"
+                                    alt="Giulliano Alves"
+                                    className="w-8 h-8 rounded-full object-cover border border-neon-green/30"
+                                />
                                 <span>{post.author}</span>
                             </div>
                             <div className="flex items-center gap-2">

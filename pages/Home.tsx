@@ -97,49 +97,14 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
             {/* INTEGRATION HERO - Singularity */}
             <IntegrationHero onBookDemo={onBookDemo} />
 
-            {/* 1. AI BENEFITS - DARK MODE */}
-            <Section className="bg-[#050505] text-white border-y border-gray-900 py-24 md:py-32 relative overflow-hidden">
-                <div className="absolute inset-0 bg-grid-pattern-dark opacity-[0.05] pointer-events-none"></div>
-                <Container>
-                    <Reveal>
-                        <div className="text-center mb-16 max-w-4xl mx-auto">
-                            <span className="font-mono text-xs font-bold uppercase tracking-widest text-neon-green mb-6 block">
-                                Automação Nativa
-                            </span>
-                            <h2 className="text-3xl md:text-5xl font-bold font-space mb-6 tracking-tight text-balance leading-tight text-white">
-                                Pare de perder leads.<br />
-                                Construa relacionamentos.
-                            </h2>
-                            <p className="text-gray-400 text-sm md:text-base font-light max-w-2xl mx-auto text-balance leading-relaxed">
-                                A única plataforma que une captura, conversão e retenção em um piloto automático inteligente.
-                            </p>
-                        </div>
-                        {/* Reusing AICarousel here if intended, or just keeping the structure as it was previously valid. Assuming content here was correct before my bad edit. */}
-                        {/* NOTE: In the previous valid file, there was another instance of AICarousel here? Or was it something else?
-                             Looking at the file history, line 125 had <AICarousel />. I will keep it consistent.
-                          */}
-                        <div className="relative z-10 max-w-5xl mx-auto">
-                            <AICarousel />
-                        </div>
-                        <div className="flex justify-center mt-12 gap-4">
-                            <Button
-                                variant="primary"
-                                className="min-w-[200px] shadow-[0_0_20px_rgba(27,252,79,0.3)] hover:shadow-[0_0_40px_rgba(27,252,79,0.5)]"
-                                onClick={scrollToPricing}
-                            >
-                                Começar Teste Grátis
-                            </Button>
-                            <Button
-                                variant="outline"
-                                className="min-w-[200px] border-gray-700 hover:border-white text-gray-300 hover:text-white"
-                                onClick={scrollToPricing}
-                            >
-                                Ver Preços
-                            </Button>
-                        </div>
-                    </Reveal>
-                </Container>
-            </Section>
+            {/* REMOVED: Automação Nativa section - Redundant with AgentsEraSection which already covers automation + IA
+                Reason:
+                - Visual inconsistency (dark bg breaks white flow)
+                - Auto-rotating carousel creates friction
+                - AgentsEraSection slide 2 already shows "Fluxos de Trabalho Autônomos"
+                - Features grid below covers all automation capabilities
+                - Removing improves page flow and reduces cognitive load
+            */}
 
             {/* A ERA DOS AGENTES - NEW DESIGN (White BG, 3 Pillars) */}
             <AgentsEraSection />
@@ -200,12 +165,6 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
 
                         {/* Trust Badges */}
                         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12 mb-12 md:mb-16 pb-8 border-b border-gray-100">
-                            <div className="flex items-center gap-3 text-gray-600">
-                                <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                </svg>
-                                <span className="text-xs md:text-sm font-medium">Certificado ISO 27001</span>
-                            </div>
                             <div className="flex items-center gap-3 text-gray-600">
                                 <svg className="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
                                     <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
