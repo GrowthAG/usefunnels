@@ -1,20 +1,21 @@
-# SPA Rerouting - v12.4 (Security Shield)
+# SPA Rerouting - v12.5 (PHP Fallback)
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
 
-    # Se ja estiver no index.html, nao faca nada
-    RewriteRule ^index\.html$ - [L]
+    # Se o arquivo existir fisicamente, entregue ele
+    RewriteCond %{REQUEST_FILENAME} -f
+    RewriteRule ^ - [L]
 
-    # Se o arquivo existir fisicamente (foto, css, js, pdf), entregue ele
-    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    # Se o diretório existir, entregue ele
     RewriteCond %{REQUEST_FILENAME} -d
     RewriteRule ^ - [L]
 
-    # PARA TODO O RESTO: Entregue o index.html
-    RewriteRule . /index.html [L]
+    # Para todo o resto: tenta index.html
+    RewriteRule ^ /index.html [L]
 </IfModule>
 
-# Forca o carregamento do site em caso de erro do servidor
-ErrorDocument 404 /index.html
-ErrorDocument 403 /index.html
+# Fallback para quando mod_rewrite não funcionar
+# Usa PHP como última opção
+ErrorDocument 404 /404.php
+ErrorDocument 403 /404.php
