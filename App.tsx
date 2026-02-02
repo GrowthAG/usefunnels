@@ -1,8 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { Header, Footer } from './components/layout';
-import { Home, About, Partners, Enterprise, Blog, BlogPost, FeaturePage, Legal, PricingPageFull } from './pages';
+import { Header, Footer, PageTransition } from './components/layout';
+import { Home, About, Partners, Enterprise, Blog, BlogPost, FeaturePage, Legal, PricingPageFull, WhatsAppPage, DashboardsPage, CRMPage, AutomacaoPage, ConstrutorPaginasPage } from './pages';
 import { Modal } from './components/ui';
 import { CheckoutModal } from './components/checkout';
 
@@ -27,9 +27,31 @@ const ScrollToTop = () => {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         } else {
-            window.scrollTo(0, 0);
+            // Force instant scroll to top for new pages
+            // We use both CSS property and scrollTo behavior option for maximum compatibility
+            document.documentElement.style.scrollBehavior = 'auto';
+            document.body.style.scrollBehavior = 'auto'; // Safety net
+
+            window.scrollTo({ top: 0, behavior: 'instant' });
+
+            // Restore smooth scroll behavior after a safe delay
+            setTimeout(() => {
+                document.documentElement.style.scrollBehavior = '';
+                document.body.style.scrollBehavior = '';
+                // Ensure manual restoration is set to prevent browser interference
+                if ('scrollRestoration' in window.history) {
+                    window.history.scrollRestoration = 'manual';
+                }
+            }, 100);
         }
     }, [pathname, hash, state]);
+
+    // Set manual restoration on mount
+    useEffect(() => {
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+    }, []);
 
     return null;
 };
@@ -61,6 +83,11 @@ const App = () => {
     const [checkoutPlanName, setCheckoutPlanName] = useState('scale');
     const [checkoutIsAnnual, setCheckoutIsAnnual] = useState(false);
 
+    // Verify production version
+    useEffect(() => {
+        console.log('🚀 FUNNELS VERSION: BUILD_v2_TEST_FRESH - ' + new Date().toISOString());
+    }, []);
+
     const handleCheckout = (url: string, planName?: string, isAnnual?: boolean) => {
         setCheckoutUrl(url);
         setCheckoutPlanName(planName || 'scale');
@@ -76,18 +103,23 @@ const App = () => {
                 <Header onBookDemo={() => setIsDemoModalOpen(true)} />
 
                 <Routes>
-                    <Route path="/" element={<Home onBookDemo={() => setIsDemoModalOpen(true)} />} />
-                    <Route path="/recursos/:id" element={<FeaturePage onBookDemo={() => setIsDemoModalOpen(true)} />} />
-                    <Route path="/sobre" element={<About />} />
-                    <Route path="/precos" element={<PricingPageFull onBookDemo={() => setIsDemoModalOpen(true)} onCheckout={handleCheckout} />} />
-                    <Route path="/legal/:type" element={<Legal />} />
+                    <Route path="/" element={<PageTransition><Home onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/recursos/:id" element={<PageTransition><FeaturePage onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/whatsapp" element={<PageTransition><WhatsAppPage onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/dashboards" element={<PageTransition><DashboardsPage onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/crm" element={<PageTransition><CRMPage onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/automacao" element={<PageTransition><AutomacaoPage onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/construtor-paginas" element={<PageTransition><ConstrutorPaginasPage onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>} />
+                    <Route path="/sobre" element={<PageTransition><About /></PageTransition>} />
+                    <Route path="/precos" element={<PageTransition><PricingPageFull onBookDemo={() => setIsDemoModalOpen(true)} onCheckout={handleCheckout} /></PageTransition>} />
+                    <Route path="/legal/:type" element={<PageTransition><Legal /></PageTransition>} />
                     <Route
                         path="/parceiros"
-                        element={<Partners onBookDemo={() => setIsDemoModalOpen(true)} />}
+                        element={<PageTransition><Partners onBookDemo={() => setIsDemoModalOpen(true)} /></PageTransition>}
                     />
-                    <Route path="/enterprise" element={<Enterprise />} />
-                    <Route path="/blog" element={<Blog />} />
-                    <Route path="/blog/:slug" element={<BlogPost />} />
+                    <Route path="/enterprise" element={<PageTransition><Enterprise /></PageTransition>} />
+                    <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
+                    <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
                 </Routes>
 
                 <Footer />

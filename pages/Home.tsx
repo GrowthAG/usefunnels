@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Section, Reveal, Button, CornerBrackets, TechBadge } from '../components/ui/index';
-import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero, AgentsEraSection } from '../components/features';
+import { AICarousel, ExitPopup, InfiniteLogoCarousel, FeaturePopupModal, IntegrationHero } from '../components/features';
 import { ASSETS, FEATURES, TESTIMONIALS, CLIENT_LOGOS, TOOLS_REPLACED } from '../constants';
 
 export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onCheckout?: (url: string, planName?: string, isAnnual?: boolean) => void }) => {
@@ -79,7 +79,7 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
 
                         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
                             <Button variant="primary" className="min-w-[200px]" onClick={scrollToPricing}>
-                                Começar Teste Grátis
+                                Começar Agora
                             </Button>
                             <Button variant="outline" className="min-w-[200px] border-gray-700 hover:border-neon-green hover:text-neon-green" onClick={scrollToPricing}>
                                 Ver Preços
@@ -96,18 +96,6 @@ export const Home = ({ onBookDemo, onCheckout }: { onBookDemo: () => void; onChe
 
             {/* INTEGRATION HERO - Singularity */}
             <IntegrationHero onBookDemo={onBookDemo} />
-
-            {/* REMOVED: Automação Nativa section - Redundant with AgentsEraSection which already covers automation + IA
-                Reason:
-                - Visual inconsistency (dark bg breaks white flow)
-                - Auto-rotating carousel creates friction
-                - AgentsEraSection slide 2 already shows "Fluxos de Trabalho Autônomos"
-                - Features grid below covers all automation capabilities
-                - Removing improves page flow and reduces cognitive load
-            */}
-
-            {/* A ERA DOS AGENTES - NEW DESIGN (White BG, 3 Pillars) */}
-            <AgentsEraSection />
 
             {/* FEATURE CARDS - Secondary Grid */}
             <Section id="features-grid" className="bg-light-gray py-16 md:py-[120px]">

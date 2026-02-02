@@ -24,6 +24,18 @@ export const Header = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
     const navLinks = [
         { name: "Home", path: "/", external: false },
+        {
+            name: "Funcionalidades",
+            path: "/#features-grid",
+            external: false,
+            dropdown: [
+                { name: "WhatsApp Inteligente", path: "/whatsapp" },
+                { name: "Dashboards & Relatórios", path: "/dashboards" },
+                { name: "CRM & Pipeline", path: "/crm" },
+                { name: "Automação", path: "/automacao" },
+                { name: "Construtor de Páginas", path: "/construtor-paginas" }
+            ]
+        },
         { name: "Sobre", path: "/sobre", external: false },
         { name: "Parceiros", path: "/parceiros", external: false },
         { name: "Blog", path: "/blog", external: false },
@@ -47,7 +59,28 @@ export const Header = ({ onBookDemo }: { onBookDemo: () => void }) => {
                         {/* Desktop Nav */}
                         <nav className="hidden md:flex items-center gap-8">
                             {navLinks.map((link) => (
-                                link.external ? (
+                                link.dropdown ? (
+                                    <div key={link.name} className="relative group">
+                                        <button className={`${baseLinkClasses} flex items-center gap-1 cursor-pointer focus:outline-none`}>
+                                            {link.name}
+                                            <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                                        </button>
+                                        {/* Dropdown Menu */}
+                                        <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-[260px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2 pointer-events-none group-hover:pointer-events-auto">
+                                            <div className="bg-[#0A0A0A] border border-gray-800 rounded-sm shadow-2xl overflow-hidden">
+                                                {link.dropdown.map((subItem) => (
+                                                    <NavLink
+                                                        key={subItem.name}
+                                                        to={subItem.path}
+                                                        className={({ isActive }) => `block px-5 py-3 text-sm font-space text-gray-400 hover:text-white hover:bg-white/5 transition-colors border-l-2 ${isActive ? 'border-neon-green bg-white/5 text-white' : 'border-transparent'}`}
+                                                    >
+                                                        {subItem.name}
+                                                    </NavLink>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ) : link.external ? (
                                     <a
                                         key={link.name}
                                         href={link.path}
@@ -71,6 +104,7 @@ export const Header = ({ onBookDemo }: { onBookDemo: () => void }) => {
 
                         {/* CTA Buttons */}
                         <div className="flex items-center gap-4">
+                            {/* ... buttons ... */}
                             {/* Login Button (Desktop Only) */}
                             <a
                                 href="https://app.usefunnels.io"
@@ -116,9 +150,26 @@ export const Header = ({ onBookDemo }: { onBookDemo: () => void }) => {
                 <div className="h-20 w-full flex-shrink-0 border-b border-gray-900/50"></div>
 
                 {/* Links Container */}
-                <div className="flex-grow flex flex-col items-center justify-center gap-8 relative z-10 p-6 overflow-y-auto">
+                <div className="flex-grow flex flex-col items-center justify-center gap-6 relative z-10 p-6 overflow-y-auto">
                     {navLinks.map((link, idx) => (
-                        link.external ? (
+                        link.dropdown ? (
+                            <div key={link.name} className="flex flex-col items-center gap-4 w-full animate-fade-in-up" style={{ animationDelay: `${idx * 50}ms` }}>
+                                <div className="font-space text-lg font-bold text-gray-500 uppercase tracking-widest border-b border-gray-800 pb-2 mb-2 w-full text-center">
+                                    {link.name}
+                                </div>
+                                {link.dropdown.map((subItem) => (
+                                    <NavLink
+                                        key={subItem.name}
+                                        to={subItem.path}
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className={({ isActive }) => `font-space text-2xl font-bold transition-colors ${isActive ? 'text-neon-green' : 'text-white'}`}
+                                    >
+                                        {subItem.name}
+                                    </NavLink>
+                                ))}
+                                <div className="w-full border-b border-gray-800 my-2"></div>
+                            </div>
+                        ) : link.external ? (
                             <a
                                 key={link.name}
                                 href={link.path}

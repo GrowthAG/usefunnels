@@ -343,8 +343,7 @@ const PricingCard: React.FC<{ plan: PricingPlan; isAnnual: boolean; onBookDemo: 
                                 'bg-deep-black text-white hover:scale-[1.02] hover:shadow-lg'
                         }`}
                 >
-                    <span className="block">{plan.isEnterpriseWhite ? 'Falar com Vendas' : 'Iniciar Teste Grátis'}</span>
-                    {!plan.isEnterpriseWhite && <span className="block text-[10px] font-normal mt-1 opacity-80">Sem cartão de crédito</span>}
+                    <span className="block">{plan.isEnterpriseWhite ? 'Falar com Vendas' : 'Começar Agora'}</span>
                 </a>
             </div>
         </div>

@@ -28,7 +28,7 @@ const FAQ_ITEMS = [
     },
     {
         question: "O que são os custos adicionais?",
-        answer: "Custos de uso como WhatsApp API e IA são repassados do provedor, sem markup. Média: R$50/mês."
+        answer: "Custos de uso como WhatsApp API e IA são repassados do provedor, sem markup."
     },
     {
         question: "Vocês oferecem suporte em português?",
@@ -65,23 +65,6 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
     const location = useLocation();
     const [openFaq, setOpenFaq] = useState<number | null>(null);
     const [videoUrl, setVideoUrl] = useState<string | null>(null);
-    const [viewingCount, setViewingCount] = useState<number>(0);
-
-    // Simulate live viewers count (subtle urgency)
-    useEffect(() => {
-        const min = 8;
-        const max = 15;
-        const randomCount = Math.floor(Math.random() * (max - min + 1)) + min;
-        setViewingCount(randomCount);
-
-        // Vary count slightly every 30 seconds
-        const interval = setInterval(() => {
-            const variation = Math.random() > 0.5 ? 1 : -1;
-            setViewingCount(prev => Math.max(min, Math.min(max, prev + variation)));
-        }, 30000);
-
-        return () => clearInterval(interval);
-    }, []);
 
     // Handle scroll from navigation state
     useEffect(() => {
@@ -142,16 +125,6 @@ export const PricingPageFull: React.FC<PricingPageFullProps> = ({ onBookDemo, on
 
     return (
         <main className="pt-[80px] bg-white">
-            {/* Live Viewers Badge - Fixed Bottom Left */}
-            <div className="fixed bottom-4 left-4 bg-white border border-gray-200 rounded-lg px-4 py-2 shadow-lg z-50 animate-fade-in">
-                <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-xs text-gray-600">
-                        <strong className="text-gray-900">{viewingCount}</strong> pessoas vendo preços agora
-                    </span>
-                </div>
-            </div>
-
             {/* HERO + STATS - Unified Compact Dark Section */}
             <Section className="bg-deep-black py-12 md:py-16 relative overflow-hidden">
                 {/* Gradient overlay */}
