@@ -201,29 +201,26 @@ const NewsletterSignup: React.FC = () => {
     const [email, setEmail] = useState('');
 
     return (
-        <div className="bg-gradient-to-br from-neon-green/10 via-emerald-50 to-green-50 rounded-2xl p-8 md:p-10 border border-neon-green/30 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-neon-green to-transparent" />
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-neon-green/20 rounded-full blur-3xl" />
-
-            <div className="relative text-center">
-                <div className="inline-flex items-center gap-2 bg-deep-black text-white px-4 py-1.5 rounded-full text-xs font-mono uppercase tracking-wider mb-4">
-                    <BookOpen size={14} />
+        <div className="bg-white border border-gray-200 rounded-lg p-6 md:p-8">
+            <div className="max-w-md mx-auto text-center">
+                <span className="inline-block bg-neon-green/10 text-neon-green px-3 py-1 rounded-full text-xs font-mono uppercase tracking-wider mb-4 border border-neon-green/20">
                     Newsletter
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold font-space text-deep-black mb-3 tracking-normal md:tracking-tight">
-                    Receba insights de growth toda semana
+                </span>
+
+                <h3 className="text-xl md:text-2xl font-bold font-space text-deep-black mb-2">
+                    Não perca nenhum conteúdo
                 </h3>
-                <p className="text-gray-700 mb-6 max-w-lg mx-auto leading-relaxed">
-                    Estratégias de automação, vendas e CRM direto no seu email. Sem spam.
+
+                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
+                    Receba estratégias validadas de growth, automação e vendas toda semana.
                 </p>
 
-                <form className="flex flex-col gap-3 max-w-md mx-auto">
+                <form className="flex flex-col gap-2.5">
                     <input
                         type="text"
                         placeholder="Seu nome"
                         required
-                        className="px-5 py-3.5 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
+                        className="px-4 py-3 text-sm rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all"
                     />
                     <input
                         type="email"
@@ -231,19 +228,18 @@ const NewsletterSignup: React.FC = () => {
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="seu@email.com"
                         required
-                        className="px-5 py-3.5 rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-2 focus:ring-neon-green/20 transition-all"
+                        className="px-4 py-3 text-sm rounded-lg bg-white border border-gray-200 text-gray-800 placeholder-gray-400 focus:outline-none focus:border-neon-green focus:ring-1 focus:ring-neon-green transition-all"
                     />
                     <button
                         type="submit"
-                        className="px-6 py-3.5 bg-deep-black text-white font-bold font-space uppercase tracking-wider text-sm rounded-lg transition-all duration-300 hover:bg-gray-800 hover:-translate-y-0.5"
+                        className="px-6 py-3 bg-deep-black text-white font-bold font-space uppercase tracking-wider text-sm rounded-lg transition-all duration-300 hover:bg-gray-800"
                     >
-                        Inscrever
+                        Receber Insights
                     </button>
+                    <p className="text-[10px] text-gray-500 mt-1">
+                        Cancele quando quiser. Sem spam.
+                    </p>
                 </form>
-
-                <p className="text-xs text-gray-600 mt-4 font-medium">
-                    +2.500 profissionais de growth já assinam
-                </p>
             </div>
         </div>
     );
