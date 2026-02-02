@@ -1,41 +1,20 @@
-# CONFIGURAÇÃO SPA PARA REACT ROUTER
+# SPA Rerouting - v12.4 (Security Shield)
 <IfModule mod_rewrite.c>
-  # Habilitar RewriteEngine
-  RewriteEngine On
+    RewriteEngine On
+    RewriteBase /
 
-  # Define o diretório base
-  RewriteBase /
+    # Se ja estiver no index.html, nao faca nada
+    RewriteRule ^index\.html$ - [L]
 
-  # Define index.html como documento padrão
-  DirectoryIndex index.html
+    # Se o arquivo existir fisicamente (foto, css, js, pdf), entregue ele
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
 
-  # Desabilita MultiViews (importante para SPA)
-  Options -MultiViews
-
-  # REGRA 1: Se é um arquivo ou diretório real, serve direto
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-
-  # REGRA 2: Se não for arquivo/diretório, redireciona para index.html
-  RewriteRule ^(.*)$ /index.html [L,QSA]
+    # PARA TODO O RESTO: Entregue o index.html
+    RewriteRule . /index.html [L]
 </IfModule>
 
-# FALLBACK: Se mod_rewrite não estiver disponível (LiteSpeed)
-<IfModule !mod_rewrite.c>
-  ErrorDocument 404 /index.html
-</IfModule>
-
-# COMPRESSÃO GZIP (otimização extra)
-<IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css text/javascript application/javascript application/json
-</IfModule>
-
-# CACHE DE ASSETS (otimização extra)
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType text/html "access plus 0 seconds"
-</IfModule>
+# Forca o carregamento do site em caso de erro do servidor
+ErrorDocument 404 /index.html
+ErrorDocument 403 /index.html
